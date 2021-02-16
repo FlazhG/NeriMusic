@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->binary('img_usu');
             $table->string('telefono_usu',10);
             $table->string('terminos_usu',1);
-            $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id_usu')->on('roles');
+            $table->unsignedBigInteger('rol_id');
+            $table->foreign('rol_id')->references('rol_id')->on('rols');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
