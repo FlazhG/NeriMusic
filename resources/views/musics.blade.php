@@ -9,7 +9,7 @@
   	<link rel="stylesheet" href="css/estilos.css">
   	<link rel="stylesheet" href="css/botones.css">
       <link rel="stylesheet" href="css/musics.css">  
-      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>Alta musics</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 
 		<form action="" class="formulario" id="formulario">
         <!-- Grupo: foto -->
-<div class="">
+		<div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
@@ -26,30 +26,30 @@
                   <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
               </div>
-			<!-- Grupo: Usuario -->
-			<div class="formulario_grupo" id="grupo_usuario">
-				<label for="usuario" class="formulario__label">Nombre de la musica:</label>
+			<!-- Grupo: Nombre de la musica -->
+			<div class="formulario__grupo" id="grupo__nommusica">
+				<label for="nommusica" class="formulario__label">Nombre de la musica:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="nommusica" id="nommusica" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
 
 			<!-- Grupo: Nombre -->
-			<div class="formulario_grupo" id="grupo_nombre">
-				<label for="nombre" class="formulario__label">Nombre del artistas:</label>
+			<div class="formulario__grupo" id="grupo__nombreart">
+				<label for="nombreart" class="formulario__label">Nombre del artistas:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre(s) completo">
+					<input type="text" class="formulario__input" name="nombreart" id="nombreart" placeholder="Nombre(s) completo">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
 
-            <div class="formulario_grupo" id="grupo_usuario">
-				<label for="usuario" class="formulario__label">Nombre de la discografia:</label>
+            <div class="formulario__grupo" id="grupo__discografia">
+				<label for="discografia" class="formulario__label">Nombre de la discografia:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="discografia" id="discografia" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -75,36 +75,37 @@
                 </label>
 				</div>
 		
-                <div class="formulario_grupo" id="grupo_usuario">
-				<label for="usuario" class="formulario__label">Descripción de la musica:</label>
+                <div class="formulario__grupo" id="grupo__descripcionmu">
+				<label for="descripcionmu" class="formulario__label">Descripción de la musica:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Descripcion de la musica">
+					<input  type="text" class="formulario__input" name="descripcionmu" id="descripcionmu" placeholder="Descripcion de la musica">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 			</div>
         <!-- Grupo: Fecha de nacimiento -->
-        <div class="formulario_grupo" id="grupo_nacimiento">
-				<label for="nacimiento" class="formulario__label">Fecha de salida de la canción:</label>
+        <div class="formulario__grupo" id="grupo__datepicker">
+				<label for="datepicker" class="formulario__label">Fecha de salida de la canción:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" id="datepicker"name="datepicker" id="nacimiento" placeholder="Seleccione la fecha">
+					<input type="text" class="formulario__input" id="datepicker"name="datepicker" id="datepicker" placeholder="Seleccione la fecha">
 				</div>
 			</div>   
            
-            <!-- Grupo: Nombre -->
-			<div class="formulario_grupo" id="grupo_nombre">
-				<label for="nombre" class="formulario__label">Nombre del album:</label>
+            <!-- Grupo: Nombre del album -->
+			<div class="formulario__grupo" id="grupo__nombrealbum">
+				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Inserte el nombre">
+					<input type="text" class="formulario__input" name="nombrealbum" id="nombrealbum" placeholder="Inserte el nombre">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
-			<div class="formulario_grupo formulario_grupo-btn-enviar">
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<button type="submit" class="formulario__btn">Enviar</button>
-				<p class="formulario_mensaje-exito" id="formulario_mensaje-exito">Formulario enviado exitosamente!</p>
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 			</div>
 		</form>
 	</main>
+
     <script type="text/javascript">
         function cambiar(){
           var pdrs = document.getElementById('file-upload').files[0].name;
