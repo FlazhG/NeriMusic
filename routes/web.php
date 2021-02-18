@@ -25,4 +25,6 @@ Route::get('/artists', function () {
     return view('artists');
 });
 
-
+Route::get('/albums', function () {
+    return view('albums');
+});
