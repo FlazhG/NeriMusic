@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  	<link rel="stylesheet" href="js/jquery-ui.min.css">
+  	<link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
   	<link rel="stylesheet" href="css/estilos.css">
   	<link rel="stylesheet" href="css/botones.css">
       <link rel="stylesheet" href="css/musics.css">  
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <title>Alta musics</title>
 </head>
 <body>
@@ -81,6 +81,8 @@
 					<input  type="text" class="formulario__input" name="descripcionmu" id="descripcionmu" placeholder="Descripcion de la musica">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
+				<p class="formulario__input-error">La descripción tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+
 			</div>
         <!-- Grupo: Fecha de nacimiento -->
         <div class="formulario__grupo" id="grupo__datepicker">
@@ -88,6 +90,7 @@
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" id="datepicker"name="datepicker" id="datepicker" placeholder="Seleccione la fecha">
 				</div>
+				<p class="formulario__input-error">La fecha tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>   
            
             <!-- Grupo: Nombre del album -->
@@ -99,6 +102,11 @@
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
+
+			<div class="formulario__mensaje" id="formulario__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<button type="submit" class="formulario__btn">Enviar</button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
@@ -112,8 +120,8 @@
           document.getElementById('info').innerHTML = pdrs;
         }
         </script>
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
 		<script src="js/musics-validate.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script>

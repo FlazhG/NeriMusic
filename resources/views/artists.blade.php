@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="js/jquery-ui.min.css">
+	<link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
 	<link rel="stylesheet" href="css/botones.css">
     <link rel="stylesheet" href="css/artists/artists.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     
 </head>
 <body>
@@ -180,8 +180,8 @@
           document.getElementById('info').innerHTML = pdrs;
         }
         </script>
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
 		<script src="js/artists-validate.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script>
