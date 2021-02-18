@@ -20,3 +20,9 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return view('albums');
 });
+
+Route::get('/artists', function () {
+    return view('artists');
+});
+
+
