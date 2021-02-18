@@ -1,0 +1,15 @@
+.buttonimg{
+  display: none;
+ }
+ .subir{
+     padding: 5px 10px;
+     background: #000;
+     color:#fff;
+     border:0px solid #fff;
+     font-size: 10pt;
+     font-weight: 700;
+ }
+ .subir:hover{
+     color:#fff;
+     background: #f7cb15;
+ }

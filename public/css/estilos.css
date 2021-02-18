@@ -29,21 +29,22 @@ main {
 }
 
 .formulario__input {
-	
+
 	width: 100%; /*  para que abarque todo el espacio*/
 	background: rgb(255, 255, 255);
 	border: 3px solid transparent; /* para que solo se vea cuando se da click sobre el */
-	border-radius: 3px; 
+	border-radius: 3px;
+	border-color: #000;
 	height: 45px;
 	line-height: 45px; /* para que el texto quede centrado */
-	padding: 0 40px 0 10px;		
+	padding: 0 40px 0 10px;
 	transition: .3s ease all; /*  para una trasicacion de 3 segundos*/
 }
 
-.formulario__input:focus { 
+.formulario__input:focus {
 	border: 3px solid #0075FF;/*cuando se de clic cambie de color */
 	outline: none;/*  para eliminar el subrayado que pone el navegador*/
-	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);	
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
 
 .formulario__input-error {
@@ -58,7 +59,7 @@ main {
 
 .formulario__validacion-estado {
 	position: absolute;
-	right: 10px; 
+	right: 10px;
 	bottom: 15px;
 	z-index: 100;
 	font-size: 16px;
@@ -69,7 +70,7 @@ main {
 	margin-right: 10px;
 }
 
-.formulario__grupo-terminos, 
+.formulario__grupo-terminos,
 .formulario__mensaje,
 .formulario__grupo-btn-enviar {
 	grid-column: span 2;
@@ -108,7 +109,7 @@ main {
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
-	transition: .1s ease all; 
+	transition: .1s ease all;
 }
 
 .formulario__btn:hover {/*  para cuando se pace el cursor se mostrara la sombra*/
@@ -150,18 +151,45 @@ main {
 	.formulario {
 		grid-template-columns: 1fr;
 	}
-
-	.formulario__grupo-terminos, 
+	.formulario__grupo-terminos,
 	.formulario__mensaje,
 	.formulario__grupo-btn-enviar {
 		grid-column: 1;
 	}
-
 	.formulario__btn {
 		width: 100%;
-	
+
 	}
+}
 
+.caja {
+   margin:20px auto 40px auto;
+   border:3px solid #000;
+   height:30px;
+   overflow: hidden;
+   width: 350px;
+   position:relative;
+}
+select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 30px;
+   padding: 5px;
+   width: 350px;
+}
+select:focus{ outline: none;}
 
-	
+.caja::after{
+	content:"\025be";
+	display:table-cell;
+	padding-top:7px;
+	text-align:center;
+	width:30px;
+	height:30px;
+	background-color:#d9d9d9;
+	position:absolute;
+	top:0;
+	right:0px;
+	pointer-events: none;
 }
