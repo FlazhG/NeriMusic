@@ -28,3 +28,7 @@ Route::get('/artists', function () {
 Route::get('/albums', function () {
     return view('albums');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -17,16 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name_usu',
-        'apellido_usu',
-        'email_usu',
-        'fecha_usu',
-        'sexo_usu',
-        'password_usu',
-        'img_usu',
-        'telefono_usu',
-        'terminos_usu',
-        'rol_id',
+        'name',
+        'email',
+        'password'
     ];
 
     /**
@@ -35,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password_usu',
+        'password',
         'remember_token',
     ];
 
@@ -48,11 +41,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function rols(){
-        return $this->belongsTo(
-            Role::class,
-            'rol_id',
-            'rol_id'
-        );
-    }
+
 }

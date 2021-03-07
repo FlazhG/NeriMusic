@@ -27,8 +27,6 @@ class CreateArtistsTable extends Migration
             $table->string('terminos_artis',1); 
             $table->string('disquera_artis',25); 
             $table->string('descripcion_artis',50); 
-            $table->unsignedBigInteger('rol_id');
-            $table->foreign('rol_id')->references('rol_id')->on('rols');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
