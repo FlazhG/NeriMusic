@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/musics', function () {
-    return view('musics');
+    return view('music.up');
 });
 
 Route::get('/artists', function () {
@@ -32,3 +32,7 @@ Route::get('/albums', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/menu', function () {
+    return view('layouts.menu');
+});
