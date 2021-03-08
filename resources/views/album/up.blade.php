@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  	<link rel="stylesheet" href="../js/jquery/jquery-ui.min.css">
-  	<link rel="stylesheet" href="../css/estilos.css">
-  	<link rel="stylesheet" href="../css/botones.css">
-    <link rel="stylesheet" href="../css/buttonimg.css">
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
-    <title>Albums</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript">
-    	$(document).ready(function(){ //Al cargar la página realiza una serie de acciones
-    		$('#valor-range').html($("#valoracion").val()); /* Al cargar la página se mostrará en el label "valor-range" el valor del input */
-    		$('#valoracion').change(function() { /*Cada vez que el range cambie de valor, se cambiará el texto del label valor-range con el valor del input */
-    			$('#valor-range').html($(this).val());
-    		});
-    	});
-    </script>
-
-</head>
-<body>
+@extends('layouts.menu')
+@section('contenido')
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
@@ -111,20 +87,4 @@
 			</div>
 		</form>
 	</main>
-		<script type="text/javascript" src="../js/jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="../js/jquery/jquery-ui.min.js"></script>
-		<script src="../js/albums-validate.js"></script>
-    <script type="text/javascript">
-    function cambiar(){
-      var pdrs = document.getElementById('file-upload').files[0].name;
-      document.getElementById('info').innerHTML = pdrs;
-    }
-    </script>
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script>
-			$("#datepicker").datepicker();
-		</script>
-
-</body>
-
-</html>
+@stop

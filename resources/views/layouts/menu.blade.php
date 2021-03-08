@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flazh</title>
+  <title>NeriMusic</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -25,6 +25,23 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="img/Flazh.ico" />
+  <!-- css de los formularios -->
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../js/jquery/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/botones.css">
+  <link rel="stylesheet" href="../css/buttonimg.css">
+  <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){ //Al cargar la página realiza una serie de acciones
+      $('#valor-range').html($("#valoracion").val()); /* Al cargar la página se mostrará en el label "valor-range" el valor del input */
+      $('#valoracion').change(function() { /*Cada vez que el range cambie de valor, se cambiará el texto del label valor-range con el valor del input */
+        $('#valor-range').html($(this).val());
+      });
+    });
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -663,7 +680,9 @@
         </ul>
     </div>
   </aside>
-
+  <div id="contenido">
+    @yield('contenido')
+  </div>
 </div>
 
   <!-- jQuery -->
@@ -700,5 +719,18 @@
   <script src="js/js-menu/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="js/js-menu/pages/dashboard.js"></script>
+  <script type="text/javascript" src="../js/jquery/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery/jquery-ui.min.js"></script>
+  <script src="../js/albums-validate.js"></script>
+  <script type="text/javascript">
+  function cambiar(){
+    var pdrs = document.getElementById('file-upload').files[0].name;
+    document.getElementById('info').innerHTML = pdrs;
+  }
+  </script>
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+  <script>
+      $("#datepicker").datepicker();
+  </script>
 </body>
 </html>
