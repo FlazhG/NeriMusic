@@ -18,7 +18,7 @@
 	<center><h1 class="formulario__label">Registro Artista</h1></center>
 	
 		<form action="" class="formulario" id="formulario">
-
+										
             <!-- Grupo: foto -->
             <div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
@@ -40,7 +40,7 @@
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
 
-			<!-- Grupo: Nombre -->
+			<!-- Grupo: Apellido -->
 			<div class="formulario__grupo" id="grupo__apellido">
 				<label for="apellido" class="formulario__label">Apellido:(s)</label>
 				<div class="formulario__grupo-input">

@@ -1,77 +1,155 @@
 @extends('layouts.app')
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/botones.css">
+<link rel="stylesheet" href="css/artists/artists.css">
+<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+
+
+
 @section('content')
+<main>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="formulario__label">{{ __('Registrase') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                      
+                        <!-- Grupo: Usuario -->
+                        <div class="formulario__grupo" id="grupo__usuario">
+                            <label for="usuario" class="formulario__label">Nombre:(s)</label>
+                            <div class="formulario__grupo-input">
+                                <input  type="text" class="formulario__input" name="name" id="name" placeholder="Nombre(s) Completo" >
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <!-- Grupo: Apellido -->
+                        <div class="formulario__grupo" id="grupo__apellido">
+                            <label for="apellido" class="formulario__label">Apellido:(s)</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="lastname_usu" id="lastname_usu" placeholder="apellido(s) completo" required>
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                        </div>
+                                    <!-- Grupo: Fecha de nacimiento -->
+                        <div class="formulario__grupo" id="grupo__datepicker">
+                            <label for="datepicker" class="formulario__label">Fecha de nacimiento:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="date" class="formulario__input" id="date_usu"name="date_usu" id="date_usu" placeholder="Fecha de nacimiento" required>
+                            </div>
+                            <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros</p>
+
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                                <!-- Grupo: sexo -->
+                                <div class="formulario__grupo">
+                                    <label for="usuario" class="formulario__label">Sexo:</label>
+                                <label class="radio">
+                                    <input type="radio" value="femenino" name="sexo_usu">
+                                    mujer
+                                    <span ></span>
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" value="masculino" name="sexo_usu">
+                                    hombre
+                                    <span></span>
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" value="otro" name="sexo_usu">
+                                    otro
+                                    <span></span>
+                                </label>
+                                </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <!-- Grupo: Teléfono -->
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="telefono" class="formulario__label">Teléfono:</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="phone_usu" id="phone_usu" placeholder="4491234567">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+			</div>
+			
+            <!-- Grupo: Correo -->
+			<div class="formulario__grupo" id="grupo__correo">
+				<label for="correo" class="formulario__label">Correo electronico:</label>
+				<div class="formulario__grupo-input">
+					<input type="email" class="formulario__input" name="email" id="email" placeholder="tiene que ser de 4 a 12 dígitos" required>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El correo tiene que ser de 4 a 12 dígitos.</p>
+			</div>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+            <!-- Grupo: Contraseña -->
+			<div class="formulario__grupo" id="grupo__password">
+				<label for="password" class="formulario__label">Contraseña:</label>
+				<div class="formulario__grupo-input">
+					<input type="password" class="formulario__input" name="password" id="password" placeholder="tiene que ser de 4 a 12 dígitos" required>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+			</div>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
+                <!-- Grupo: Contraseña 2 -->
+			<div class="formulario__grupo" id="grupo__password2">
+				<label for="password2" class="formulario__label">Repetir Contraseña:</label>
+				<div class="formulario__grupo-input">
+					<input type="password" class="formulario__input" name="password_confirmation" id="password-confirm" placeholder="tiene que ser de 4 a 12 dígitos" required>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+			</div>
+
+            <!-- Grupo: Terminos y Condiciones -->
+			<div class="formulario__grupo" id="grupo__terminos">
+				<label class="formulario__label">
+					<input class="formulario__checkbox" type="checkbox" name="terms_usu" id="terms_usu">
+					Acepto los terminos y condiciones
+				</label>
+			</div>
+
+			<div class="formulario__mensaje" id="formulario__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</main>
 @endsection
+
+<script type="text/javascript">
+    function cambiar(){
+      var pdrs = document.getElementById('file_upload').files[0].name;
+      document.getElementById('info').innerHTML = pdrs;
+    }
+    </script>
+    <script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+    <script src="js/register-validate.js"></script>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
