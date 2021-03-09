@@ -26,7 +26,7 @@ Route::get('/artists', function () {
 });
 
 Route::get('/albums', function () {
-    return view('albums');
+    return view('album.up');
 });
 
 Auth::routes();
