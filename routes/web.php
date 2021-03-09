@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArtistsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +42,11 @@ Route::get('/menu', function () {
 });
 
 //Rutas de artists
-route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
-route::post('guardarartists',[ArtistsController::class, 'guardarartists'])->name('guardarartists');
-route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
-route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
-route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
-route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
-route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
-route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
-
+Route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
+Route::post('guardarartists',[ArtistsController::class, 'guardarartists'])->name('guardarartists');
+Route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
+Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
+Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
+Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
+Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
+Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
