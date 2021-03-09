@@ -14,7 +14,7 @@ class CreateMusicsTable extends Migration
     public function up()
     {
         Schema::create('musics', function (Blueprint $table) {
-            $table->id('id_music',5);
+            $table->bigIncrements('id_music',5);
             $table->string('nombre_music',30);
             $table->unsignedBigInteger('id_artis');
             $table->foreign('id_artis')->references('id_artis')->on('artists');

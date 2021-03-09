@@ -1,24 +1,11 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
-	<link rel="stylesheet" href="css/estilos.css">
-	<link rel="stylesheet" href="css/botones.css">
-    <link rel="stylesheet" href="css/artists/artists.css">
-	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    
-</head>
-<body>
+@extends('layouts.menu')
+@section('contenido')
 <main>
 	<center><h1 class="formulario__label">Registro Artista</h1></center>
-	
-		<form action="" class="formulario" id="formulario">
-										
+
+		<form action="{{route('guardarartists')}}" method="post" class="formulario" id="formulario">
+        @csrf
+
             <!-- Grupo: foto -->
             <div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
@@ -34,7 +21,7 @@
 			<div class="formulario__grupo" id="grupo__usuario">
 				<label for="usuario" class="formulario__label">Nombre:(s)</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="nombre_artis" id="usuario" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -44,7 +31,7 @@
 			<div class="formulario__grupo" id="grupo__apellido">
 				<label for="apellido" class="formulario__label">Apellido:(s)</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="apellido(s) completo">
+					<input type="text" class="formulario__input" name="apellido_artis" id="apellido" placeholder="apellido(s) completo">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -79,7 +66,7 @@
                     <span></span>
                 </label>
 				</div>
-			
+
 			<!-- Grupo: Teléfono -->
 			<div class="formulario__grupo" id="grupo__telefono">
 				<label for="telefono" class="formulario__label">Teléfono:</label>
@@ -89,7 +76,7 @@
 				</div>
 				<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
 			</div>
-			
+
             <!-- Grupo: Disuquera -->
 			<div class="formulario__grupo" id="grupo__disquera">
 				<label for="disquera" class="formulario__label">Disquera:</label>
@@ -133,7 +120,7 @@
 				<p class="formulario__input-error">Ambos correos deben ser iguales.</p>
 			</div>
 
-			
+
 			<!-- Grupo: Contraseña -->
 			<div class="formulario__grupo" id="grupo__password">
 				<label for="password" class="formulario__label">Contraseña:</label>
@@ -154,7 +141,7 @@
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
 			</div>
 
-			
+
 			<!-- Grupo: Terminos y Condiciones -->
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
@@ -174,20 +161,9 @@
 		</form>
 	</main>
 
-    <script type="text/javascript">
-        function cambiar(){
-          var pdrs = document.getElementById('file-upload').files[0].name;
-          document.getElementById('info').innerHTML = pdrs;
-        }
-        </script>
-		<script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
-		<script src="js/artists-validate.js"></script>
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script>
-			$("#datepicker").datepicker();
-		</script>
-	
-</body>
-	
-</html>
+        @section('js')
+        <!-- <script src="js/artists-validate.js"></script> -->
+	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+	@endsection
+
+@stop

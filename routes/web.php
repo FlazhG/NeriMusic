@@ -35,16 +35,28 @@ Route::get('/musics', function () {
     return view('music.up');
 });
 
-Route::get('/artists', function () {
-    return view('artists');
+Route::get('/artist', function () {
+    return view('artist.up');
 });
 
 Route::get('/albums', function () {
-    return view('albums');
+    return view('album.up');
 });
 
 Route::get('/menu', function () {
     return view('layouts.menu');
 });
 
+//Rutas de artists
+Route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
+Route::post('guardarartists',[ArtistsController::class, 'guardarartists'])->name('guardarartists');
+Route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
+Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
+Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
+Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
+Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
+Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
+
+
 ?>
+
