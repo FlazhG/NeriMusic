@@ -36,3 +36,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/menu', function () {
     return view('layouts.menu');
 });
+
+//Rutas de artists
+route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
+route::post('guardarartists',[ArtistsController::class, 'guardarartists'])->name('guardarartists');
+route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
+route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
+route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
+route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
+route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
+route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
+
