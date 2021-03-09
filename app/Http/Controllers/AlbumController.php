@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Models\Genero;
+use App\Models\artists;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
 {
   public function album()
   {
-      return view('album.up');
+    $genero = Genero::all();
+      return view('album.up')->with('genero',$genero);
   }
   public function home()
   {
