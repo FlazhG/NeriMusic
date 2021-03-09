@@ -1,5 +1,4 @@
 <?php
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +19,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('users/create', [UserController::class, 'index'])->name('user.index');
-
-Route::get('users/create', [UserController::class, 'create'])->name('user.create');
-
-Route::post('users', [UserController::class, 'store'])->name('users.store');
+##Rutas users
+Route::get('users/create', [UserController::class, 'index'])->name('index');
+Route::get('userss', [UserController::class, 'create'])->name('create');
+Route::post('users',[UserController::class, 'store'])->name('store');
 
 
 Route::get('/', function () {
@@ -59,4 +57,3 @@ Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartist
 
 
 ?>
-

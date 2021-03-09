@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="{{ asset('js/jquery/jquery-ui.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
-	<link rel="stylesheet" href="{{ asset ('css/botones.css')}}">
-    <link rel="stylesheet" href="{{ asset ('css/artists/artists.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css')}}">
-    
-</head>
-<body>
+@extends('layouts.menu')
+@section('contenido')
 <main>
 	<center><h1 class="formulario__label">Registro Usuario</h1></center>
-	
-		<form action="{{route('users.store')}}" method="POST" class="formulario" id="formulario">
+
+		<form action="{{route('users')}}" method="post" class="formulario" id="formulario">
             @csrf
              <!-- Grupo: Usuario -->
              <div class="formulario__grupo" id="grupo__name">
@@ -127,21 +114,10 @@
     <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 </div>
 
-		</form>
+</form>
 	</main>
-
-    <script type="text/javascript">
-        function cambiar(){
-          var pdrs = document.getElementById('file-upload').files[0].name;
-          document.getElementById('info').innerHTML = pdrs;
-        }
-        </script>
-		<script type="text/javascript" src="{{ asset('js/jquery/jquery-3.3.1.min.js')}}"></script>
-		<script type="text/javascript" src="{{ asset('js/jquery/jquery-ui.min.js')}}"></script>
-		<script src="{{ asset('js/users-validate.js')}}"></script>
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	
-	
-</body>
-	
-</html>
+  @section('js')
+	<!-- <script src="../js/users-validate.js"></script> -->
+	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+	@endsection
+@stop
