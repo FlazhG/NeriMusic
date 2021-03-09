@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
+use App\Models\Music;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller

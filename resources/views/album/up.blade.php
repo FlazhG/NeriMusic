@@ -53,9 +53,11 @@
 
 		<!-- Grupo: Correo Electronico -->
 		<div class="formulario__grupo" id="grupo__correo">
-				<label for="correo" class="formulario__label">Cantidad de pistas:</label>
+				<label for="correo" class="formulario__label">Seleccione las pistas:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="cantipistas_album" id="correo" placeholder="12" value="{{old('')}}" readonly="readonly">
+
+					<label class="radio"><input type="checkbox" class="radio" name="cantipistas_album" id="radio" value="">Nombre</label>
+
 				</div>
 			</div>
 

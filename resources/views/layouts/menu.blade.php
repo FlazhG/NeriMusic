@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="{{asset('../js/jquery/jquery-ui.min.css')}}">
   <link rel="stylesheet" href="{{asset('../css/estilos.css')}}">
   <link rel="stylesheet" href="{{asset('../css/botones.css')}}">
+  <link rel="stylesheet" href="{{asset('../css/artists/radiobuttons.css')}}">
   <link rel="stylesheet" href="{{asset('../css/buttonimg.css')}}">
   <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
