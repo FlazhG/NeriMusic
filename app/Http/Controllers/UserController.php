@@ -10,34 +10,23 @@ class UserController extends Controller
     
     public function index()
     {
-       $user = User::paginate();
-       
-       return view('user.report', compact('user'));
+        $datos['users']=User::paginate(5);
+       return view('user.report', $datos);
 
     }
 
     
     public function create()
     {
-       return view('user.create');
+        return view('user.create');
     }
 
    
     public function store(Request $request)
     {
-        $user = new User();
-
-        $user->name = $request->name;
-        $user->lastname_usu = $request->lastname_usu;
-        $user->date_usu = $request->date_usu;
-        $user->sexo_usu = $request->sexo_usu;
-        $user->phone_usu = $request->phone_usu;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->terms_usu = $request->terms_usu;
-       
-        $user->save();
-        return redirect()->route('user.report', $user);
+       $datosUser = request()->except('_token');
+        
+       User::insert($datosUser);
     
     }
 

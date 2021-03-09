@@ -16,7 +16,8 @@
 <main>
 	<center><h1 class="formulario__label">Registro Usuario</h1></center>
 	
-		<form action="{{route('users.store')}}" method="POST" class="formulario" id="formulario">
+		
+        <form action="{{ url('/user') }}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
             @csrf
              <!-- Grupo: Usuario -->
              <div class="formulario__grupo" id="grupo__name">

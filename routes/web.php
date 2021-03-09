@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-
-
+use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\ArtistsController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +18,8 @@ use App\Http\Controllers\UserController;
 */
 Auth::routes();
 
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('users/create', [UserController::class, 'index'])->name('user.index');
-
-Route::get('users/create', [UserController::class, 'create'])->name('user.create');
-
-Route::post('users', [UserController::class, 'store'])->name('users.store');
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +40,18 @@ Route::get('/albums', function () {
 Route::get('/menu', function () {
     return view('layouts.menu');
 });
+
+
+Route::resource('user', UserController::class);
+//Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+
+//Route::get('users/create', [UserController::class, 'index'])->name('user.index');
+
+//Route::post('users', [UserController::class, 'store'])->name('users');
+
+
+
+
 
 //Rutas de artists
 Route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
