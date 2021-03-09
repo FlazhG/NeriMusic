@@ -8,7 +8,7 @@
 			<div class="formulario__grupo" id="grupo__album">
 				<label for="album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="album" id="album" placeholder="Nombre para el album">
+					<input  type="text" class="formulario__input" name="nombre_album" id="album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
@@ -18,7 +18,7 @@
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
       </div>
 
@@ -26,7 +26,7 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_album" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 				</div>
 			</div>
 
@@ -34,7 +34,7 @@
 			<div class="formulario__grupo" id="grupo__datepicker">
 				<label for="datepicker" class="formulario__label">Fecha de creación:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" id="datepicker" name="datepicker" placeholder="Fecha de creación">
+					<input type="text" class="formulario__input" id="datepicker" name="fecha_album" placeholder="Fecha de creación">
           <i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
         <p class="formulario__input-error">La fecha del album es requerida.</p>
@@ -43,7 +43,7 @@
 			<div class="formulario__grupo" id="grupo__duracion">
 				<label for="duracion" class="formulario__label">Duración:</label>
         <div class="formulario__grupo-input">
-          <input type="range" min="1" step="0.01" class="rango" id="valoracion" name="valoracion"><br>
+          <input type="range" min="1" step="0.01" class="rango" id="valoracion" name="duracion_album"><br>
 				</div>
         <label id="valor-range" class="formulario__input"></label>
         <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -54,7 +54,7 @@
 		<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Cantidad de pistas:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="correo" id="correo" placeholder="12" value="12" disabled>
+					<input type="email" class="formulario__input" name="cantipistas_album" id="correo" placeholder="12" value="12" disabled>
 				</div>
 			</div>
 
@@ -64,9 +64,9 @@
           <div class="caja">
   					<select>
   						<option>Seleccione un genero</option>
-  						<option value="toluca">Pop</option>
-  						<option value="toluca">Electronica</option>
-  						<option value="toluca">Rock</option>
+  						<option value="">Pop</option>
+  						<option value="">Electronica</option>
+  						<option value="">Rock</option>
   					</select>
           </div>
   			</div>
@@ -80,15 +80,10 @@
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>
 			</div>
-
-			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Enviar</button>
-				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
-			</div>
 		</form>
 	</main>
 	@section('js')
-	<script src="../js/albums-validate.js"></script>
+	<!-- <script src="../js/albums-validate.js"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop
