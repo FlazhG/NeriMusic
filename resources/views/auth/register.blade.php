@@ -26,8 +26,8 @@
                         @csrf
                       
                         <!-- Grupo: Usuario -->
-                        <div class="formulario__grupo" id="grupo__usuario">
-                            <label for="usuario" class="formulario__label">Nombre:(s)</label>
+                        <div class="formulario__grupo" id="grupo__name">
+                            <label for="name" class="formulario__label">Nombre:(s)</label>
                             <div class="formulario__grupo-input">
                                 <input  type="text" class="formulario__input" name="name" id="name" placeholder="Nombre(s) Completo" >
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -37,8 +37,8 @@
 
 
                                         <!-- Grupo: Apellido -->
-                        <div class="formulario__grupo" id="grupo__apellido">
-                            <label for="apellido" class="formulario__label">Apellido:(s)</label>
+                        <div class="formulario__grupo" id="grupo__lastname_usu">
+                            <label for="lastname_usu" class="formulario__label">Apellido:(s)</label>
                             <div class="formulario__grupo-input">
                                 <input type="text" class="formulario__input" name="lastname_usu" id="lastname_usu" placeholder="apellido(s) completo" required>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -46,8 +46,8 @@
                             <p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                         </div>
                                     <!-- Grupo: Fecha de nacimiento -->
-                        <div class="formulario__grupo" id="grupo__datepicker">
-                            <label for="datepicker" class="formulario__label">Fecha de nacimiento:</label>
+                        <div class="formulario__grupo" id="grupo__date_usu">
+                            <label for="date_usu" class="formulario__label">Fecha de nacimiento:</label>
                             <div class="formulario__grupo-input">
                                 <input type="date" class="formulario__input" id="date_usu"name="date_usu" id="date_usu" placeholder="Fecha de nacimiento" required>
                             </div>
@@ -76,8 +76,8 @@
                                 </div>
 
                                     <!-- Grupo: Teléfono -->
-			<div class="formulario__grupo" id="grupo__telefono">
-				<label for="telefono" class="formulario__label">Teléfono:</label>
+			<div class="formulario__grupo" id="grupo__phone_usu">
+				<label for="phone_usu" class="formulario__label">Teléfono:</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="phone_usu" id="phone_usu" placeholder="4491234567">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -86,8 +86,8 @@
 			</div>
 			
             <!-- Grupo: Correo -->
-			<div class="formulario__grupo" id="grupo__correo">
-				<label for="correo" class="formulario__label">Correo electronico:</label>
+			<div class="formulario__grupo" id="grupo__email">
+				<label for="email" class="formulario__label">Correo electronico:</label>
 				<div class="formulario__grupo-input">
 					<input type="email" class="formulario__input" name="email" id="email" placeholder="tiene que ser de 4 a 12 dígitos" required>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -108,8 +108,8 @@
 
 
                 <!-- Grupo: Contraseña 2 -->
-			<div class="formulario__grupo" id="grupo__password2">
-				<label for="password2" class="formulario__label">Repetir Contraseña:</label>
+			<div class="formulario__grupo" id="grupo__password-confirm">
+				<label for="password-confirm" class="formulario__label">Repetir Contraseña:</label>
 				<div class="formulario__grupo-input">
 					<input type="password" class="formulario__input" name="password_confirmation" id="password-confirm" placeholder="tiene que ser de 4 a 12 dígitos" required>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -118,7 +118,7 @@
 			</div>
 
             <!-- Grupo: Terminos y Condiciones -->
-			<div class="formulario__grupo" id="grupo__terminos">
+			<div class="formulario__grupo" id="grupo__terms_usu">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="terms_usu" id="terms_usu">
 					Acepto los terminos y condiciones

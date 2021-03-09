@@ -2,39 +2,38 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	name: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	lastname_usu:  /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	sexo_usu: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,12}$/, // 4 a 12 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	datepicker: /^\/d{7,14}$/, // 7 a 14 numeros.
-	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-	descripcion: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	apellido:  /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	disquera: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	date_usu: /^\/d{7,14}$/, // 7 a 14 numeros.
+	phone_usu: /^\d{7,14}$/, // 7 a 14 numeros.
+	terms_usu: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 }
 
 const campos = {
-	usuario: false,
-	apellido: false,
-	nombre: false,
-	datepicker:false,
+	name: false,
+	lastname_usu: false,
+	sexo_usu: false,
+	date_usu:false,
 	password: false,
-	correo: false,
-	telefono: false,
+	email: false,
+	phone_usu: false,
 	descripcion: false,
-	disquera: false
+	terms_usu: false
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "usuario":
-			validarCampo(expresiones.usuario, e.target, 'usuario');
+		case "name":
+			validarCampo(expresiones.name, e.target, 'name');
 		break;
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "sexo_usu":
+			validarCampo(expresiones.sexo_usu, e.target, 'sexo_usu');
 		break;
-		case "apellido":
-			validarCampo(expresiones.apellido, e.target, 'apellido');
+		case "lastname_usu":
+			validarCampo(expresiones.lastname_usu, e.target, 'lastname_usu');
 		break;
 		
 		case "password":
@@ -44,24 +43,18 @@ const validarFormulario = (e) => {
 		case "password2":
 			validarPassword2();
 		break;
-		case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
-			validarCorreo2();
+		case "email":
+			validarCampo(expresiones.email, e.target, 'email');
 		break;
-		case "correo2":
-			validarCorreo2();
+		case "date_usu":
+			validarCampo(expresiones.date_usu, e.target, 'date_usu');
 		break;
-		case "datepicker":
-			validarCampo(expresiones.datepicker, e.target, 'datepicker');
+		case "phone_usu":
+			validarCampo(expresiones.phone_usu, e.target, 'phone_usu');
 		break;
-		case "telefono":
-			validarCampo(expresiones.telefono, e.target, 'telefono');
-		break;
-		case "descripcion":
-			validarCampo(expresiones.descripcion, e.target, 'descripcion');
-		break;
-		case "disquera":
-			validarCampo(expresiones.disquera, e.target, 'disquera');
+		
+		case "terms_usu":
+			validarCampo(expresiones.terms_usu, e.target, 'terms_usu');
 		break;
 		
 	}
@@ -106,28 +99,6 @@ const validarPassword2 = () => {
 	}
 }
 
-
-const validarCorreo2 = () => {
-	const inputCorreo1 = document.getElementById('correo');
-	const inputCorreo2 = document.getElementById('correo2');
-
-	if(inputCorreo1.value !== inputCorreo2.value){
-		document.getElementById(`grupo__correo2`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__correo2`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__correo2 i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__correo2 i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__correo2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos['correo'] = false;
-	} else {
-		document.getElementById(`grupo__correo2`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__correo2`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__correo2 i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__correo2 i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__correo2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos['correo'] = true;
-	}
-}
-
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
@@ -137,7 +108,7 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.nombre && campos.apellido && campos.disquera && campos.password && campos.correo  && campos.datepicker && campos.descripcion && campos.telefono && terminos.checked ){
+	if(campos.lastname_usu && campos.name && campos.password && campos.email && campos.phone_usu && terminos.checked ){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
@@ -152,3 +123,6 @@ formulario.addEventListener('submit', (e) => {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+
+
