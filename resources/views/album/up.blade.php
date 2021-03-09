@@ -3,7 +3,8 @@
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
-		<form action="" class="formulario" id="formulario">
+		<form action="{{route('save')}}" method="post" class="formulario" id="formulario">
+			@csrf
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__album">
 				<label for="album" class="formulario__label">Nombre del album:</label>
@@ -79,6 +80,10 @@
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
 			</div>
 		</form>
 	</main>
