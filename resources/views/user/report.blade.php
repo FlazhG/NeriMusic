@@ -1,4 +1,3 @@
-
 @extends('layouts.menu')
 @section('header')
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,7 +9,7 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de album</h1>
-  <a href="{{ route('') }}">
+  <a href="{{ url('users') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
@@ -28,32 +27,14 @@
         @foreach ($users as $user )
       <tr>
         <td>{{ $user->id }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->lastname_usu }}</td>
-            <td>{{ $user->date_usu }}</td>
-            <td>{{ $user->sexo_usu }}</td>
-            <td>{{ $user->phone_usu }}</td>
-            <td>{{ $user->email }}</td>
-            <td>Editar | Borrar</td>
-        <td>
-          <a href="{{route('edit', ['id'=>$item->id])}}">
-            <center>
-            <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-          </a>
-          <a href="{{route('destroy', ['id'=>$item->id])}}">
-            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          </a>
-          @if($item->deleted_at)
-          <a href="{{route('activar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
-          </a>
-          @else
-          <a href="{{route('desactivar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
-          </a>
-          @endif
-        </center>
-        </td>
+        <td>{{ $user->name }}</td>
+        <td>{{ $user->lastname_usu }}</td>
+        <td>{{ $user->date_usu }}</td>
+        <td>{{ $user->sexo_usu }}</td>
+        <td>{{ $user->phone_usu }}</td>
+        <td>{{ $user->email }}</td>
+        <td>Editar | Borrar</td>
+       
       </tr>
       @endforeach
     </tbody>

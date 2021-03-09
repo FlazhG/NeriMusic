@@ -2,14 +2,9 @@
 @section('contenido')
 <main>
 	<center><h1 class="formulario__label">Registro Usuario</h1></center>
-<<<<<<< HEAD
-	
-		
-        <form action="{{ url('/user') }}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
-=======
 
-		<form action="{{route('users')}}" method="post" class="formulario" id="formulario">
->>>>>>> 62a72d1b940fbc92a535d9b64039ce5f2ab99a5f
+		<form action="{{url('/user')}}" method="post" class="formulario" id="formulario">
+
             @csrf
              <!-- Grupo: Usuario -->
              <div class="formulario__grupo" id="grupo__name">
