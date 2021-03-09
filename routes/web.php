@@ -1,11 +1,9 @@
 <?php
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\ArtistsController; 
+use App\Http\Controllers\AlbumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,28 +16,12 @@ use App\Http\Controllers\ArtistsController;
 */
 Auth::routes();
 
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/musics', function () {
-    return view('music.up');
-});
-
-Route::get('/artist', function () {
-    return view('artist.up');
-});
-
-Route::get('/albums', function () {
-    return view('album.up');
-});
-
-Route::get('/menu', function () {
-    return view('layouts.menu');
-});
 
 
 Route::resource('user', UserController::class);
@@ -63,6 +45,14 @@ Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])
 Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
 Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
 
+// Rutas de albums
+Route::get('albums',[AlbumController::class, 'album'])->name('album');
+Route::post('save',[AlbumController::class, 'save'])->name('save');
+// Route::get('reporteartists',[AlbumController::class, 'reporteartists'])->name('reporteartists');
+// Route::get('desactivaartists/{id_artis}',[AlbumController::class, 'desactivaartists'])->name('desactivaartists');
+// Route::get('activarartists/{id_artis}',[AlbumController::class, 'activarartists'])->name('activarartists');
+// Route::get('borraartists/{id_artis}',[AlbumController::class, 'borraartists'])->name('borraartists');
+// Route::get('modificaartists/{id_artis}',[AlbumController::class, 'modificaartists'])->name('modificaartists');
+// Route::post('guardacambioartists',[AlbumController::class, 'guardacambioartists'])->name('guardacambioartists');
 
 ?>
-

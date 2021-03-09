@@ -1,27 +1,33 @@
 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-
-<table class="table table-light">
-    <thead class="thead-light">
-        <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha de nacimiento </th>
-            <th>sexo</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Acciones</th>
-        </tr>
+@extends('layouts.menu')
+@section('header')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css') }}"/>
+@endsection
+@section('contenido')
+<div class="content-wrapper">
+  <h1 align="center">Reporte de album</h1>
+  <a href="{{ route('') }}">
+    <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+  </a><br><br>
+  <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha de nacimiento </th>
+        <th>sexo</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
     </thead>
-
     <tbody>
         @foreach ($users as $user )
-        <tr>
-
-            <td>{{ $user->id }}</td>
+      <tr>
+        <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->lastname_usu }}</td>
             <td>{{ $user->date_usu }}</td>
@@ -29,11 +35,34 @@
             <td>{{ $user->phone_usu }}</td>
             <td>{{ $user->email }}</td>
             <td>Editar | Borrar</td>
-
-        </tr>
-        @endforeach
+        <td>
+          <a href="{{route('edit', ['id'=>$item->id])}}">
+            <center>
+            <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+          </a>
+          <a href="{{route('destroy', ['id'=>$item->id])}}">
+            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </a>
+          @if($item->deleted_at)
+          <a href="{{route('activar', ['id'=>$item->id])}}">
+            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
+          </a>
+          @else
+          <a href="{{route('desactivar', ['id'=>$item->id])}}">
+            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+          </a>
+          @endif
+        </center>
+        </td>
+      </tr>
+      @endforeach
     </tbody>
-</table>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+  </table><br>
+</div>
+@section('scripts')
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
+<script src="{{asset('DataTables/report.js')}}"></script>
+@endsection
+@stop
