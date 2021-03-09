@@ -1,23 +1,10 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
-	<link rel="stylesheet" href="css/estilos.css">
-	<link rel="stylesheet" href="css/botones.css">
-    <link rel="stylesheet" href="css/artists/artists.css">
-	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    
-</head>
-<body>
+@extends('layouts.menu')
+@section('contenido')
 <main>
 	<center><h1 class="formulario__label">Registro Artista</h1></center>
-	
-		<form action="" class="formulario" id="formulario">
+    
+		<form action="{{route('guardarartists')}}" method="POST class="formulario" id="formulario">
+        {{csrf_field()}}
 										
             <!-- Grupo: foto -->
             <div class="">
@@ -173,21 +160,10 @@
 			</div>
 		</form>
 	</main>
+		
+        @section('js')
+        <script src="js/artists-validate.js"></script>
+	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+	@endsection
 
-    <script type="text/javascript">
-        function cambiar(){
-          var pdrs = document.getElementById('file-upload').files[0].name;
-          document.getElementById('info').innerHTML = pdrs;
-        }
-        </script>
-		<script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
-		<script src="js/artists-validate.js"></script>
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script>
-			$("#datepicker").datepicker();
-		</script>
-	
-</body>
-	
-</html>
+@stop
