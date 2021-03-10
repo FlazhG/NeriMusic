@@ -3,12 +3,13 @@
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
-		<form action="" class="formulario" id="formulario">
+		<form action="{{route('save')}}" method="post" class="formulario" id="formulario">
+			@csrf
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__album">
 				<label for="album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="nombre_album" id="album" placeholder="Nombre para el album">
+					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
@@ -26,7 +27,7 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_album" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 				</div>
 			</div>
 
@@ -34,7 +35,7 @@
 			<div class="formulario__grupo" id="grupo__datepicker">
 				<label for="datepicker" class="formulario__label">Fecha de creación:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" id="datepicker" name="fecha_album" placeholder="Fecha de creación">
+					<input type="date" class="formulario__input" id="datepicker" name="fecha_album" value="{{old('fecha_album')}}" placeholder="Fecha de creación">
           <i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
         <p class="formulario__input-error">La fecha del album es requerida.</p>
@@ -42,19 +43,21 @@
 			<!-- Grupo: Teléfono -->
 			<div class="formulario__grupo" id="grupo__duracion">
 				<label for="duracion" class="formulario__label">Duración:</label>
-        <div class="formulario__grupo-input">
-          <input type="range" min="1" step="0.01" class="rango" id="valoracion" name="duracion_album"><br>
-				</div>
         <label id="valor-range" class="formulario__input"></label>
+				<div class="formulario__grupo-input">
+					<input type="range" min="1" step="0.01" class="rango" id="valoracion" name="duracion_album" value="{{old('duracion_album')}}"><br>
+				</div>
         <i class="formulario__validacion-estado fas fa-times-circle"></i>
 				<p class="formulario__input-error">La duración es requerida.</p>
 			</div>
 
 		<!-- Grupo: Correo Electronico -->
 		<div class="formulario__grupo" id="grupo__correo">
-				<label for="correo" class="formulario__label">Cantidad de pistas:</label>
+				<label for="correo" class="formulario__label">Seleccione las pistas:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="cantipistas_album" id="correo" placeholder="12" value="12" disabled>
+
+					<label class="radio"><input type="checkbox" class="radio" name="cantipistas_album" id="radio" value="">Nombre</label>
+
 				</div>
 			</div>
 
@@ -64,9 +67,9 @@
           <div class="caja">
   					<select>
   						<option>Seleccione un genero</option>
-  						<option value="">Pop</option>
-  						<option value="">Electronica</option>
-  						<option value="">Rock</option>
+							@foreach($genero as $gene)
+  						<option value="{{$gene->id_genero}}">{{$gene->nombre_genero}}</option>
+							@endforeach
   					</select>
           </div>
   			</div>
@@ -74,11 +77,15 @@
 			<!-- Grupo: Rol de trabajo -->
 				<div class="formulario__grupo">
   				<label for="roltrabajo" class="formulario__label">Artista:</label>
-          <input type="text" class="formulario__input" name="correo" id="correo" placeholder="Angelo" value="Angelo" disabled>
+          <input type="text" class="formulario__input" name="id_artis" id="correo" value="{{old('')}}" readonly="readonly">
 				</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
 			</div>
 		</form>
 	</main>
