@@ -12,7 +12,7 @@ class UserController extends Controller
     {
 
         $datos['users']=User::paginate(5);
-       return view('user.report', $datos);
+       return view('user.index',$datos );
 
     }
 
@@ -29,6 +29,8 @@ class UserController extends Controller
        $datosUser = request()->except('_token');
         
        User::insert($datosUser);
+
+       return response()->json($datosUser);
     
     }
 
@@ -42,16 +44,27 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+    
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user') );
     }
 
 
     public function update(Request $request, $id)
     {
         //
+        $datosUser = request()->except(['_token', '_method']);
+        User::where('id','=',$id)->update($datosUser);
+
+        $user = User::findOrFail($id);
+        return view('user.create', compact('user') );
     }
 
     public function destroy($id)
     {
         //
+        User::destroy($id);
+        return redirect('user');
+
     }
 }

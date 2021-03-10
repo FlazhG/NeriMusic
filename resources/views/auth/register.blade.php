@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
-<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/register.css">
 <link rel="stylesheet" href="css/botones.css">
 <link rel="stylesheet" href="css/artists/artists.css">
 <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="formulario__label">{{ __('Registrase') }}</div>
+                <div class="formulario__label">{{ __('Registrarse') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

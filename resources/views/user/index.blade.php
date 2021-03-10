@@ -8,8 +8,8 @@
 @endsection
 @section('contenido')
 <div class="content-wrapper">
-  <h1 align="center">Reporte de album</h1>
-  <a href="{{ url('users') }}">
+  <h1 align="center">Reporte de Usuarios</h1>
+  <a href="{{ url('user/create') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
@@ -33,7 +33,18 @@
         <td>{{ $user->sexo_usu }}</td>
         <td>{{ $user->phone_usu }}</td>
         <td>{{ $user->email }}</td>
-        <td>Editar | Borrar</td>
+        <td>
+          
+          <a  href="{{ url('/user/'.$user->id.'/edit') }}" class="btn btn-primary">
+          Editar 
+          </a><br><br>
+
+            <form action="{{ url('/user/'.$user->id ) }}" method="post">
+                @csrf
+                {{ method_field('DELETE') }}
+            <input type="submit"class="btn btn-danger" onclick="return confirm('Quieres borrar?')" value="Borrar">
+        </form>
+        </td>
        
       </tr>
       @endforeach
