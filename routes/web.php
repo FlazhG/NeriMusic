@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistsController;
+use App\Http\Controllers\MusicController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +35,16 @@ Route::resource('user', UserController::class);
 
 //Route::post('users', [UserController::class, 'store'])->name('users');
 
+//Rutas de music
+Route::get('musics',[MusicController::class, 'index'])->name('index');
+Route::post('savemusic',[MusicController::class, 'savemusic'])->name('savemusic');
 
+//Route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
+//Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
+//Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
+//Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
+//Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
+//Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');'
 
 
 
