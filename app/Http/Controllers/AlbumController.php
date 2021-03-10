@@ -55,7 +55,7 @@ class AlbumController extends Controller
     $album -> cantipistas_album = $request->cantipistas_album;
     $album -> id_genero = $request->id_genero;
     $album -> save();
-    return redirect('album.up');
+    return redirect('album.report');
   }
   public function edit($id_album){
     $album = Album::select(
