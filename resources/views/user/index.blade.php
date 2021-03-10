@@ -34,24 +34,35 @@
         <td>{{ $user->phone_usu }}</td>
         <td>{{ $user->email }}</td>
         <td>
-          
-          <a  href="{{ url('/user/'.$user->id.'/edit') }}" class="btn btn-primary">
-          Editar 
-          </a><br><br>
-
-            <form action="{{ url('/user/'.$user->id ) }}" method="post">
-                @csrf
-                {{ method_field('DELETE') }}
-            <input type="submit"class="btn btn-danger" onclick="return confirm('Quieres borrar?')" value="Borrar">
+      
+        <a href="{{ url('/user/'.$user->id.'/edit') }}">
+          <center>
+          <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+        </a>
+        <form action="{{ url('/user/'.$user->id ) }}" method="post">
+          @csrf
+          {{ method_field('DELETE') }}
+        <button type="submit" onclick="return confirm('Quieres borrar?')" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
         </form>
-        </td>
+        @if($user->deleted_at)
+          <a href="{{route('activar', ['id'=>$user->id])}}">
+            <button value="Desactivar" title="Desactivar" class="btn btn-success">Activar</button>
+          </a>
+          @else
+          <a href="{{route('desactivar', ['id'=>$user->id])}}">
+            <button value="Desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+          </a>
+          @endif
+      </center>
        
+        </td>
+
       </tr>
       @endforeach
     </tbody>
   </table><br>
 </div>
-@section('scripts')
+@section('js')
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>

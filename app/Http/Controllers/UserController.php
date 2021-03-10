@@ -44,7 +44,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-    
+                    
         $user = User::findOrFail($id);
         return view('user.edit', compact('user') );
     }
@@ -59,6 +59,19 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('user.create', compact('user') );
     }
+
+    public function desactivar($id)
+   {
+     $user = User::find($id);
+     $user->delete();
+     return view('user');
+   }
+
+   public function activar($id)
+   {
+     $user = User::withTrashed()->where('id',$id)->restore();
+     return view('user');
+   }
 
     public function destroy($id)
     {

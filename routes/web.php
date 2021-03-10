@@ -29,11 +29,9 @@ Route::get('/', function () {
 
 
 Route::resource('user', UserController::class);
-//Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');
+Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
 
-//Route::get('users/create', [UserController::class, 'index'])->name('user.index');
-
-//Route::post('users', [UserController::class, 'store'])->name('users');
 
 //Rutas de music
 Route::get('musics',[MusicController::class, 'index'])->name('index');
