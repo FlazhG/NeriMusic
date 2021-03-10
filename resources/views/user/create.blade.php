@@ -89,16 +89,6 @@
 </div>
 
 
-<!-- Grupo: Contraseña 2 -->
-<div class="formulario__grupo" id="grupo__password-confirm">
-<label for="password-confirm" class="formulario__label">Repetir Contraseña:</label>
-<div class="formulario__grupo-input">
-<input type="password" class="formulario__input" name="password_confirmation" id="password-confirm" placeholder="tiene que ser de 4 a 12 dígitos" >
-<i class="formulario__validacion-estado fas fa-times-circle"></i>
-</div>
-<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-</div>
-
 <!-- Grupo: Terminos y Condiciones -->
 <div class="formulario__grupo" id="grupo__terminos">
 <label class="formulario__label">
@@ -106,6 +96,7 @@
 Acepto los terminos y condiciones
 </label>
 </div>
+
 <div class="formulario__mensaje" id="formulario__mensaje">
     <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
     </div>
@@ -114,14 +105,14 @@ Acepto los terminos y condiciones
 
 <div class="formulario__grupo formulario__grupo-btn-enviar">
     <button type="submit" class="formulario__btn">Enviar</button>
-    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
     </div>
 
 
 </form>
 	</main>
   @section('js')
-	<script src="{{asset ('js/users-validate.js')}}"></script> 
+	
+ <!--<script src="{{asset ('js/users-validate.js')}}"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

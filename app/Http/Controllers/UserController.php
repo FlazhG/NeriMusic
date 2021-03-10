@@ -30,7 +30,7 @@ class UserController extends Controller
         
        User::insert($datosUser);
 
-       return response()->json($datosUser);
+       return redirect('user');
     
     }
 

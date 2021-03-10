@@ -91,15 +91,6 @@
 </div>
 
 
-<!-- Grupo: Contraseña 2 -->
-<div class="formulario__grupo" id="grupo__password-confirm">
-<label for="password-confirm" class="formulario__label">Repetir Contraseña:</label>
-<div class="formulario__grupo-input">
-<input type="password" class="formulario__input" name="password_confirmation" id="password-confirm" value="{{$user->password }}" placeholder="tiene que ser de 4 a 12 dígitos" >
-<i class="formulario__validacion-estado fas fa-times-circle"></i>
-</div>
-<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-</div>
 
 <!-- Grupo: Terminos y Condiciones -->
 <div class="formulario__grupo" id="grupo__terminos">
@@ -125,7 +116,8 @@ Acepto los terminos y condiciones
 </form>
 	</main>
   @section('js')
-	<script src="{{asset ('js/users-validate.js')}}"></script> 
+
+	
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop
