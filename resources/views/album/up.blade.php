@@ -14,14 +14,14 @@
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
 			</div>
-      <div class="">
+      <!-- <div class="">
         <label for="" class="formulario__label">Subir portada:</label>
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
           <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
-      </div>
+      </div> -->
 
 			<!-- Grupo: Nombre -->
 			<div class="formulario__grupo" id="grupo__descripcion">
