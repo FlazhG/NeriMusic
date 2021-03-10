@@ -42,7 +42,7 @@
         <form action="{{ url('/user/'.$user->id ) }}" method="post">
           @csrf
           {{ method_field('DELETE') }}
-        <button type="submit" onclick="return confirm('Quieres borrar?')" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+        <button type="submit" id="eliminar" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
         </form>
         @if($user->deleted_at)
           <a href="{{route('activar', ['id'=>$user->id])}}">
@@ -67,5 +67,6 @@
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
+<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 @endsection
 @stop

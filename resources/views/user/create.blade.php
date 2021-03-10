@@ -104,7 +104,7 @@ Acepto los terminos y condiciones
 
 
 <div class="formulario__grupo formulario__grupo-btn-enviar">
-    <button type="submit" class="formulario__btn">Enviar</button>
+    <button type="submit" id="guardar" class="formulario__btn">Enviar</button>
     </div>
 
 
@@ -114,5 +114,6 @@ Acepto los terminos y condiciones
 	
  <!--<script src="{{asset ('js/users-validate.js')}}"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+
 	@endsection
 @stop
