@@ -55,9 +55,9 @@
 		<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Seleccione las pistas:</label>
 				<div class="formulario__grupo-input">
-
-					<label class="radio"><input type="checkbox" class="radio" name="cantipistas_album" id="radio" value="">Nombre</label>
-
+					@foreach($consulta as $musica)
+					<label class="radio"><input type="checkbox" class="radio" name="cantipistas_album" id="radio" value="{{$musica->id_music}}">{{$musica->nombre_music}}</label>
+					@endforeach
 				</div>
 			</div>
 
@@ -77,7 +77,7 @@
 			<!-- Grupo: Rol de trabajo -->
 				<div class="formulario__grupo">
   				<label for="roltrabajo" class="formulario__label">Artista:</label>
-          <input type="text" class="formulario__input" name="id_artis" id="correo" value="{{old('')}}" readonly="readonly">
+          <input type="text" class="formulario__input" name="id_artis" id="correo" value="{{('')}}" readonly="readonly">
 				</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">

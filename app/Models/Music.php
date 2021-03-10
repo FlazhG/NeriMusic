@@ -14,7 +14,7 @@ class Music extends Model
     protected $fillable = [
       'id_music',
       'nombre_music',
-      'id_artista',
+      'id_artis',
       'caratula_music',
       'duracion_music',
       'id_genero',
@@ -24,5 +24,4 @@ class Music extends Model
       'fecha_music',
       'id_album'
     ];
-
 }

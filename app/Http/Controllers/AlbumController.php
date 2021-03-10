@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
-use App\Models\Music;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
@@ -14,7 +13,9 @@ class AlbumController extends Controller
   public function album()
   {
     $genero = Genero::all();
-      return view('album.up')->with('genero',$genero);
+    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
+    ->select('musics.nombre_music')->get();
+      return view('album.up')->with('genero',$genero)->with('consulta',$consulta);
   }
   public function home()
   {

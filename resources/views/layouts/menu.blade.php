@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
-  <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/Flazh.ico')}}" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/NeriMusic.ico')}}" />
   <!-- css de los formularios -->
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
