@@ -59,7 +59,7 @@ Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartist
 // Rutas de albums
 Route::get('albums',[AlbumController::class, 'album'])->name('album');
 Route::post('save',[AlbumController::class, 'save'])->name('save');
-// Route::get('reporteartists',[AlbumController::class, 'reporteartists'])->name('reporteartists');
+Route::get('report',[AlbumController::class, 'report'])->name('report');
 // Route::get('desactivaartists/{id_artis}',[AlbumController::class, 'desactivaartists'])->name('desactivaartists');
 // Route::get('activarartists/{id_artis}',[AlbumController::class, 'activarartists'])->name('activarartists');
 // Route::get('borraartists/{id_artis}',[AlbumController::class, 'borraartists'])->name('borraartists');

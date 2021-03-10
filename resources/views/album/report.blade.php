@@ -16,7 +16,7 @@
     <thead>
       <th>Id</th>
       <th>Nombre</th>
-      <th>portada</th>
+      <!-- <th>portada</th> -->
       <th>Descripción</th>
       <th>Fecha de creación</th>
       <th>Duración</th>
@@ -30,7 +30,7 @@
       <tr>
         <td>{{$item->id_album}}</td>
         <td>{{$item->nombre_album}}</td>
-        <td>{{$item->img_album}}</td>
+        <!-- <td>{{$item->img_album}}</td> -->
         <td>{{$item->descripcion_album}}</td>
         <td>{{$item->fecha_album}}</td>
         <td>{{$item->duracion_album}}</td>
