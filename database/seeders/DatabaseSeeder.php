@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artists;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        Artists::factory(15)->create();
+         $this->call(GeneroSeeder::class);
     }
 }

@@ -32,7 +32,7 @@ class ArtistsController extends Controller
 
 		]);
 
-		$artis = new artists();
+		$artists = new artists();
 		$artists->id_artis = $request->id_artis;
 		$artists->nombre_artis = $request->nombre_artis;
         $artists->email_artis = $request->email_artis;

@@ -39,9 +39,9 @@
 
             <!-- Grupo: Fecha de nacimiento -->
             <div class="formulario__grupo" id="grupo__datepicker">
-                <label for="datepicker" class="formulario__label">Fecha de nacimiento:</label>
+                <label for="fecha_artis" class="formulario__label">Fecha de nacimiento:</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" id="datepicker"name="fecha_artis" id="nacimiento" placeholder="Fecha de nacimiento">
+                    <input type="date" class="formulario__input" id="fecha_artis"name="fecha_artis" id="fecha_artis" placeholder="Fecha de nacimiento">
                 </div>
                 <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros</p>
 
@@ -51,20 +51,15 @@
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Sexo:</label>
 				 <label class="radio">
-                    <input type="radio" value="mujer" name="sexo_artis">
-                    mujer
+                    <input type="radio" value="femenino" name="sexo_artis">
+                    Mujer
                     <span ></span>
                  </label>
                  <label class="radio">
-                     <input type="radio" value="hombre" name="sexo_artis">
-                     hombre
+                     <input type="radio" value="masculino" name="sexo_artis">
+                     Hombre
                      <span></span>
                  </label>
-                 <label class="radio">
-                    <input type="radio" value="otro" name="sexo_artis">
-                    otro
-                    <span></span>
-                </label>
 				</div>
 
 			<!-- Grupo: Teléfono -->
@@ -155,7 +150,7 @@
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn">Enviar</button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 			</div>
 		</form>
@@ -164,8 +159,8 @@
         @section('js')
         <!-- <script src="js/artists-validate.js"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
-	
-	
+
+
 	@endsection
 
 @stop
