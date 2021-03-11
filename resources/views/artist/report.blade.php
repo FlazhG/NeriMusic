@@ -50,16 +50,16 @@
             <center>
             <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
           </a>
-          <a href="{{route('borraartists',['id_artis'=>$c->id_artis])}}">  
-            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <a href="{{route('borraartists',['id_artis'=>$c->id_artis])}}">
+            <button value="Eliminar" id="eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
           </a>
           @if($c->deleted_at)
           <a href="{{route('activarartists',['id_artis'=>$c->id_artis])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
+            <button value="Dasactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
           </a>
           @else
           <a href="{{route('desactivaartists',['id_artis'=>$c->id_artis])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+            <button value="Dasactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif
         </center>
