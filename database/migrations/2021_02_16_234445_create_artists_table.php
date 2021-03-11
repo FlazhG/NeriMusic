@@ -17,11 +17,11 @@ class CreateArtistsTable extends Migration
             $table->bigIncrements('id_artis', 5);  
             $table->string('nombre_artis', 40);
             $table->string('apellido_artis',40);
-            $table->string('email_artis',40);
-            $table->string('email_verified',40)->unique()->nullable();
+            $table->string('email_artis',40)->unique();
+            $table->string('email_verified',40)->nullable();
             $table->date('fecha_artis');
             $table->enum('sexo_artis',['masculino','femenino']);
-            $table->string('password_artis',25);
+            $table->string('password_artis');
             $table->binary('img_artis')->nullable();
             $table->string('telefono_artis',25);
             $table->string('terminos_artis',3);
