@@ -38,22 +38,24 @@
         <a href="{{ url('/user/'.$user->id.'/edit') }}">
           <center>
           <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-        </a>
-        <form action="{{ url('/user/'.$user->id ) }}" method="post">
-          @csrf
-          {{ method_field('DELETE') }}
-        <button type="submit" id="eliminar" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
-        </form>
-        @if($user->deleted_at)
-          <a href="{{route('activar', ['id'=>$user->id])}}">
-            <button value="Desactivar" title="Desactivar" class="btn btn-success">Activar</button>
-          </a>
-          @else
-          <a href="{{route('desactivar', ['id'=>$user->id])}}">
-            <button value="Desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
-          </a>
-          @endif
-      </center>
+            </a>
+            <form action="{{ url('/user/'.$user->id ) }}" method="post" class="eliminar">
+              @csrf
+              {{ method_field('DELETE') }}
+              <a href="{{route('destroy', ['id'=>$user->id])}}">
+              <button type="submit" id="eliminar" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+              </a>
+            </form>
+            <!-- @if($user->deleted_at)
+              <a href="{{route('activar', ['id'=>$user->id])}}">
+                <button value="Desactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
+              </a>
+              @else
+              <a href="{{route('desactivar', ['id'=>$user->id])}}">
+                <button value="Desactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+              </a>
+              @endif -->
+          </center>
 
         </td>
 
@@ -68,16 +70,5 @@
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
-@if(session('eliminar') == 'trash')
-<script type="text/javascript">
-Swal.fire(
-  '¡Eliminado!',
-  'Su archivo ha sido eliminado correctamente.',
-  'success',
-  showConfirmButton: false,
-  timer: 15000
-)
-</script>
-@endif
 @endsection
 @stop
