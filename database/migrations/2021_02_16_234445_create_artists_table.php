@@ -15,18 +15,18 @@ class CreateArtistsTable extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->bigIncrements('id_artis', 5);  
-            $table->string('nombre_artis', 25);
-            $table->string('apellido_artis',25);
-            $table->string('email_artis',30);
-            $table->string('email_verified',35)->unique();
+            $table->string('nombre_artis', 40);
+            $table->string('apellido_artis',40);
+            $table->string('email_artis',40);
+            $table->string('email_verified',40)->unique()->nullable();
             $table->date('fecha_artis');
-            $table->enum('sexo_artis',['Masculino','Femenino']);
+            $table->enum('sexo_artis',['masculino','femenino']);
             $table->string('password_artis',25);
-            $table->binary('img_artis');
-            $table->string('telefono_artis',10);
-            $table->string('terminos_artis',1);
-            $table->string('disquera_artis',25);
-            $table->string('descripcion_artis',50);
+            $table->binary('img_artis')->nullable();
+            $table->string('telefono_artis',25);
+            $table->string('terminos_artis',3);
+            $table->string('disquera_artis');
+            $table->string('descripcion_artis');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
