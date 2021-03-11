@@ -7,6 +7,8 @@ use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
 use App\Models\Music;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 use Illuminate\Support\Facades\Validator;
 
 class MusicController extends Controller
@@ -33,8 +35,8 @@ class MusicController extends Controller
         $artists->telefono_asrtis = $request->telefono_artis;
         $artists->terminos_artis = $request->terminos_artis;
         $artists->disquera_artis = $request->disquera_artis;
-		$servicio->descripcion_artis = $request->descripcion_artis;
-		$servicio->save();
+		$artists->descripcion_artis = $request->descripcion_artis;
+		$artists->save();
 
 		/*return view('mensajes')
 		->with('proceso',"Modifica de servicio")

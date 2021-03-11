@@ -9,14 +9,14 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de album</h1>
-  <a href="{{ route('') }}">
+  <a href="/albums">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <th>Id</th>
       <th>Nombre</th>
-      <th>portada</th>
+      <!-- <th>portada</th> -->
       <th>Descripción</th>
       <th>Fecha de creación</th>
       <th>Duración</th>
@@ -30,27 +30,32 @@
       <tr>
         <td>{{$item->id_album}}</td>
         <td>{{$item->nombre_album}}</td>
-        <td>{{$item->img_album}}</td>
+        <!-- <td>{{$item->img_album}}</td> -->
         <td>{{$item->descripcion_album}}</td>
         <td>{{$item->fecha_album}}</td>
         <td>{{$item->duracion_album}}</td>
         <td>{{$item->cantipistas_album}}</td>
-        <td>{{$item->genero}}</td>
-        <td>{{$item->artis}}</td>
+        <td>{{$item->id_genero}}</td>
+        <td>{{$item->id_artis}}</td>
         <td>
-          <a href="{{route('edit', ['id'=>$item->id])}}">
+
+          
+          <a href="{{url ('albums.edit'.$item->id)}}">
             <center>
             <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
           </a>
-          <a href="{{route('destroy', ['id'=>$item->id])}}">
+
+
+          
+          <a href="{{url ('destroy', ['id'=>$item->id])}}">
             <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
           </a>
           @if($item->deleted_at)
-          <a href="{{route('activar', ['id'=>$item->id])}}">
+          <a href="{{url ('activar', ['id'=>$item->id])}}">
             <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
           </a>
           @else
-          <a href="{{route('desactivar', ['id'=>$item->id])}}">
+          <a href="{{url ('desactivar', ['id'=>$item->id])}}">
             <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif

@@ -16,14 +16,14 @@ class CreateAlbumsTable extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->bigIncrements('id_album',5);
             $table->string('nombre_album',30);
-            $table->binary('img_album');
+            //$table->binary('img_album');
             $table->longText('descripcion_album',50);
             $table->date('fecha_album');
             $table->time('duracion_album');
-            $table->string('cantipistas_album',4);
-            $table->unsignedBigInteger('id_genero');
+            //$table->string('cantipistas_album',4);
+            $table->unsignedBigInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id_genero')->on('generos');
-            $table->unsignedBigInteger('id_artis');
+            $table->unsignedBigInteger('id_artis')->nullable();
             $table->foreign('id_artis')->references('id_artis')->on('artists');
             $table->rememberToken();
             $table->timestamps();

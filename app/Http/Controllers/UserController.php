@@ -12,7 +12,7 @@ class UserController extends Controller
     {
 
         $datos['users']=User::paginate(100);
-       return view('user.index',$datos );
+       return view('user.index',$datos )->with('eliminar','trash');
 
     }
 
@@ -27,11 +27,11 @@ class UserController extends Controller
     {
 
        $datosUser = request()->except('_token');
-        
+
        User::insert($datosUser);
 
        return redirect('user');
-    
+
     }
 
 
@@ -44,7 +44,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-                    
+
         $user = User::findOrFail($id);
         return view('user.edit', compact('user') );
     }
@@ -76,7 +76,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
+        User::find($id)->forceDelete();
         return redirect('user');
 
     }

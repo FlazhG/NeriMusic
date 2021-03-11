@@ -34,7 +34,7 @@
         <td>{{ $user->phone_usu }}</td>
         <td>{{ $user->email }}</td>
         <td>
-      
+
         <a href="{{ url('/user/'.$user->id.'/edit') }}">
           <center>
           <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
@@ -54,7 +54,7 @@
           </a>
           @endif
       </center>
-       
+
         </td>
 
       </tr>
@@ -68,5 +68,16 @@
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+@if(session('eliminar') == 'trash')
+<script type="text/javascript">
+Swal.fire(
+  '¡Eliminado!',
+  'Su archivo ha sido eliminado correctamente.',
+  'success',
+  showConfirmButton: false,
+  timer: 15000
+)
+</script>
+@endif
 @endsection
 @stop
