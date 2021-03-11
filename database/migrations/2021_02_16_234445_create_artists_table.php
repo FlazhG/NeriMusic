@@ -23,7 +23,7 @@ class CreateArtistsTable extends Migration
             $table->enum('sexo_artis',['Masculino','Femenino']);
             $table->string('password_artis',25);
             $table->binary('img_artis')->nullable();
-            $table->string('telefono_artis',15);
+            $table->string('telefono_artis',10);
             $table->string('terminos_artis',3);
             $table->string('disquera_artis');
             $table->string('descripcion_artis');
