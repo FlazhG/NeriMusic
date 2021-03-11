@@ -31,7 +31,7 @@ class ArtistsFactory extends Factory
             'sexo_artis' => $this->faker->randomElement(['Masculino', 'Femenino']),
             'password_artis' => 'lastName',
             'img_artis' => null,
-            'telefono_artis' => $this->faker->phoneNumber(10),
+            'telefono_artis' => $this->faker->phoneNumber(5),
             'terminos_artis' => 'on',
             'disquera_artis'  => 'Laboratorio records',
             'descripcion_artis'  => 'buen artisa amable xd',

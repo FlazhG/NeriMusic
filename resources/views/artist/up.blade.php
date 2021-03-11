@@ -31,7 +31,7 @@
 			<div class="formulario__grupo" id="grupo__apellido">
 				<label for="apellido" class="formulario__label">Apellido:(s)</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="apellido_artis" id="apellido" placeholder="apellido(s) completo">
+					<input type="date" class="formulario__input" name="apellido_artis" id="apellido" placeholder="apellido(s) completo">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
