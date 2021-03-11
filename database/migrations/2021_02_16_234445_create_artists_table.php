@@ -20,7 +20,7 @@ class CreateArtistsTable extends Migration
             $table->string('email_artis',40);
             $table->string('email_verified',40)->unique()->nullable();
             $table->date('fecha_artis');
-            $table->enum('sexo_artis',['Masculino','Femenino']);
+            $table->enum('sexo_artis',['masculino','femenino']);
             $table->string('password_artis',25);
             $table->binary('img_artis')->nullable();
             $table->string('telefono_artis',25);

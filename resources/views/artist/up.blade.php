@@ -51,13 +51,13 @@
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Sexo:</label>
 				 <label class="radio">
-                    <input type="radio" value="mujer" name="sexo_artis">
-                    mujer
+                    <input type="radio" value="femenino" name="sexo_artis">
+                    Mujer
                     <span ></span>
                  </label>
                  <label class="radio">
-                     <input type="radio" value="hombre" name="sexo_artis">
-                     hombre
+                     <input type="radio" value="masculino" name="sexo_artis">
+                     Hombre
                      <span></span>
                  </label>
 				</div>
