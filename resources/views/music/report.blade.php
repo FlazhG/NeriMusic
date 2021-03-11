@@ -45,15 +45,15 @@
             <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
           </a>
           <a href="{{route('destroy', ['id'=>$item->id])}}">
-            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button value="Eliminar" id="eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
           </a>
           @if($item->deleted_at)
           <a href="{{route('activar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
+            <button value="Dasactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
           </a>
           @else
           <a href="{{route('desactivar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+            <button value="Dasactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif
         </center>

@@ -61,7 +61,6 @@ $('#desactivar').click(function() {
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
-    backdrop: 'rgba(0,0,123,0.4)',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -80,7 +79,6 @@ $('#activar').click(function() {
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
-    backdrop: 'rgba(0,0,123,0.4)',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,

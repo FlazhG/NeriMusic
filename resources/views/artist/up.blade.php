@@ -155,7 +155,7 @@
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn">Enviar</button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 			</div>
 		</form>
@@ -164,8 +164,8 @@
         @section('js')
         <!-- <script src="js/artists-validate.js"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
-	
-	
+
+
 	@endsection
 
 @stop
