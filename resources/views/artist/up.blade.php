@@ -140,7 +140,7 @@
 			<!-- Grupo: Terminos y Condiciones -->
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
-					<input class="formulario__checkbox" type="checkbox" name="terminos_artis" id="terminos">
+					<input class="formulario__checkbox" type="checkbox" name="terminos_artis" id="terminos_artis">
 					Acepto los terminos y condiciones
 				</label>
 			</div>
