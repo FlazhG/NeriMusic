@@ -76,7 +76,7 @@
 
 			<!-- Grupo: Rol de trabajo -->
 				<div class="formulario__grupo">
-  				<label for="roltrabajo" class="formulario__label">Artista:</label>
+  				<label class="formulario__label">Artista:</label>
 					@foreach($consulta as $musica)
           <input type="text" class="formulario__input" name="id_artis" id="correo" value="{{('$musica->nombre_artis')}}" readonly="readonly">
 					@endforeach
@@ -87,7 +87,7 @@
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" id="guardar" class="formulario__btn">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn" value="Enviar">Enviar</button>
 			</div>
 		</form>
 	</main>

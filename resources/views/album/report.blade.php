@@ -35,8 +35,8 @@
         <td>{{$item->fecha_album}}</td>
         <td>{{$item->duracion_album}}</td>
         <td>{{$item->cantipistas_album}}</td>
-        <td>{{$item->genero}}</td>
-        <td>{{$item->artis}}</td>
+        <td>{{$item->id_genero}}</td>
+        <td>{{$item->id_artis}}</td>
         <td>
           <a href="{{route('edit', ['id'=>$item->id])}}">
             <center>
