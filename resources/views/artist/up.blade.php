@@ -39,9 +39,9 @@
 
             <!-- Grupo: Fecha de nacimiento -->
             <div class="formulario__grupo" id="grupo__datepicker">
-                <label for="sexo_artis" class="formulario__label">Fecha de nacimiento:</label>
+                <label for="fecha_artis" class="formulario__label">Fecha de nacimiento:</label>
                 <div class="formulario__grupo-input">
-                    <input type="date" class="formulario__input" id="sexo_artis"name="sexo_artis" id="sexo_artis" placeholder="Fecha de nacimiento">
+                    <input type="date" class="formulario__input" id="fecha_artis"name="fecha_artis" id="fecha_artis" placeholder="Fecha de nacimiento">
                 </div>
                 <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros</p>
 
