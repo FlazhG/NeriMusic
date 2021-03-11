@@ -83,7 +83,7 @@
                     <span></span>
                 </label>
 				</div>
-		
+
                 <div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción:</label>
 				<div class="formulario__grupo-input">
@@ -98,8 +98,8 @@
 					<input type="date" class="formulario__input" id="datepicker"name="fecha_music" value="{{old('fecha_music')}}" id="datepicker" placeholder="Seleccione la fecha">
 				</div>
 				<p class="formulario__input-error">La fecha tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-			</div>   
-           
+			</div>
+
             <!-- Grupo: Nombre del album -->
 			<div class="formulario__grupo" id="grupo__nombrealbum">
 				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
@@ -115,7 +115,7 @@
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn">Enviar</button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 			</div>
 		</form>
