@@ -7,14 +7,16 @@
 			@csrf
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__album">
-				<label for="album" class="formulario__label">Nombre del album:</label>
+				<label for="nombre_album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
 					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
 			</div>
-      <!-- <div class="">
+      
+		<!-- Grupo: Foto 
+			<div class="">
         <label for="" class="formulario__label">Subir portada:</label>
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
@@ -33,9 +35,9 @@
 
 			<!-- Grupo: Fecha de nacimiento -->
 			<div class="formulario__grupo" id="grupo__datepicker">
-				<label for="datepicker" class="formulario__label">Fecha de creación:</label>
+				<label for="fecha_album" class="formulario__label">Fecha de creación:</label>
 				<div class="formulario__grupo-input">
-					<input type="date" class="formulario__input" id="datepicker" name="fecha_album" value="{{old('fecha_album')}}" placeholder="Fecha de creación">
+					<input type="date" class="formulario__input" id="fecha_album" name="fecha_album" value="{{old('fecha_album')}}" placeholder="Fecha de creación">
           <i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
         <p class="formulario__input-error">La fecha del album es requerida.</p>
@@ -51,7 +53,7 @@
 				<p class="formulario__input-error">La duración es requerida.</p>
 			</div>
 
-		<!-- Grupo: Correo Electronico -->
+		<!-- Grupo: Correo Electronico
 		<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Pistas agregadas:</label>
 				<div class="formulario__grupo-input">
@@ -60,34 +62,42 @@
 					@endforeach
 				</div>
 			</div>
-
-			<!-- Grupo: Empresa -->
+				 -->
+			<!-- Grupo: Genero -->
 				<div class="formulario__grupo">
   				<label for="empresafor" class="formulario__label">Genero:</label>
           <div class="caja">
   					<select>
   						<option>Seleccione un genero</option>
-							@foreach($genero as $gene)
-  						<option value="{{$gene->id_genero}}">{{$gene->nombre_genero}}</option>
+							@foreach($genero as $item)
+  						<option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
 							@endforeach
   					</select>
           </div>
   			</div>
 
-			<!-- Grupo: Rol de trabajo -->
-				<div class="formulario__grupo">
-  				<label for="roltrabajo" class="formulario__label">Artista:</label>
-					@foreach($consulta as $musica)
-          <input type="text" class="formulario__input" name="id_artis" id="correo" value="{{('$musica->nombre_artis')}}" readonly="readonly">
-					@endforeach
-				</div>
+
+
+
+			  <div class="formulario__grupo">
+				<label for="empresafor" class="formulario__label">Artista:</label>
+		<div class="caja">
+					<select>
+						<option>Seleccione un Artista</option>
+						  @foreach($artists as $artist)
+						<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
+						  @endforeach
+					</select>
+		</div>
+			</div>
+
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" id="guardar" class="formulario__btn">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn" value="Enviar">Enviar</button>
 			</div>
 		</form>
 	</main>

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Music extends Model
 {
+  protected $table = 'musics';
+  
     use HasFactory;
     use softDeletes;
     protected $primaryKey = 'id_music';

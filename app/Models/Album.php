@@ -14,11 +14,11 @@ class Album extends Model
     protected $fillable = [
       'id_album',
       'nombre_album',
-      'img_album',
+      //'img_album',
       'descripcion_album',
       'fecha_album',
       'duracion_album',
-      'cantipistas_album',
+      //'cantipistas_album',
       'id_genero',
       'id_artis'
     ];

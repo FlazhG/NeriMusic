@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistsController;
 use App\Http\Controllers\MusicController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,7 @@ Route::get('/', function () {
 });
 
 
-
+//Rutas de user
 Route::resource('user', UserController::class);
 Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');
 Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
@@ -60,6 +61,7 @@ Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartist
 Route::get('albums',[AlbumController::class, 'album'])->name('album');
 Route::post('save',[AlbumController::class, 'save'])->name('save');
 Route::get('report',[AlbumController::class, 'report'])->name('report');
+Route::get('albums/{id_album}/edit',[AlbumController::class, 'edit'])->name('albums.edit');
 // Route::get('desactivaartists/{id_artis}',[AlbumController::class, 'desactivaartists'])->name('desactivaartists');
 // Route::get('activarartists/{id_artis}',[AlbumController::class, 'activarartists'])->name('activarartists');
 // Route::get('borraartists/{id_artis}',[AlbumController::class, 'borraartists'])->name('borraartists');
