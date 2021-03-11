@@ -12,12 +12,27 @@ class ArtistsController extends Controller
 		$consulta = artists::withTrashed()
 		->where('id_artis', $id_artis)
 		->get();
-		return view('modificaartists')
+		return view('artist.edit')
 		->with('consulta', $consulta[0]);
 	}
     public function guardacambioartists(Request $request)
 	{
-		$artists =artists::withTrashed()->find($request->id_artis);
+		$this->validate($request,[
+			'nombre_artis' => 'required',
+			'email_artis' => 'required',
+			'email_verifed' => 'required',
+			'fecha_artis' => 'required',
+			'sexo_artis' => 'required',
+			'password_artis' => 'required',
+			'telefono_artis' => 'required',
+			'terminos_artis' => 'required',
+			'disquera_artis' => 'required',
+			'descripcion_artis' => 'required',
+
+
+		]);
+
+		$artis = new artists();
 		$artists->id_artis = $request->id_artis;
 		$artists->nombre_artis = $request->nombre_artis;
         $artists->email_artis = $request->email_artis;
@@ -25,44 +40,23 @@ class ArtistsController extends Controller
         $artists->fecha_artis = $request->fecha_artis;
         $artists->sexo_artis = $request->sexo_artis;
         $artists->password_artis = $request->password_artis;
-        $artists->img_artis = $request->img_artis;
-        $artists->telefono_asrtis = $request->telefono_artis;
+        //$artists->img_artis = $request->img_artis;
+        $artists->telefono_artis = $request->telefono_artis;
         $artists->terminos_artis = $request->terminos_artis;
         $artists->disquera_artis = $request->disquera_artis;
-		$servicio->descripcion_artis = $request->descripcion_artis;
-		$servicio->save();
+		$artists->descripcion_artis = $request->descripcion_artis;
+		$artists->save();
 
-		/*return view('mensajes')
-		->with('proceso',"Modifica de servicio")
-		->with('mensaje',"El Servicio ha sido modificado")
-		->with('error',1);*/
-		Session::flash('mensaje',"El Artista $request->nombre_artis ha sido modificado correctamente");
-		return redirect()->route('reporteartists');
+	
+		return redirect('artists.report');
 	}
     public function borraartists($id_artis)
 	{
-		$buscaartists = artists::where('id_artis',$id_artis)->get();
-		$cuantos = count($buscaartists);
-		if ($cuantos==0)
-		{
-
-		$artists = artists::withTrashed()->find($id_artis)->forceDelete();
-		/*return view('mensajes')
-		->with('proceso',"Borrar Servicio")
-		->with('mensaje',"El servicio ha sido borrado correctamente")
-		->with('error',1);*/
-		Session::flash('mensaje',"El Artista ha sido eliminado correctamente");
-		return redirect()->route('reporteartists');
+		
+		$artists = artists::find($id_artis)->forceDelete();
+				return view('artist.report');
 		}
-		else{
-			/*return view('mensajes')
-			->with('proceso',"Borrar Servicio")
-			->with('mensaje',"El servicio no se puede eliminar, ya que tiene registros de galeria")
-			->with('error',0);^*/
-			Session::flash('mensaje',"El Servicio no se puede eliminar");
-		return redirect()->route('reporteservicio');
-		}
-	}
+			
     public function activarartists($id_artis)
 		{
 			$artists = artists::withTrashed()->where('id_artis',$id_artis)->restore();
@@ -86,13 +80,27 @@ class ArtistsController extends Controller
 	}
     public function reporteartists()
 	{
-		$consulta = artists::withTrashed()->get();
-		return view('reporteartists')->with('consulta', $consulta);
+		$consulta = artists::withTrashed()->select(
+			'artists.id_artis',
+			'artists.nombre_artis',
+			// 'albums.img_album',
+			'artists.apellido_artis',
+			'artists.email_artis',
+			'artists.email_verified',
+			'artists.fecha_artis',
+			'artists.sexo_artis',
+			'artists.password_artis',
+			'artists.telefono_artis',
+			'artists.terminos_artis',
+			'artists.disquera_artis',
+			'artists.descripcion_artis',
+			'artists.deleted_at')->get();
+		  return view('artist.report')->with('consulta',$consulta);
 	}
     public function artists()
 	{
 
-		return view('artists');
+		return view('artist.up');
 
 	}
 public function guardarartists(Request $request)
@@ -101,19 +109,18 @@ public function guardarartists(Request $request)
 		$artists = new artists();
 		$artists -> id_artis = $request->id_artis;
 		$artists -> nombre_artis = $request->nombre_artis;
-    $artists -> apellido_artis = $request->apellido_artis;
+        $artists -> apellido_artis = $request->apellido_artis;
         $artists -> email_artis = $request->email_artis;
         $artists -> email_verified = $request->email_verified;
         $artists -> fecha_artis = $request->fecha_artis;
         $artists -> sexo_artis = $request->sexo_artis;
         $artists -> password_artis = $request->password_artis;
-        $artists -> img_artis = $request->img_artis;
+       // $artists -> img_artis = $request->img_artis;
         $artists -> telefono_artis = $request->telefono_artis;
         $artists -> terminos_artis = $request->terminos_artis;
         $artists -> disquera_artis = $request->disquera_artis;
 		$artists -> descripcion_artis = $request->descripcion_artis;
 		$artists -> save();
-        Session::flash('mensaje',"El Servicio $request->artists ha sido dado de alta correctamente");
-		return redirect()->route('reporteartists');
+		return redirect('artists.report');
 }
 }

@@ -11,9 +11,6 @@
      <button type="button" class="btn btn-success">Alta de Artistas</button></a>
      <br>
      <br>
-     @if(Session::has('mensaje'))
-     <div class="alert alert-success">{{Session::get('mensaje')}} </div>
-     @endif
      <br>
      <table class="table">
   <thead class="thead-light">
@@ -49,28 +46,29 @@
       <td>{{$c->disquera_artis}}</td>
       <td>{{$c->descripcion_artis}}</td>
       <td>
-        <a href="{{route('modificaartists',['id_artis'=>$c->id_artis])}}">
-        <button type="button" class="btn btn-info ">Modificar</button>
-        </a>
-        @if($c->deleted_at)
-        <a href="{{route('activarartists',['id_artis'=>$c->id_artis])}}">
-        <button type="button" class="btn btn-warning ">Activar</button>
-        </a>
-        <a href="{{route('borraartists',['id_artis'=>$c->id_artis])}}">
-        <button type="button" class="btn btn-primary ">Borrar</button>
-        </a>
-        @else
-        <a href="{{route('desactivaartists',['id_artis'=>$c->id_artis])}}">
-        <button type="button" class="btn btn-danger ">Desactivar</button>
-        </a>
-
-        @endif
+      <a href="{{route('modificaartists',['id_artis'=>$c->id_artis])}}">
+            <center>
+            <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+          </a>
+          <a href="{{route('borraartists',['id_artis'=>$c->id_artis])}}">  
+            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </a>
+          @if($c->deleted_at)
+          <a href="{{route('activarartists',['id_artis'=>$c->id_artis])}}">
+            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
+          </a>
+          @else
+          <a href="{{route('desactivaartists',['id_artis'=>$c->id_artis])}}">
+            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+          </a>
+          @endif
+        </center>
       </td>
     </tr>
     @endforeach
   </tbody>
 </table>
-@section('scripts')
+@section('js')
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
