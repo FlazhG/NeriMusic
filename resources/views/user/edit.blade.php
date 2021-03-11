@@ -38,7 +38,7 @@
 </div>
 
                         <!-- Grupo: sexo -->
-                        
+
                         <!-- Grupo: sexo -->
         <div class="formulario__grupo">
             <label for="usuario" class="formulario__label">Sexo:</label>
@@ -105,7 +105,7 @@ Acepto los terminos y condiciones
 </div>
 
 <div class="formulario__grupo formulario__grupo-btn-enviar">
-<button type="submit" class="formulario__btn">Enviar</button>
+<button type="submit" id="modificar" class="formulario__btn">Enviar</button>
 <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 </div>
 <div class="formulario__grupo formulario__grupo-btn-enviar">
@@ -116,8 +116,6 @@ Acepto los terminos y condiciones
 </form>
 	</main>
   @section('js')
-
-	
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

@@ -10,9 +10,8 @@ class UserController extends Controller
 
     public function index()
     {
-
-        $datos['users']=User::paginate(100);
-       return view('user.index',$datos )->with('eliminar','trash');
+        $datos['users']=User::paginate(10);
+       return view('user.index',$datos );
 
     }
 
@@ -44,9 +43,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-
         $user = User::findOrFail($id);
-        return view('user.edit', compact('user') );
+        return view('user.edit', compact('user'))->with('user',$user);
     }
 
 
@@ -64,13 +62,13 @@ class UserController extends Controller
    {
      $user = User::find($id);
      $user->delete();
-     return view('user');
+     return view('user.index');
    }
 
    public function activar($id)
    {
      $user = User::withTrashed()->where('id',$id)->restore();
-     return view('user');
+     return view('user.index');
    }
 
     public function destroy($id)

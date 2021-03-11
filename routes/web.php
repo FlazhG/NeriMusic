@@ -32,6 +32,7 @@ Route::get('/', function () {
 Route::resource('user', UserController::class);
 Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');
 Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
+Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
 
 
 //Rutas de music

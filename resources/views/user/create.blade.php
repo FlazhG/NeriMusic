@@ -100,7 +100,7 @@ Acepto los terminos y condiciones
 <div class="formulario__mensaje" id="formulario__mensaje">
     <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
     </div>
-    
+
 
 
 <div class="formulario__grupo formulario__grupo-btn-enviar">
@@ -111,9 +111,7 @@ Acepto los terminos y condiciones
 </form>
 	</main>
   @section('js')
-	
  <!--<script src="{{asset ('js/users-validate.js')}}"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
-
 	@endsection
 @stop
