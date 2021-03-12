@@ -3,7 +3,7 @@
 <main>
 	<center><h1 class="formulario__label">Registro Artista</h1></center>
 
-		<form action="{{route('guardarartists')}}" method="post" class="formulario" id="formulario">
+		<form action="{{route('modificarartists')}}" method="get" class="formulario" id="formulario">
         @csrf
 
             <!-- Grupo: foto -->
