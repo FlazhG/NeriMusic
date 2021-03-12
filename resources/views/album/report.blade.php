@@ -38,25 +38,20 @@
         <td>{{$item->id_genero}}</td>
         <td>{{$item->id_artis}}</td>
         <td>
-
-          
-          <a href="{{url ('albums.edit'.$item->id)}}">
+          <a href="{{url ('albums.edit'.$item->id_album)}}">
             <center>
             <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
           </a>
-
-
-          
-          <a href="{{url ('destroy', ['id'=>$item->id])}}">
-            <button value="Eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <a href="{{url ('destroyalbum', ['id_album'=>$item->id_album])}}">
+            <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
           </a>
           @if($item->deleted_at)
-          <a href="{{url ('activar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-success">Activar</button>
+          <a href="{{url ('activaralbum', ['id_album'=>$item->id_album])}}">
+            <button value="Dasactivar" title="Desactivar" id="activar" class="btn btn-success">Activar</button>
           </a>
           @else
-          <a href="{{url ('desactivar', ['id'=>$item->id])}}">
-            <button value="Dasactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+          <a href="{{url ('desactivaralbum', ['id_album'=>$item->id_album])}}">
+            <button value="Dasactivar" title="Desactivar" id="desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif
         </center>
@@ -71,5 +66,6 @@
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
+<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 @endsection
 @stop
