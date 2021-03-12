@@ -30,6 +30,7 @@
       <tr>
         <td>{{ $c->id_artis }}</td>
         <td>{{ $c->nombre_artis }}</td>
+        <td>{{ $c->apellido_artis }}</td>
         <td>{{ $c->email_artis }}</td>
         <td>{{ $c->fecha_artis }}</td>
         <td>{{ $c->sexo_artis }}</td>

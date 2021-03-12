@@ -49,22 +49,40 @@
 
 				<!-- Grupo: sexo -->
 				<div class="formulario__grupo">
-                    <label for="usuario" class="formulario__label">Sexo:</label>
-				 <label class="radio">
-                    <input type="radio" value="mujer" value="{{$consulta->sexo_artis}}" name="sexo_artis">
-                    mujer
-                    <span ></span>
-                 </label>
-                 <label class="radio">
-                     <input type="radio" value="hombre" value="{{$consulta->sexo_artis}}" name="sexo_artis">
-                     hombre
-                     <span></span>
-                 </label>
-                 <label class="radio">
-                    <input type="radio" value="otro" value="{{$consulta->sexo_artis}}" name="sexo_artis">
-                    otro
-                    <span></span>
-                </label>
+					<label for="usuario" class="formulario__label">Sexo:</label>
+					@if($consulta->sexo_artis=='Masculino')
+	          <label class="radio">
+							<input type="radio" name="sexo_artis" checked="">
+							Masculino
+							<span></span>
+						</label>
+	          <label class="radio">
+							<input type="radio" name="sexo_artis">
+							Femenino
+							<span></span>
+						</label>
+	          <label class="radio">
+							<input type="radio">
+							otro
+							<span></span>
+						</label>
+	        @else
+	          <label class="radio">
+							<input type="radio" name="sexo_artis">
+							Masculino
+							<span></span>
+						</label>
+	          <label class="radio">
+							<input type="radio" name="sexo_artis" checked="">
+							Femenino
+							<span></span>
+						</label>
+	          <label class="radio">
+							<input type="radio">
+							otro
+							<span></span>
+						</label>
+	        @endif
 				</div>
 
 			<!-- Grupo: Teléfono -->
@@ -114,7 +132,7 @@
 			<div class="formulario__grupo" id="grupo__correo2">
 				<label for="correo2" class="formulario__label">Confirmar correo electronico:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" value="{{$consulta->email_verified}}" name="c" id="emial_verified" placeholder="tiene que ser de 4 a 12 dígitos">
+					<input type="email" class="formulario__input" value="{{$consulta->email_verified}}" name="email_verified" id="emial_verified" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">Ambos correos deben ser iguales.</p>
