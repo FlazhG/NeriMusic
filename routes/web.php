@@ -62,10 +62,10 @@ Route::get('albums',[AlbumController::class, 'album'])->name('album');
 Route::post('save',[AlbumController::class, 'save'])->name('save');
 Route::get('report',[AlbumController::class, 'report'])->name('report');
 Route::get('albums/{id_album}/edit',[AlbumController::class, 'edit'])->name('albums.edit');
-// Route::get('desactivaartists/{id_artis}',[AlbumController::class, 'desactivaartists'])->name('desactivaartists');
-// Route::get('activarartists/{id_artis}',[AlbumController::class, 'activarartists'])->name('activarartists');
-// Route::get('borraartists/{id_artis}',[AlbumController::class, 'borraartists'])->name('borraartists');
-// Route::get('modificaartists/{id_artis}',[AlbumController::class, 'modificaartists'])->name('modificaartists');
+Route::get('desactivaralbum/{id_album}',[AlbumController::class, 'desactivar'])->name('desactivar');
+Route::get('activaralbum/{id_album}',[AlbumController::class, 'activar'])->name('activar');
+Route::get('destroyalbum/{id_album}',[AlbumController::class, 'destroy'])->name('destroy');
+Route::get('edit/{id_album}',[AlbumController::class, 'edit'])->name('edit');
 // Route::post('guardacambioartists',[AlbumController::class, 'guardacambioartists'])->name('guardacambioartists');
 
 ?>
