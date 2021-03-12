@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\artists;
+use App\Models\Artists;
 use Session;
+
 class ArtistsController extends Controller
 {
     public function modificaartists($id_artis)
@@ -53,8 +54,9 @@ class ArtistsController extends Controller
     public function borraartists($id_artis)
 	{
 		
-		$artists = artists::find($id_artis)->forceDelete();
-				return view('artist.report');
+		Artists::find($id_artis)->forceDelete();
+        return redirect('/reporteartists');
+
 		}
 			
     public function activarartists($id_artis)
