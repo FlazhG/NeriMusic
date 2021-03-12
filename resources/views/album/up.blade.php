@@ -3,7 +3,7 @@
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
-		<form action="{{route('save')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/albums')}}" method="post" class="formulario" id="formulario">
 			@csrf
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__album">
@@ -14,16 +14,16 @@
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
 			</div>
-      
-		<!-- Grupo: Foto 
+
+		<!-- Grupo: Foto  -->
 			<div class="">
         <label for="" class="formulario__label">Subir portada:</label>
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
-      </div> -->
+      </div>
 
 			<!-- Grupo: Nombre -->
 			<div class="formulario__grupo" id="grupo__descripcion">
@@ -76,9 +76,6 @@
           </div>
   			</div>
 
-
-
-
 			  <div class="formulario__grupo">
 				<label for="empresafor" class="formulario__label">Artista:</label>
 		<div class="caja">
@@ -90,7 +87,6 @@
 					</select>
 		</div>
 			</div>
-
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>

@@ -9,7 +9,7 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de album</h1>
-  <a href="/albums">
+  <a href="{{url('albums/create')}}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
@@ -26,7 +26,7 @@
       <th>Acciones</th>
     </thead>
     <tbody>
-      @foreach ($album as $item)
+      @foreach ($albums as $item)
       <tr>
         <td>{{$item->id_album}}</td>
         <td>{{$item->nombre_album}}</td>
@@ -38,13 +38,17 @@
         <td>{{$item->id_genero}}</td>
         <td>{{$item->id_artis}}</td>
         <td>
-          <a href="{{url ('albums.edit'.$item->id_album)}}">
+          <a href="{{url ('/albums/'.$item->id_album.'/edit')}}">
             <center>
             <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
           </a>
-          <a href="{{url ('destroyalbum', ['id_album'=>$item->id_album])}}">
-            <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          </a>
+          <form action="{{ url('/albums/'.$item->id_album) }}" method="post" class="eliminar">
+            @csrf
+            {{ method_field('DELETE') }}
+            <a href="{{url ('destroyalbum', ['id_album'=>$item->id_album])}}">
+              <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </a>
+          </form>
           @if($item->deleted_at)
           <a href="{{url ('activaralbum', ['id_album'=>$item->id_album])}}">
             <button value="Dasactivar" title="Desactivar" id="activar" class="btn btn-success">Activar</button>
