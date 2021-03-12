@@ -124,7 +124,7 @@
 		</form>
 	</main>
 	@section('js')
-	<!--<script src="../js/albums-validate.js"></script>-->
+	<!-- <script src="../js/albums-validate.js"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

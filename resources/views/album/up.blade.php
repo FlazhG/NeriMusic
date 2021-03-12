@@ -9,10 +9,10 @@
 			<div class="formulario__grupo" id="grupo__album">
 				<label for="nombre_album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="album" placeholder="Nombre para el album">
+					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="nombre_album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
+				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 30 caracteres y solo puede contener numeros y letras.</p>
 			</div>
 
 		<!-- Grupo: Foto  -->
@@ -29,8 +29,10 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}" id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 				</div>
+				<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				<p class="formulario__input-error">Su mensaje es requerido.</p>
 			</div>
 
 			<!-- Grupo: Fecha de nacimiento -->
@@ -98,7 +100,7 @@
 		</form>
 	</main>
 	@section('js')
-	<!-- <script src="../js/albums-validate.js"></script> -->
+	<!-- <script src="{{asset('../js/albums-validate.js')}}"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop
