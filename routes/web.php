@@ -55,7 +55,7 @@ Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaar
 Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
 Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
 Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
-Route::post('guardacambioartists',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists');
+Route::put('guardacambioartists/{id_artis}',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists.guardacambioartists');
 
 // Rutas de albums
 Route::get('albums',[AlbumController::class, 'album'])->name('album');

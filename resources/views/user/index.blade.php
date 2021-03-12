@@ -42,19 +42,19 @@
             <form action="{{ url('/user/'.$user->id ) }}" method="post" class="eliminar">
               @csrf
               {{ method_field('DELETE') }}
-              <a href="{{route('destroy', ['id'=>$user->id])}}">
+              <a href="{{url('destroy', ['id'=>$user->id])}}">
               <button type="submit" id="eliminar" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
               </a>
             </form>
-            <!-- @if($user->deleted_at)
-              <a href="{{route('activar', ['id'=>$user->id])}}">
+             @if($user->deleted_at)
+              <a href="{{url('activar', ['id'=>$user->id])}}">
                 <button value="Desactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
               </a>
               @else
-              <a href="{{route('desactivar', ['id'=>$user->id])}}">
+              <a href="{{url('desactivar', ['id'=>$user->id])}}">
                 <button value="Desactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
               </a>
-              @endif -->
+              @endif
           </center>
 
         </td>

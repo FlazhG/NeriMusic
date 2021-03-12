@@ -3,8 +3,9 @@
 <main>
 	<center><h1 class="formulario__label">Registro Artista</h1></center>
 
-		<form action="{{route('modificarartists')}}" method="get" class="formulario" id="formulario">
-        @csrf
+		<form action="{{route ('guardacambioartists.guardacambioartists', $artists)}}" method="post" class="formulario" id="formulario">
+			@csrf  
+			@method('put');
 
             <!-- Grupo: foto -->
             <div class="">
@@ -19,9 +20,9 @@
 
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__usuario">
-				<label for="usuario" class="formulario__label">Nombre:(s)</label>
+				<label for="nombre_artis" class="formulario__label">Nombre:(s)</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" value="{{$consulta->nombre_artis}}" name="nombre_artis" id="usuario" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" value="{{$artists->nombre_artis}}" name="nombre_artis" id="nombre_artis" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -31,7 +32,7 @@
 			<div class="formulario__grupo" id="grupo__apellido">
 				<label for="apellido" class="formulario__label">Apellido:(s)</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" value="{{$consulta->apellido_artis}}" name="apellido_artis" id="apellido" placeholder="apellido(s) completo">
+					<input type="text" class="formulario__input" value="{{$artists->apellido_artis}}" name="apellido_artis" id="apellido_artis" placeholder="apellido(s) completo">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -41,55 +42,31 @@
             <div class="formulario__grupo" id="grupo__datepicker">
                 <label for="datepicker" class="formulario__label">Fecha de nacimiento:</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" id="datepicker"value="{{$consulta->fecha_artis}}" name="fecha_artis" id="nacimiento" placeholder="Fecha de nacimiento">
+                    <input type="date" class="formulario__input" id="fecha_artis"value="{{$artists->fecha_artis}}" name="fecha_artis" id="nacimiento" placeholder="Fecha de nacimiento">
                 </div>
                 <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros</p>
 
             </div>
 
-				<!-- Grupo: sexo -->
-				<div class="formulario__grupo">
-					<label for="usuario" class="formulario__label">Sexo:</label>
-					@if($consulta->sexo_artis=='Masculino')
-	          <label class="radio">
-							<input type="radio" name="sexo_artis" checked="">
-							Masculino
-							<span></span>
-						</label>
-	          <label class="radio">
-							<input type="radio" name="sexo_artis">
-							Femenino
-							<span></span>
-						</label>
-	          <label class="radio">
-							<input type="radio">
-							otro
-							<span></span>
-						</label>
-	        @else
-	          <label class="radio">
-							<input type="radio" name="sexo_artis">
-							Masculino
-							<span></span>
-						</label>
-	          <label class="radio">
-							<input type="radio" name="sexo_artis" checked="">
-							Femenino
-							<span></span>
-						</label>
-	          <label class="radio">
-							<input type="radio">
-							otro
-							<span></span>
-						</label>
-	        @endif
-				</div>
+			  <div class="formulario__grupo">
+            <label for="usuario" class="formulario__label">Sexo:</label>
+        <label class="radio">
+            <input type="radio" value="femenino" name="sexo_artis">
+            mujer
+            <span ></span>
+        </label>
+        <label class="radio">
+            <input type="radio" value="masculino" name="sexo_artis">
+            hombre
+            <span></span>
+        </label>
+        </div>
 
 			<!-- Grupo: Teléfono -->
 			<div class="formulario__grupo" id="grupo__telefono">
 				<label for="telefono" class="formulario__label">Teléfono:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" value="{{$consulta->telefono_artis}}" name="telefono_artis" id="telefono" placeholder="4491234567">
+					<input type="text" class="formulario__input" value="{{$artists->telefono_artis}}" name="telefono_artis" id="telefono_artis" placeholder="4491234567">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
@@ -99,7 +76,7 @@
 			<div class="formulario__grupo" id="grupo__disquera">
 				<label for="disquera" class="formulario__label">Disquera:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" value="{{$consulta->disquera_artis}}" name="disquera_artis" id="disquera" placeholder="Nombre de la disquera">
+					<input type="text" class="formulario__input" value="{{$artists->disquera_artis}}" name="disquera_artis" id="disquera_artis" placeholder="Nombre de la disquera">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre de la disquera tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -109,7 +86,7 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción del artista:</label>
                 <div class="formulario__grupo-input">
-                <textarea type="text" class="formulario__input" value="{{$consulta->descripcion_artis}}" name="descripcion_artis" id="descripcion" placeholder="Escribe tu descripción "></textarea>
+                <textarea type="text" class="formulario__input" value="{{$artists->descripcion_artis}}" name="descripcion_artis" id="descripcion_artis" placeholder="Escribe tu descripción "></textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">La descripción solo tiene que ser de 25 a 255 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -122,7 +99,7 @@
 			<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Correo electronico:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" value="{{$consulta->email_artis}}" name="email_artis" id="correo" placeholder="tiene que ser de 4 a 12 dígitos">
+					<input type="email" class="formulario__input" value="{{$artists->email_artis}}" name="email_artis" id="email_artis" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El correo tiene que ser de 4 a 12 dígitos.</p>
@@ -132,7 +109,7 @@
 			<div class="formulario__grupo" id="grupo__correo2">
 				<label for="correo2" class="formulario__label">Confirmar correo electronico:</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" value="{{$consulta->email_verified}}" name="email_verified" id="emial_verified" placeholder="tiene que ser de 4 a 12 dígitos">
+					<input type="email" class="formulario__input" value="{{$artists->email_artis}}" name="email_verified" id="emial_verified" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">Ambos correos deben ser iguales.</p>
@@ -143,7 +120,7 @@
 			<div class="formulario__grupo" id="grupo__password">
 				<label for="password" class="formulario__label">Contraseña:</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" value="{{$consulta->password_artis}}" name="password_artis" id="password" placeholder="tiene que ser de 4 a 12 dígitos">
+					<input type="password" class="formulario__input" value="{{$artists->password_artis}}" name="password_artis" id="password_artis" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
@@ -153,7 +130,7 @@
 			<div class="formulario__grupo" id="grupo__password2">
 				<label for="password2" class="formulario__label">Repetir Contraseña:</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" value="{{$consulta->password_artis}}" name="password_artis" id="password2" placeholder="tiene que ser de 4 a 12 dígitos">
+					<input type="password" class="formulario__input" value="{{$artists->password_artis}}" name="password_artis" id="password2" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
@@ -163,7 +140,7 @@
 			<!-- Grupo: Terminos y Condiciones -->
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
-					<input class="formulario__checkbox" type="checkbox" value="{{$consulta->terminos_artis}}" name="terminos_artis" id="terminos">
+					<input class="formulario__checkbox" type="checkbox" value="{{$artists->terminos_artis}}" name="terminos_artis" id="terminos_artis">
 					Acepto los terminos y condiciones
 				</label>
 			</div>
