@@ -1,9 +1,9 @@
 @extends('layouts.menu')
 @section('contenido')
 <main>
-	<h1 class="formulario__label">Reporte musics</h1>
+	<h1 class="formulario__label">Modificar musica</h1>
 
-		<form action="{{url('/musics/'.$music->$id_music)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/musics/'.$music->id_music)}}" method="post" class="formulario" id="formulario">
 		@csrf
     {{ method_field('PATCH') }}
         <!-- Grupo: foto -->
@@ -19,7 +19,7 @@
 			<div class="formulario__grupo" id="grupo__nommusica">
 				<label for="nommusica" class="formulario__label">Nombre de la musica:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="nombre_music" value="{{old('nombre_music')}}" id="nombre_music" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="nombre_music" value="{{$music->nombre_music}}" id="nombre_music" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -29,7 +29,7 @@
 			<div class="formulario__grupo" id="grupo__nombreart">
 				<label for="nombreart" class="formulario__label">Nombre del artistas:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="id_artis" value="{{old('id_artis')}}" id="nombreart" placeholder="Nombre(s) completo">
+					<input type="text" class="formulario__input" name=""  readonly="readonly" value="{{$music->id_artis}}" id="nombreart" placeholder="Nombre(s) completo" o>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -38,7 +38,7 @@
 			<div class="formulario__grupo" id="grupo__discografia">
 				<label for="discografia" class="formulario__label">Duración de la musica:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="duracion_music" value="{{old('duracion_music')}}" id="discografia" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="duracion_music" value="{{$music->duracion_music}}" id="discografia" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -59,7 +59,7 @@
             <div class="formulario__grupo" id="grupo__discografia">
 				<label for="discografia" class="formulario__label">Nombre de la discografia:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="discografica_music" value="{{old('discografica_music')}}" id="discografia" placeholder="Nombre para ingresar">
+					<input  type="text" class="formulario__input" name="discografica_music" value="{{$music->discografica_music}}" id="discografia" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -69,17 +69,17 @@
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Formato de musica:</label>
 				 <label class="radio">
-                    <input type="radio" value="mp3" name="gender">
+                    <input type="radio" value="mp3" name="formato_music">
                     mp3
                     <span ></span>
                  </label>
                  <label class="radio">
-                     <input type="radio" value="Mp4" name="gender">
+                     <input type="radio" value="Mp4" name="formato_music" checked="">
                      Mp4
                      <span></span>
                  </label>
                  <label class="radio">
-                    <input type="radio" value="M4a" name="gender">
+                    <input type="radio" value="M4a" name="formato_music">
                     M4a
                     <span></span>
                 </label>
@@ -88,7 +88,7 @@
                 <div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción:</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_music" value="{{old('descripcion_music')}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="" value="{{$music->descripcion_music}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 				</div>
 			</div>
 
@@ -96,7 +96,7 @@
         <div class="formulario__grupo" id="grupo__datepicker">
 				<label for="datepicker" class="formulario__label">Fecha de salida de la canción:</label>
 				<div class="formulario__grupo-input">
-					<input type="date" class="formulario__input" id="datepicker"name="fecha_music" value="{{old('fecha_music')}}" id="datepicker" placeholder="Seleccione la fecha">
+					<input type="date" class="formulario__input" id="datepicker" name="fecha_music" value="{{$music->fecha_music}}" id="datepicker" placeholder="Seleccione la fecha">
 				</div>
 				<p class="formulario__input-error">La fecha tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
@@ -105,7 +105,7 @@
 			<div class="formulario__grupo" id="grupo__nombrealbum">
 				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="id_album" value="{{old('id_album')}}" id="nombrealbum" placeholder="Inserte el nombre">
+					<input type="text" class="formulario__input" name="" readonly="readonly" value="{{$music->id_album}}" id="nombrealbum" placeholder="Inserte el nombre">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>

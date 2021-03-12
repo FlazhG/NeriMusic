@@ -51,9 +51,9 @@ class MusicController extends Controller
   {
     $generos = Genero::all();
     $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
-    ->select('musics.nombre_music','artists.nombre_artis')->get();
+    ->select('musics.formato_music')->get();
     $music = Music::findOrFail($id_music);
-    return view('album.edit', compact('music'))
+    return view('music.edit', compact('music'))
     ->with('genero',$generos)
     ->with('consulta',$consulta)
     ->with('music',$music);
