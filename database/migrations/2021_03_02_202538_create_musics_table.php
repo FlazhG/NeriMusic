@@ -16,17 +16,17 @@ class CreateMusicsTable extends Migration
         Schema::create('musics', function (Blueprint $table) {
             $table->bigIncrements('id_music',5);
             $table->string('nombre_music',30);
-            $table->unsignedBigInteger('id_artis');
+            $table->unsignedBigInteger('id_artis')->nullable();
             $table->foreign('id_artis')->references('id_artis')->on('artists');
             $table->binary('caratula_music')->nullable();
             $table->time('duracion_music');
-            $table->unsignedBigInteger('id_genero');
+            $table->unsignedBigInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id_genero')->on('generos');
             $table->string('formato_music',3);
             $table->string ('discografica_music',30);
             $table->longText('descripcion_music',50);
             $table->date('fecha_music');
-            $table->unsignedBigInteger('id_album');
+            $table->unsignedBigInteger('id_album')->nullable();
             $table->foreign('id_album')->references('id_album')->on('albums');
             $table->rememberToken();
             $table->timestamps();

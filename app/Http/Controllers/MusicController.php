@@ -22,10 +22,12 @@ class MusicController extends Controller
   public function create()
   {
     $generos = Genero::all();
+    $artists = Artists::all();
     $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
     ->select('musics.nombre_music','artists.nombre_artis')->get();
       return view('music.up')
       ->with('genero',$generos)
+      ->with('artists',$artists)
       ->with('consulta',$consulta);
   }
 
