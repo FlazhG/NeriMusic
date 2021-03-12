@@ -16,7 +16,7 @@ class CreateAlbumsTable extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->bigIncrements('id_album',5);
             $table->string('nombre_album',30);
-            //$table->binary('img_album');
+            $table->binary('img_album')->nullable();
             $table->longText('descripcion_album',50);
             $table->date('fecha_album');
             $table->time('duracion_album');
