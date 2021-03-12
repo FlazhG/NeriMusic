@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
-use App\Models\Genero;
 use App\Models\artists;
 use App\Models\Music;
-use Symfony\Component\HttpFoundation\Session\Session;
-
 use Illuminate\Support\Facades\Validator;
 
 class MusicController extends Controller
@@ -90,18 +87,24 @@ class MusicController extends Controller
 		Session::flash('mensaje',"El Artista ha sido desactivado correctamente");
 		return redirect()->route('reporteartists');
 	}
-    public function reporteartists()
+    public function reportmusic()
 	{
-		$consulta = artists::withTrashed()->get();
-		return view('reporteartists')->with('consulta', $consulta);
+		$music = Music::withTrashed()->select(
+			'musics.id_music',
+			'musics.nombre_music',
+			'musics.id_artis',
+			'musics.duracion_music',
+ 			'musics.id_genero',
+			'musics.formato_music',
+			'musics.discografica_music',
+			'musics.descripcion_music',
+			'musics.fecha_music',
+			'musics.id_album',
+			'musics.deleted_at',
+			'musics.id_artis')->get();
+		return view('music.report')->with('music', $music);
 	}
-    public function index()
-	{
-
-        $genero = Genero::all();
-          return view('music.up')->with('genero',$genero);
-
-	}
+   
 public function savemusic(Request $request)
 	{
 

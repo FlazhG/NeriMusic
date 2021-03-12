@@ -9,13 +9,12 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de music</h1>
-  <a href="{{ route('') }}">
+  <a href="{{ url('musics') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <th>Id</th>
-      <th>Foto</th>
       <th>Nombre</th>
       <th>Artista</th>
       <th>Dicografia</th>
@@ -30,15 +29,13 @@
       <tr>
         <td>{{$item->id_music}}</td>
         <td>{{$item->nombre_music}}</td>
-        <td>{{$item->artista}}</td>
-        <td>{{$item->caratula_music}}</td>
-        <td>{{$item->duracion_music}}</td>
-        <td>{{$item->genero}}</td>
-        <td>{{$item->formato_music}}</td>
+        <td>{{$item->id_artis}}</td>
         <td>{{$item->discografica_music}}</td>
+        <td>{{$item->formato_music}}</td>
         <td>{{$item->descripcion_music}}</td>
+        <td>{{$item->duracion_music}}</td>
         <td>{{$item->fecha_music}}</td>
-        <td>{{$item->album}}</td>
+        <td>{{$item->id_album}}</td>
         <td>
           <a href="{{route('edit', ['id'=>$item->id])}}">
             <center>
