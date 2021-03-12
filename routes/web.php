@@ -38,8 +38,7 @@ Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
 //Rutas de music
 Route::get('musics',[MusicController::class, 'index'])->name('index');
 Route::post('savemusic',[MusicController::class, 'savemusic'])->name('savemusic');
-
-//Route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
+Route::get('reportmusic',[MusicController::class, 'reportmusic'])->name('reportmusic');
 //Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
 //Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
 //Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
