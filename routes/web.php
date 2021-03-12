@@ -27,21 +27,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 //Rutas de user
 Route::resource('user', UserController::class);
 Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');
 Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
 Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
 
-
 //Rutas de music
 Route::resource('musics',MusicController::class);
 Route::get('desactivarmusic/{id_music}',[MusicController::class, 'desactivar'])->name('desactivar');
 Route::get('activarmusic/{id_music}',[MusicController::class, 'activar'])->name('activar');
 Route::get('destroymusic/{id_music}',[MusicController::class, 'destroy'])->name('destroy');
-
-
 
 //Rutas de artists
 Route::get('artists',[ArtistsController::class, 'artists'])->name('artists');

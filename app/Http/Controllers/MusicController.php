@@ -31,9 +31,9 @@ class MusicController extends Controller
 
   public function store(Request $request)
   {
-     $datosAlbum = request()->except('_token');
-     Album::insert($datosAlbum);
-     return redirect('albums');
+     $datosMusic = request()->except('_token');
+     Music::insert($datosMusic);
+     return redirect('musics');
 
   }
 
@@ -47,44 +47,42 @@ class MusicController extends Controller
     return view('welcome');
   }
 
-  public function edit($id_album)
+  public function edit($id_music)
   {
     $generos = Genero::all();
-    $artists = Artists::all();
     $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
     ->select('musics.nombre_music','artists.nombre_artis')->get();
-    $album = Album::findOrFail($id_album);
-    return view('album.edit', compact('album'))
+    $music = Music::findOrFail($id_music);
+    return view('album.edit', compact('music'))
     ->with('genero',$generos)
-    ->with('artists',$artists)
     ->with('consulta',$consulta)
-    ->with('album',$album);
+    ->with('music',$music);
   }
 
-  public function update(Request $request, $id_album)
+  public function update(Request $request, $id_music)
   {
-      $datosAlbum = request()->except(['_token', '_method']);
-      Album::where('id_album','=',$id_album)->update($datosAlbum);
-      $album = Album::findOrFail($id_album);
-      $datos['albums']=Album::paginate(100);
-      return view('album.report', compact('album'),$datos);
+      $datosMusic = request()->except(['_token', '_method']);
+      Music::where('id_music','=',$id_music)->update($datosMusic);
+      $music = Music::findOrFail($id_music);
+      $datos['musics']=Music::paginate(100);
+      return view('music.report', compact('music'),$datos);
   }
 
   public function destroy($id_music){
-    Album::find($id_music)->forceDelete();
+    Music::find($id_music)->forceDelete();
     return redirect('musics');
   }
 
-   public function desactivar($id_album)
+   public function desactivar($id_music)
    {
-     $album = Album::find($id_album);
-     $album->delete();
+     $music = Music::find($id_music);
+     $music->delete();
      return redirect('report');
    }
 
-   public function activar($id_album)
+   public function activar($id_music)
    {
-     $album = Album::withTrashed()->where('id_album',$id_album)->restore();
+     $music = Music::withTrashed()->where('id_album',$id_music)->restore();
      return redirect('report');
    }
 }
