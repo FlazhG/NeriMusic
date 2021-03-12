@@ -11,97 +11,80 @@ use Illuminate\Support\Facades\Validator;
 
 class MusicController extends Controller
 {
-    public function modificaartists($id_artis)
-	{
-		$consulta = artists::withTrashed()
-		->where('id_artis', $id_artis)
-		->get();
-		return view('modificaartists')
-		->with('consulta', $consulta[0]);
-	}
-    public function guardacambioartists(Request $request)
-	{
-		$artists =artists::withTrashed()->find($request->id_artis);
-		$artists->id_artis = $request->id_artis;
-		$artists->nombre_artis = $request->nombre_artis;
-    $artists->email_artis = $request->email_artis;
-    $artists->email_verified = $request->email_verified;
-    $artists->fecha_artis = $request->fecha_artis;
-    $artists->sexo_artis = $request->sexo_artis;
-    $artists->password_artis = $request->password_artis;
-    $artists->img_artis = $request->img_artis;
-    $artists->telefono_asrtis = $request->telefono_artis;
-    $artists->terminos_artis = $request->terminos_artis;
-    $artists->disquera_artis = $request->disquera_artis;
-		$artists->descripcion_artis = $request->descripcion_artis;
-		$artists->save();
-		return redirect('music.report');
-	}
-    public function borraartists($id_artis)
-	{
-		$buscaartists = artists::where('id_artis',$id_artis)->get();
-		$cuantos = count($buscaartists);
-		if ($cuantos==0)
-		{
-
-		$artists = artists::withTrashed()->find($id_artis)->forceDelete();
-		return redirect()->route('reporteartists');
-		}
-		else{
-		return redirect()->route('reporteservicio');
-		}
-	}
-    public function activarartists($id_artis)
-		{
-			$artists = artists::withTrashed()->where('id_artis',$id_artis)->restore();
-		    return redirect()->route('reporteartists');
-		}
-    public function desactivaartists($id_artis)
-	{
-		$artists = artists::find($id_artis);
-		$artists->delete();
-		return redirect()->route('reporteartists');
-	}
-    public function reportmusic()
-	{
-		$music = Music::withTrashed()->select(
-			'musics.id_music',
-			'musics.nombre_music',
-			'musics.id_artis',
-			'musics.duracion_music',
- 			'musics.id_genero',
-			'musics.formato_music',
-			'musics.discografica_music',
-			'musics.descripcion_music',
-			'musics.fecha_music',
-			'musics.id_album',
-			'musics.deleted_at',
-			'musics.id_artis')->get();
-		return view('music.report')->with('music', $music);
-	}
-
-  public function index()
+    public function index()
   {
-    $genero = Genero::all();
-    return view('music.up')->with('genero',$genero);
+    $datos['musics']=Music::paginate(100);
+    // $datos['albums']=Album::withTrashed()->select('albums.deleted_at')
+    // ->union()->paginate(100)->get();
+     return view('music.report',$datos);
   }
 
-  public function savemusic(Request $request)
-  	{
+  public function create()
+  {
+    $generos = Genero::all();
+    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
+    ->select('musics.nombre_music','artists.nombre_artis')->get();
+      return view('music.up')
+      ->with('genero',$generos)
+      ->with('consulta',$consulta);
+  }
 
-  		$music = new Music();
-  		$music -> id_music = $request->id_music;
-  		$music -> nombre_music = $request->nombre_artis;
-      $music -> caratula_music = $request->caratula_music;
-      $music -> duracion_music = $request->duracion_music;
-      $music -> id_genero = $request->id_genero;
-      $music -> formato_music = $request->formato_music;
-      $music -> discografica_music = $request->discografica_music;
-      $music -> descripcion_music = $request->descripcion_music;
-      $music -> id_album = $request->id_album;
-      $music -> formato_music = $request->formato_music;
-      $music -> fecha_music = $request->fecha_music;
-  		$music -> save();
-  		return redirect ('music.report');
-    }
+  public function store(Request $request)
+  {
+     $datosAlbum = request()->except('_token');
+     Album::insert($datosAlbum);
+     return redirect('albums');
+
+  }
+
+  public function show($id)
+  {
+      //
+  }
+
+  public function home()
+  {
+    return view('welcome');
+  }
+
+  public function edit($id_album)
+  {
+    $generos = Genero::all();
+    $artists = Artists::all();
+    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
+    ->select('musics.nombre_music','artists.nombre_artis')->get();
+    $album = Album::findOrFail($id_album);
+    return view('album.edit', compact('album'))
+    ->with('genero',$generos)
+    ->with('artists',$artists)
+    ->with('consulta',$consulta)
+    ->with('album',$album);
+  }
+
+  public function update(Request $request, $id_album)
+  {
+      $datosAlbum = request()->except(['_token', '_method']);
+      Album::where('id_album','=',$id_album)->update($datosAlbum);
+      $album = Album::findOrFail($id_album);
+      $datos['albums']=Album::paginate(100);
+      return view('album.report', compact('album'),$datos);
+  }
+
+  public function destroy($id_music){
+    Album::find($id_music)->forceDelete();
+    return redirect('musics');
+  }
+
+   public function desactivar($id_album)
+   {
+     $album = Album::find($id_album);
+     $album->delete();
+     return redirect('report');
+   }
+
+   public function activar($id_album)
+   {
+     $album = Album::withTrashed()->where('id_album',$id_album)->restore();
+     return redirect('report');
+   }
 }

@@ -3,17 +3,17 @@
 <main>
 	<h1 class="formulario__label">Reporte musics</h1>
 
-		<form action="{{route('savemusic')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/musics')}}" method="post" class="formulario" id="formulario">
 		@csrf
         <!-- Grupo: foto -->
-		<!--<div class="">
+		<div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
                   <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
-              </div>-->
+              </div>
 			<!-- Grupo: Nombre de la musica -->
 			<div class="formulario__grupo" id="grupo__nommusica">
 				<label for="nommusica" class="formulario__label">Nombre de la musica:</label>
