@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Login NeriMusic</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/login/main.css')}}">
 </head>
 <body>
@@ -15,7 +15,7 @@
                 @csrf
 
                 <div id="logo-container">
-                    <img src="img/logo.png" width="400" alt="">
+                    <img src="img/NeriMusicFuente.png" width="400" alt="">
                 </div>
 
                 <div id="title-container">
@@ -75,15 +75,12 @@
                 </div>
 
                 <div id="register-container">
-                    <span>No tienes cuenta? </span> <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                    
-                    
-                   
+                    <span>No tienes cuenta? </span> <a href="{{ route('register') }}">{{ __('Register') }}</span>
                 </div>
             </form>
         </div>
 
-        <div id="right-container" class="d-none d-md-block"></div>
+        <div id="right-container" class="widget widget_text"></div>
 
     </div>
 </body>
