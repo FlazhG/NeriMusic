@@ -3,34 +3,36 @@
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
-		<form action="{{route('save')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/albums')}}" method="post" class="formulario" id="formulario">
 			@csrf
 			<!-- Grupo: Usuario -->
 			<div class="formulario__grupo" id="grupo__album">
 				<label for="nombre_album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="album" placeholder="Nombre para el album">
+					<input  type="text" class="formulario__input" name="nombre_album" value="{{old('nombre_album')}}" id="nombre_album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
+				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 30 caracteres y solo puede contener numeros y letras.</p>
 			</div>
-      
-		<!-- Grupo: Foto 
+
+		<!-- Grupo: Foto  -->
 			<div class="">
         <label for="" class="formulario__label">Subir portada:</label>
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
-      </div> -->
+      </div>
 
 			<!-- Grupo: Nombre -->
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}" id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 				</div>
+				<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				<p class="formulario__input-error">Su mensaje es requerido.</p>
 			</div>
 
 			<!-- Grupo: Fecha de nacimiento -->
@@ -76,9 +78,6 @@
           </div>
   			</div>
 
-
-
-
 			  <div class="formulario__grupo">
 				<label for="empresafor" class="formulario__label">Artista:</label>
 		<div class="caja">
@@ -91,7 +90,6 @@
 		</div>
 			</div>
 
-
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>
 			</div>
@@ -102,7 +100,7 @@
 		</form>
 	</main>
 	@section('js')
-	<!-- <script src="../js/albums-validate.js"></script> -->
+	<!-- <script src="{{asset('../js/albums-validate.js')}}"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

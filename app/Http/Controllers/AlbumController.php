@@ -10,103 +10,81 @@ use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
 {
-  public function album()
+  public function index()
   {
+    $datos['albums'] = Album::all();
+    $consulta['albums'] = Album::withTrashed()->get();
+     return view('album.report')->with($datos)->with($consulta);
+  }
 
+  public function create()
+  {
     $generos = Genero::all();
     $artists = Artists::all();
     $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
     ->select('musics.nombre_music','artists.nombre_artis')->get();
-      return view('album.up')->with('genero',$generos)->with('artists',$artists)->with('consulta',$consulta);
+      return view('album.up')
+      ->with('genero',$generos)
+      ->with('artists',$artists)
+      ->with('consulta',$consulta);
   }
+
+  public function store(Request $request)
+  {
+     $datosAlbum = request()->except('_token');
+     Album::insert($datosAlbum);
+     return redirect('albums');
+
+  }
+
+  public function show($id)
+  {
+      //
+  }
+
   public function home()
   {
-      return view('welcome');
+    return view('welcome');
   }
-  public function report()
-  {
-    $album = Album::withTrashed()->select(
-      'albums.id_album',
-      'albums.nombre_album',
-      // 'albums.img_album',
-      'albums.descripcion_album',
-      'albums.fecha_album',
-      'albums.duracion_album',
-      //'albums.cantipistas_album',
-      'albums.id_genero',
-      'albums.deleted_at',
-      'albums.id_artis')->get();
-    return view('album.report')->with('album',$album);
-  }
-  public function save(Request $request)
-  {
-    $this->validate($request,[
-      'nombre_album' => 'required',
-      'descripcion_album' => 'required',
-      'fecha_album' => 'required',
-      'duracion_album' => 'required',
-      'id_genero' => 'required',
-    ]);
-   $nombre_album = $request->input("nombre_album");
-   $descripcion_album = $request->input("descripcion_album");
-   $fecha_album = $request->input("fecha_album");
-   $duracion_album = $request->input("duracion_album");
-   $id_genero = $request->input("id_genero");
-   $id_artis = $request->input("id_artis");
-   $album = new Album;
-   $album->nombre_album = $nombre_album;
-   $album->descripcion_album = $descripcion_album;
-   $album->fecha_album = $fecha_album;
-   $album->duracion_album = $duracion_album;
-   $album->id_genero = $id_genero;
-   $album->id_artis = $id_artis;
-   $album->save();
-   return redirect()->route("report");
 
+  public function edit($id_album)
+  {
+    $generos = Genero::all();
+    $artists = Artists::all();
+    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
+    ->select('musics.nombre_music','artists.nombre_artis')->get();
+    $album = Album::findOrFail($id_album);
+    return view('album.edit', compact('album'))
+    ->with('genero',$generos)
+    ->with('artists',$artists)
+    ->with('consulta',$consulta)
+    ->with('album',$album);
   }
-  public function edit($id_album){
-    $album = Album::select(
-      'albums.nombre_album',
-      'albums.descripcion_album',
-      'albums.fecha_album',
-      'albums.duracion_album',
-      'albums.id_genero')->where('id_album',$id_album)->get();
-      return view('album.edit')->with('album', $album[0]);
 
-   }
-   public function update(Request $request){
-     $this->validate($request,[
-       'nombre_album' => 'required',
-       'descripcion_album' => 'required',
-       'fecha_album' => 'required',
-       'duracion_album' => 'required',
-       'cantipistas_album' => 'required',
-       'id_genero' => 'required',
-     ]);
-     $album = Album::find($request->id_album);
-     $album -> nombre_album = $request->nombre_album;
-     $album -> img_album = $request->img_album;
-     $album -> descripcion_album = $request->descripcion_album;
-     $album -> fecha_album = $request->fecha_album;
-     $album -> duracion_album = $request->duracion_album;
-     $album -> cantipistas_album = $request->cantipistas_album;
-     $album -> id_genero = $request->id_genero;
-     $album -> save();
-     return redirect('album.edit');
-   }
+  public function update(Request $request, $id_album)
+  {
+      $datosAlbum = request()->except(['_token', '_method']);
+      Album::where('id_album','=',$id_album)->update($datosAlbum);
+      $album = Album::findOrFail($id_album);
+      $datos['albums']=Album::paginate(100);
+      return view('album.report', compact('album'),$datos);
+  }
+
+  public function destroy($id_album){
+    Album::find($id_album)->forceDelete();
+    return redirect('albums');
+  }
+
    public function desactivar($id_album)
    {
      $album = Album::find($id_album);
      $album->delete();
-     return redirect('report');
+     return redirect('albums');
    }
+
    public function activar($id_album)
    {
      $album = Album::withTrashed()->where('id_album',$id_album)->restore();
-     return redirect('report');
-   }
-   public function destroy($id_album){
-     $album = Album::find($id_album)->forceDelete();
-     return redirect('report');
+     return redirect('albums');
    }
 }

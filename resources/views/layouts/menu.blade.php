@@ -218,13 +218,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('musics')}}" class="nav-link">
+                <a href="{{url('musics/create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('reportmusic')}}" class="nav-link">
+                <a href="{{url('musics')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reporte</p>
                 </a>
@@ -241,13 +241,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('albums')}}" class="nav-link">
+                <a href="{{url('albums/create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('report')}}" class="nav-link">
+                <a href="{{url('albums')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reporte</p>
                 </a>

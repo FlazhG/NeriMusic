@@ -3,17 +3,17 @@
 <main>
 	<h1 class="formulario__label">Reporte musics</h1>
 
-		<form action="{{route('savemusic')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/musics')}}" method="post" class="formulario" id="formulario">
 		@csrf
         <!-- Grupo: foto -->
-		<!--<div class="">
+		<div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
                   <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
-              </div>-->
+              </div>
 			<!-- Grupo: Nombre de la musica -->
 			<div class="formulario__grupo" id="grupo__nommusica">
 				<label for="nommusica" class="formulario__label">Nombre de la musica:</label>
@@ -25,14 +25,17 @@
 			</div>
 
 			<!-- Grupo: Nombre -->
-			<div class="formulario__grupo" id="grupo__nombreart">
-				<label for="nombreart" class="formulario__label">Nombre del artistas:</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="id_artis" value="{{old('id_artis')}}" id="nombreart" placeholder="Nombre(s) completo">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-				</div>
-				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-			</div>
+			<div class="formulario__grupo">
+			<label for="empresafor" class="formulario__label">Artista:</label>
+	<div class="caja">
+				<select>
+					<option>Seleccione un Artista</option>
+						@foreach($artists as $artist)
+					<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
+						@endforeach
+				</select>
+	</div>
+		</div>
 
 			<div class="formulario__grupo" id="grupo__discografia">
 				<label for="discografia" class="formulario__label">Duración de la musica:</label>
@@ -68,17 +71,17 @@
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Formato de musica:</label>
 				 <label class="radio">
-                    <input type="radio" value="mp3" name="gender">
+                    <input type="radio" value="mp3" name="formato_music">
                     mp3
                     <span ></span>
                  </label>
                  <label class="radio">
-                     <input type="radio" value="Mp4" name="gender">
+                     <input type="radio" value="Mp4" name="formato_music">
                      Mp4
                      <span></span>
                  </label>
                  <label class="radio">
-                    <input type="radio" value="M4a" name="gender">
+                    <input type="radio" value="M4a" name="formato_music">
                     M4a
                     <span></span>
                 </label>
@@ -104,7 +107,7 @@
 			<div class="formulario__grupo" id="grupo__nombrealbum">
 				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="id_album" value="{{old('id_album')}}" id="nombrealbum" placeholder="Inserte el nombre">
+					<input type="text" class="formulario__input" name="id_album" value="" id="nombrealbum" placeholder="Inserte el nombre">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -121,7 +124,7 @@
 		</form>
 	</main>
 	@section('js')
-	<!--<script src="../js/albums-validate.js"></script>-->
+	<!-- <script src="../js/albums-validate.js"></script> -->
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

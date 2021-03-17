@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery/jquery-ui.min.css">
 <link rel="stylesheet" href="css/register.css">
 <link rel="stylesheet" href="css/botones.css">
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                      
+
                         <!-- Grupo: Usuario -->
                         <div class="formulario__grupo" id="grupo__name">
                             <label for="name" class="formulario__label">Nombre:(s)</label>
@@ -84,7 +84,7 @@
 				</div>
 				<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
 			</div>
-			
+
             <!-- Grupo: Correo -->
 			<div class="formulario__grupo" id="grupo__email">
 				<label for="email" class="formulario__label">Correo electronico:</label>
@@ -121,7 +121,7 @@
 			<div class="formulario__grupo" id="grupo__terms_usu">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="terms_usu" id="terms_usu">
-					Acepto los terminos y condiciones
+					Acepto los<a href="{{url('terminosycondiciones')}}">Terminos y condiciones.</a>
 				</label>
 			</div>
 
