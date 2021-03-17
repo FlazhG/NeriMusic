@@ -2,32 +2,32 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	album: /^[a-zA-Z0-9ZÀ-ÿ\s]{4,30}$/, // Letras, numeros, guion y guion_bajo
-	descripcion: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
-	datepicker: /^\/d{10}$/,
-	duracion: /^\d{7,14}$/ // 7 a 14 numeros.
+	nombre_album: /^[a-zA-Z0-9ZÀ-ÿ\s]{4,30}$/, // Letras, numeros, guion y guion_bajo
+	descripcion_album: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
+	fecha_album: /^\/d{10}$/,
+	genero: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 
 const campos = {
-	album: false,
-	descripcion: false,
-	datepicker:false,
-	duracion: false
+	nombre_album: false,
+	descripcion_album: false,
+	fecha_album:false,
+	genero: false
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "album":
-			validarCampo(expresiones.album, e.target, 'album');
+		case "nombre_album":
+			validarCampo(expresiones.nombre_album, e.target, 'album');
 		break;
-		case "descripcion":
-			validarCampo(expresiones.descripcion, e.target, 'descripcion');
+		case "descripcion_album":
+			validarCampo(expresiones.descripcion_album, e.target, 'descripcion');
 		break;
-		case "datepicker":
-			validarCampo(expresiones.datepicker, e.target, 'datepicker');
+		case "fecha_album":
+			validarCampo(expresiones.fecha_album, e.target, 'datepicker');
 		break;
 		case "duracion":
-			validarCampo(expresiones.duracion, e.target, 'duracion');
+			validarCampo(expresiones.genero, e.target, 'duracion');
 		break;
 	}
 }
@@ -59,7 +59,7 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
-	if(campos.album && campos.descripcion && campos.datepicker && campos.duracion){
+	if(campos.nombre_album && campos.descripcion_album && campos.fecha_album && campos.genero){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
