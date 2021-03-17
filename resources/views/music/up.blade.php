@@ -107,7 +107,7 @@
 			<div class="formulario__grupo" id="grupo__nombrealbum">
 				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="id_album" value="" id="nombrealbum" placeholder="Inserte el nombre">
+					<input type="text" class="formulario__input" name="" value="" id="nombrealbum" placeholder="Inserte el nombre">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
