@@ -121,7 +121,7 @@
 			<div class="formulario__grupo" id="grupo__terms_usu">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="terms_usu" id="terms_usu">
-					Acepto los<a href="{{url('terminosycondiciones')}}">Terminos y condiciones.</a>
+					Acepto los <a target="_blank" href="{{url('terminosycondiciones')}}">Terminos y Condiciones.</a>
 				</label>
 			</div>
 

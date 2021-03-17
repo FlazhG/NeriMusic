@@ -45,7 +45,7 @@ a{
 #right-container{
    
     background-color: var(--bg-color-page);
-    background-image: url(img/prueba2.png);
+    background-image: url(img/Login.png);
     background-repeat: no-repeat; /*imagen no se repita */
     background-position: center center;
    
@@ -169,7 +169,7 @@ form{
     background-color: var(--bg-color-btn-hover);
 }
 
-#register-container{
+#right-container{
     color:#000;
     padding: var(--size-m) 0;
     text-align: center;
