@@ -74,14 +74,17 @@
                     </div>
                 </div>
 
+                <center>
                 <div id="register-container">
-                    <span>No tienes cuenta? </span> <a href="{{ route('register') }}">{{ __('Register') }}</span>
+                    <span>No tienes cuenta? </span> <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 </div>
+            </center>
+
             </form>
         </div>
-
+        
         <div id="right-container" class="widget widget_text"></div>
-
+    
     </div>
 </body>
 </html>
