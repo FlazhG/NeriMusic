@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/terminosycondiciones', function () {
+    return view('terminosycondiciones');
+});
+
 //Rutas de user
 Route::resource('user', UserController::class);
 Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');

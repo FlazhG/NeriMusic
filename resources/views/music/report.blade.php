@@ -33,13 +33,17 @@
         <td>{{$item->discografica_music}}</td>
         <td>{{$item->formato_music}}</td>
         <td>{{$item->descripcion_music}}</td>
-        <td>{{$item->duracion_music}}</td>  
+        <td>{{$item->duracion_music}}</td>
         <td>{{$item->fecha_music}}</td>
         <td>{{$item->id_album}}</td>
         <td>
         <a href="{{url ('/musics/'.$item->id_music.'/edit')}}">
             <center>
-            <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+            <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+          </a>
+          @if($item->deleted_at)
+          <a href="{{url('activarmusic', ['id_music'=>$item->id_music])}}">
+            <button id="activar" class="btn btn-success">Activar</button>
           </a>
           <form action="{{ url('/musics/'.$item->id_music) }}" method="post" class="eliminar">
             @csrf
@@ -48,13 +52,9 @@
               <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </a>
           </form>
-          @if($item->deleted_at)
-          <a href="{{url('activarmusic', ['id_music'=>$item->id_music])}}">
-            <button value="Dasactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
-          </a>
           @else
           <a href="{{url('desactivarmusic', ['id_music'=>$item->id_music])}}">
-            <button value="Dasactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
+            <button id="desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif
         </center>

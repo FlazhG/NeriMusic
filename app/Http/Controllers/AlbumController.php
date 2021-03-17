@@ -12,10 +12,9 @@ class AlbumController extends Controller
 {
   public function index()
   {
-    $datos['albums']=Album::paginate(100);
-    // $datos['albums']=Album::withTrashed()->select('albums.deleted_at')
-    // ->union()->paginate(100)->get();
-     return view('album.report',$datos);
+    $datos['albums'] = Album::all();
+    $consulta['albums'] = Album::withTrashed()->get();
+     return view('album.report')->with($datos)->with($consulta);
   }
 
   public function create()
@@ -80,12 +79,12 @@ class AlbumController extends Controller
    {
      $album = Album::find($id_album);
      $album->delete();
-     return redirect('report');
+     return redirect('albums');
    }
 
    public function activar($id_album)
    {
      $album = Album::withTrashed()->where('id_album',$id_album)->restore();
-     return redirect('report');
+     return redirect('albums');
    }
 }
