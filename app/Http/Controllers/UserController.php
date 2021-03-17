@@ -10,8 +10,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $datos['users']=User::paginate(30);
-       return view('user.index',$datos );
+        $datos['users']=User::all();
+        $consulta['users'] = User::withTrashed()->get();
+       return view('user.index')->with($datos)->with($consulta);
 
     }
 
