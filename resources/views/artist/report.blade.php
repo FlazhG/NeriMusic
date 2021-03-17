@@ -1,4 +1,3 @@
-
 @extends('layouts.menu')
 @section('header')
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,7 +9,7 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de Usuarios</h1>
-  <a href="{{ url('user/create') }}">
+  <a href="{{ url('/artists') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">

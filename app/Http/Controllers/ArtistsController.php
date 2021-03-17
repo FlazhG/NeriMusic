@@ -10,38 +10,33 @@ class ArtistsController extends Controller
 {
     public function modificaartists($id_artis)
 	{
-		$consulta = artists::withTrashed()->where('id_artis', $id_artis)->get();
-		return view('artist.edit')->with('consulta', $consulta[0]);
+		$artists = Artists::withTrashed()->where('id_artis', $id_artis)->get();
+		return view('artist.edit')->with('artists', $artists[0]);
+
+
+
+
+
 	}
-    public function guardacambioartists(Request $request)
+    public function guardacambioartists(Request $request, Artists $artists)
 	{
-		$this->validate($request,[
-			'nombre_artis' => 'required',
-			'fecha_artis' => 'required',
-			'sexo_artis' => 'required',
-			'telefono_artis' => 'required',
-			'disquera_artis' => 'required',
-			'descripcion_artis' => 'required',
-		]);
-		$artists = new artists();
-		$artists->id_artis = $request->id_artis;
 		$artists->nombre_artis = $request->nombre_artis;
-    $artists->email_artis = $request->email_artis;
-    $artists->email_verified = $request->email_verified;
-    $artists->fecha_artis = $request->fecha_artis;
-    $artists->sexo_artis = $request->sexo_artis;
-      if ($request -> sexo_artis == 1) {
-        $artists -> sexo_artis = 'Masculino';
-      }else {
-        $artists -> sexo_artis = 'Femenino';
-      }
-    $artists->password_artis = $request->password_artis;
-    //$artists->img_artis = $request->img_artis;
-    $artists->telefono_artis = $request->telefono_artis;
-    $artists->disquera_artis = $request->disquera_artis;
+		$artists->apellido_artis = $request->apellido_artis;
+		$artists->email_artis = $request->email_artis;
+		$artists->email_verified = $request->email_verified;
+		$artists->fecha_artis = $request->fecha_artis;
+		$artists->sexo_artis = $request->sexo_artis;
+		$artists->password_artis = $request->password_artis;
+		$artists->telefono_artis = $request->telefono_artis;
+		$artists->terminos_artis = $request->terminos_artis;
+		$artists->disquera_artis = $request->disquera_artis;
 		$artists->descripcion_artis = $request->descripcion_artis;
-		$artists->save();
-		return redirect('artists.report');
+
+		$artists -> save();
+		return redirect('/report');
+
+
+
 	}
     public function borraartists($id_artis)
 	{
@@ -102,6 +97,6 @@ public function guardarartists(Request $request)
         $artists -> disquera_artis = $request->disquera_artis;
 		$artists -> descripcion_artis = $request->descripcion_artis;
 		$artists -> save();
-		return redirect('artists.report');
+		return redirect('/report');
 }
 }
