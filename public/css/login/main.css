@@ -50,6 +50,13 @@ a{
     background-position: center center;
    
 }
+@media (max-width:768px){
+    #right-container{
+        display: none;
+    
+    }
+}
+
 
 form{
     width: 400px;
