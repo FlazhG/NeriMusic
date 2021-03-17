@@ -13,10 +13,9 @@ class MusicController extends Controller
 {
     public function index()
   {
-    $datos['musics']=Music::paginate(100);
-    // $datos['albums']=Album::withTrashed()->select('albums.deleted_at')
-    // ->union()->paginate(100)->get();
-     return view('music.report',$datos);
+    $datos['musics']=Music::all();
+    $consulta['musics'] = Music::withTrashed()->get();
+     return view('music.report')->with($datos)->with($consulta);
   }
 
   public function create()

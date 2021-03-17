@@ -14,9 +14,9 @@
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
+      <!-- <th>portada</th> -->
       <th>Id</th>
       <th>Nombre</th>
-      <!-- <th>portada</th> -->
       <th>Descripción</th>
       <th>Fecha de creación</th>
       <th>Duración</th>
@@ -28,9 +28,9 @@
     <tbody>
       @foreach ($albums as $item)
       <tr>
+        <!-- <td>{{$item->img_album}}</td> -->
         <td>{{$item->id_album}}</td>
         <td>{{$item->nombre_album}}</td>
-        <!-- <td>{{$item->img_album}}</td> -->
         <td>{{$item->descripcion_album}}</td>
         <td>{{$item->fecha_album}}</td>
         <td>{{$item->duracion_album}}</td>
@@ -40,7 +40,11 @@
         <td>
           <a href="{{url ('/albums/'.$item->id_album.'/edit')}}">
             <center>
-            <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+            <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+          </a>
+          @if($item->deleted_at)
+          <a href="{{url ('activaralbum', ['id_album'=>$item->id_album])}}">
+            <button id="activar" class="btn btn-success">Activar</button>
           </a>
           <form action="{{ url('/albums/'.$item->id_album) }}" method="post" class="eliminar">
             @csrf
@@ -49,13 +53,9 @@
               <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </a>
           </form>
-          @if($item->deleted_at)
-          <a href="{{url ('activaralbum', ['id_album'=>$item->id_album])}}">
-            <button value="Dasactivar" title="Desactivar" id="activar" class="btn btn-success">Activar</button>
-          </a>
           @else
           <a href="{{url ('desactivaralbum', ['id_album'=>$item->id_album])}}">
-            <button value="Dasactivar" title="Desactivar" id="desactivar" class="btn btn-warning">Desactivar</button>
+            <button id="desactivar" class="btn btn-warning">Desactivar</button>
           </a>
           @endif
         </center>
@@ -68,7 +68,6 @@
 @section('js')
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 @endsection
