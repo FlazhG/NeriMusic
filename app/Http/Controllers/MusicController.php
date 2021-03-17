@@ -78,12 +78,12 @@ class MusicController extends Controller
    {
      $music = Music::find($id_music);
      $music->delete();
-     return redirect('report');
+     return redirect('musics');
    }
 
    public function activar($id_music)
    {
      $music = Music::withTrashed()->where('id_album',$id_music)->restore();
-     return redirect('report');
+     return redirect('musics');
    }
 }
