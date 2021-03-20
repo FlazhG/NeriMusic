@@ -1,11 +1,11 @@
 @extends('layouts.menu')
 @section('contenido')
 <main>
-	<center><h1 class="formulario__label">Registro Artista</h1></center>
+	<center><h1 class="formulario__label">Alta Artista</h1></center>
 
-		<form action="{{route('guardarartists')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/artists')}}" method="post" class="formulario" id="formulario">
         @csrf
-
+		
             <!-- Grupo: foto -->
             <div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
@@ -18,8 +18,8 @@
 
 
 			<!-- Grupo: Usuario -->
-			<div class="formulario__grupo" id="grupo__usuario">
-				<label for="usuario" class="formulario__label">Nombre:(s)</label>
+			<div class="formulario__grupo" id="grupo__artist">
+				<label for="artist" class="formulario__label">Nombre:(s)</label>
 				<div class="formulario__grupo-input">
 					<input  type="text" class="formulario__input" name="nombre_artis" id="usuario" placeholder="Nombre para ingresar">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>

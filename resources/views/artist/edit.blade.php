@@ -1,11 +1,11 @@
 @extends('layouts.menu')
 @section('contenido')
 <main>
-	<center><h1 class="formulario__label">Registro Artista</h1></center>
+	<center><h1 class="formulario__label">Alta Artista</h1></center>
 
-		<form action="{{route ('guardacambioartists.guardacambioartists', $artists)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url ('/artists./'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
 			@csrf  
-			@method('put');
+			{{ @method_field('PATCH') }}
 
             <!-- Grupo: foto -->
             <div class="">

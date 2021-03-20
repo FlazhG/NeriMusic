@@ -50,7 +50,7 @@
             @csrf
             {{ method_field('DELETE') }}
             <a href="{{url ('destroyalbum', ['id_album'=>$item->id_album])}}">
-              <button value="Eliminar" title="Eliminar" id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              <button id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </a>
           </form>
           @else
