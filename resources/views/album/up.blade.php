@@ -59,9 +59,7 @@
 		<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Pistas agregadas:</label>
 				<div class="formulario__grupo-input">
-					@foreach($consulta as $musica)
-					<label class="radio">{{$musica->nombre_music}}</label>
-					@endforeach
+					<label class="radio"></label>
 				</div>
 			</div>
 				 -->
@@ -69,7 +67,7 @@
 				<div class="formulario__grupo">
   				<label for="empresafor" class="formulario__label">Genero:</label>
           <div class="caja">
-  					<select>
+  					<select name="id_genero">
   						<option>Seleccione un genero</option>
 							@foreach($genero as $item)
   						<option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
@@ -79,16 +77,16 @@
   			</div>
 
 			  <div class="formulario__grupo">
-				<label for="empresafor" class="formulario__label">Artista:</label>
-		<div class="caja">
-					<select>
-						<option>Seleccione un Artista</option>
-						  @foreach($artists as $artist)
-						<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
-						  @endforeach
-					</select>
-		</div>
-			</div>
+					<label for="empresafor" class="formulario__label">Artista:</label>
+					<div class="caja">
+								<select name="id_artis">
+									<option>Seleccione un Artista</option>
+									  @foreach($artists as $artist)
+										<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
+									  @endforeach
+								</select>
+					</div>
+				</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellene el formulario correctamente. </p>

@@ -19,11 +19,11 @@ class CreateAlbumsTable extends Migration
             $table->binary('img_album')->nullable();
             $table->longText('descripcion_album',50);
             $table->date('fecha_album');
-            $table->time('duracion_album');
+            $table->float('duracion_album');
             //$table->string('cantipistas_album',4);
-            $table->unsignedBigInteger('id_genero')->nullable();
+            $table->unsignedBigInteger('id_genero')->onDelete('cascade');
             $table->foreign('id_genero')->references('id_genero')->on('generos');
-            $table->unsignedBigInteger('id_artis')->nullable();
+            $table->unsignedBigInteger('id_artis')->onDelete('cascade');
             $table->foreign('id_artis')->references('id_artis')->on('artists');
             $table->rememberToken();
             $table->timestamps();

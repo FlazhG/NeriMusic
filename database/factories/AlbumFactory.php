@@ -28,7 +28,7 @@ class AlbumFactory extends Factory
             'descripcion_album' => $this->faker->lastName(),
             'fecha_album' => $this->faker->date(),
             'img_album' => null,
-            'duracion_album'  => '03:00',
+            'duracion_album'  => '03.00',
             'id_artis' => $this->faker->randomElement(['1', '2','3','4','5','6','7','8']),
             'id_genero' => $this->faker->randomElement(['1', '2','6','4','8','6','10','8']),
             'remember_token' => Str::random(10),

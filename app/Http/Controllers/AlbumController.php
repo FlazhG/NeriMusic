@@ -13,20 +13,30 @@ class AlbumController extends Controller
   public function index()
   {
     $datos['albums'] = Album::all();
-    $consulta['albums'] = Album::withTrashed()->get();
-     return view('album.report')->with($datos)->with($consulta);
+    $consulta['albums'] = Album::withTrashed()
+    ->join('artists', 'albums.id_artis','=','artists.id_artis')
+    ->join('generos', 'albums.id_genero','=','generos.id_genero')
+    ->select(
+      'albums.id_album',
+      'albums.nombre_album',
+      'albums.descripcion_album',
+      'albums.fecha_album',
+      'albums.duracion_album',
+      'artists.nombre_artis',
+      'generos.nombre_genero',
+      'albums.deleted_at')->get();
+     return view('album.report')
+     ->with($datos)
+     ->with($consulta);
   }
 
   public function create()
   {
     $generos = Genero::all();
     $artists = Artists::all();
-    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
-    ->select('musics.nombre_music','artists.nombre_artis')->get();
       return view('album.up')
       ->with('genero',$generos)
-      ->with('artists',$artists)
-      ->with('consulta',$consulta);
+      ->with('artists',$artists);
   }
 
   public function store(Request $request)
@@ -51,13 +61,14 @@ class AlbumController extends Controller
   {
     $generos = Genero::all();
     $artists = Artists::all();
-    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
-    ->select('musics.nombre_music','artists.nombre_artis')->get();
+    $consulta = Album::join('generos', 'albums.id_genero','=','generos.id_genero')->get();
+    $consultar = Album::join('artists', 'albums.id_artis','=','artists.id_artis')->get();
     $album = Album::findOrFail($id_album);
     return view('album.edit', compact('album'))
     ->with('genero',$generos)
     ->with('artists',$artists)
-    ->with('consulta',$consulta)
+    ->with('consulta',$consulta[0])
+    ->with('consultar',$consultar[0])
     ->with('album',$album);
   }
 
@@ -66,8 +77,20 @@ class AlbumController extends Controller
       $datosAlbum = request()->except(['_token', '_method']);
       Album::where('id_album','=',$id_album)->update($datosAlbum);
       $album = Album::findOrFail($id_album);
-      $datos['albums']=Album::paginate(100);
-      return view('album.report', compact('album'),$datos);
+      $datos['albums']=Album::all();
+      $consulta['albums'] = Album::withTrashed()
+      ->join('artists', 'albums.id_artis','=','artists.id_artis')
+      ->join('generos', 'albums.id_genero','=','generos.id_genero')
+      ->select(
+        'albums.id_album',
+        'albums.nombre_album',
+        'albums.descripcion_album',
+        'albums.fecha_album',
+        'albums.duracion_album',
+        'artists.nombre_artis',
+        'generos.nombre_genero',
+        'albums.deleted_at')->get();
+      return view('album.report', compact('album'))->with($datos)->with($consulta);
   }
 
   public function destroy($id_album){

@@ -14,7 +14,7 @@ class Album extends Model
     protected $fillable = [
       'id_album',
       'nombre_album',
-      //'img_album',
+      'img_album',
       'descripcion_album',
       'fecha_album',
       'duracion_album',
@@ -22,4 +22,11 @@ class Album extends Model
       'id_genero',
       'id_artis'
     ];
+    public function genero(){
+        return $this->belongsTo('App\Genero', 'id_genero');
+    }
+
+    public function artists(){
+        return $this->belongsTo('App\artists', 'id_artis');
+    }
 }

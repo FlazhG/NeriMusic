@@ -47,7 +47,7 @@ class GeneroSeeder extends Seeder
         $genero8->save();
 
         $genero9 = new Genero;
-        $genero9 -> nombre_genero = "Pop";
+        $genero9 -> nombre_genero = "Reggae";
         $genero9->save();
 
         $genero10 = new Genero;
@@ -55,7 +55,7 @@ class GeneroSeeder extends Seeder
         $genero10->save();
 
         $genero11 = new Genero;
-        $genero11 -> nombre_genero = "Raegueton";
+        $genero11 -> nombre_genero = "Reggaeton";
         $genero11->save();
 
         $genero12 = new Genero;
