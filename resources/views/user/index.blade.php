@@ -34,11 +34,6 @@
         <td>{{ $user->phone_usu }}</td>
         <td>{{ $user->email }}</td>
         <td>
-          
-        <a href="{{ url('/user/'.$user->id.'/edit') }}">
-          <center>
-          <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-            </a>
             @if($user->deleted_at)
               <a href="{{url('activar', ['id'=>$user->id])}}">
                 <button id="activar" class="btn btn-success">Activar</button>
@@ -51,6 +46,10 @@
                 </a>
               </form>
               @else
+              <a href="{{ url('/user/'.$user->id.'/edit') }}">
+                <center>
+                <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                  </a>
               <a href="{{url('desactivar', ['id'=>$user->id])}}">
                 <button id="desactivar" class="btn btn-warning">Desactivar</button>
               </a>
