@@ -61,22 +61,24 @@ class AlbumController extends Controller
   {
     $generos = Genero::all();
     $artists = Artists::all();
-    $consulta = Album::join('generos', 'albums.id_genero','=','generos.id_genero')->get();
-    $consultar = Album::join('artists', 'albums.id_artis','=','artists.id_artis')->get();
+    $consultar = Album::join('artists', 'albums.id_artis','=','artists.id_artis')
+    ->where('id_album',$id_album)->get();
+    $consulta = Album::join('generos', 'albums.id_genero','=','generos.id_genero')
+    ->where('id_album',$id_album)->get();
     $album = Album::findOrFail($id_album);
     return view('album.edit', compact('album'))
     ->with('genero',$generos)
     ->with('artists',$artists)
-    ->with('consulta',$consulta[0])
     ->with('consultar',$consultar[0])
+    ->with('consulta',$consulta[0])
     ->with('album',$album);
   }
 
   public function update(Request $request, $id_album)
   {
+    $album = Album::findOrFail($id_album);
       $datosAlbum = request()->except(['_token', '_method']);
       Album::where('id_album','=',$id_album)->update($datosAlbum);
-      $album = Album::findOrFail($id_album);
       $datos['albums']=Album::all();
       $consulta['albums'] = Album::withTrashed()
       ->join('artists', 'albums.id_artis','=','artists.id_artis')
