@@ -33,7 +33,7 @@ class ArtistsController extends Controller
 	}
     public function create()
 	{
-        return view('artist.up');
+        return view('artist.create');
 	}
     
 	public function store(Request $request)
@@ -48,7 +48,7 @@ class ArtistsController extends Controller
 
 		}
 
-    public function show($id_artis)
+    public function show($id)
 		{
 		//
 		}
@@ -59,21 +59,21 @@ class ArtistsController extends Controller
     
 	public function edit($id_artis)
 	{
-		//
+		
 		$artist = Artists::findOrFail($id_artis);
 		return view('artist.edit', compact('artist'))->with('artist',$artist);
 		
 	}
 
-	public function update(Request $request)
+	public function update(Request $request, $id_artis)
 
 	{
+		$artist = Artists::findOrFail($id_artis);
 		$datosArtists = request()->except(['_token', '_method']);
 		Artists::where('id_artis','=',$id_artis)->update($datosArtists);
-		
-		$artist = Artists::findOrFail($id_artis);
-		$datos['artists']=Artists::paginate(100);
-		return view('artist.create', compact('artist'),$datos );
+	    $datos['artists']=Artists::all();
+		$consulta['artist'] = Artists::withTrashed()->get();
+		return view('artist.index', compact('artist'))->with($datos)->with($consulta);
 
 	}
 

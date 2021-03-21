@@ -37,24 +37,24 @@
         <td>{{ $c->disquera_artis }}</td>
         <td>{{ $c->descripcion_artis }}</td>
         <td>
-          <a href="{{url ('/artists/'.$c->id_artis.'/edit')}}">
-                <center>
-                <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-              </a>
-  
+          
               @if($c->deleted_at)
-              <a href="{{url ('activarartists',['id_artis'=>$c->id_artis])}}">
+              <a href="{{url ('activarartist',['id_artis'=>$c->id_artis])}}">
                 <button id="activar"  class="btn btn-success">Activar</button>
               </a>
               <form action="{{ url('/artists/'.$c->id_artis)}}" method="post" class="eliminar">
               @csrf
               {{ method_field('DELETE') }}
-              <a href="{{url ('destroyartist', ['id_artis'=>$c->id_artis]))}}">
+              <a href="{{url ('destroyartist', ['id_artis'=>$c->id_artis])}}">
               <button id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
               </a>
               </form>
               @else
-              <a href="{{url ('desactivaartists',['id_artis'=>$c->id_artis])}}">
+              <a href="{{url ('/artists/'.$c->id_artis.'/edit')}}">
+                <center>
+                <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+              </a>
+              <a href="{{url ('desactivarartist',['id_artis'=>$c->id_artis])}}">
                 <button value="Dasactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
               </a>
               @endif
