@@ -38,6 +38,9 @@ function habilitar() {
     if (password_artis == "") {
         val++;
     }
+    if (telefono_artis == "") {
+        val++;
+    }
 
     if (val == 0) {
         document.getElementById("guardar").disabled = false;

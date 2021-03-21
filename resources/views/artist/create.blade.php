@@ -66,7 +66,7 @@
 
 			<!-- Grupo: Teléfono -->
 			<div class="formulario__grupo" id="grupo__telefono_artis">
-				<label for="telefono" class="formulario__label">Teléfono:</label>
+				<label for="telefono_artis" class="formulario__label">Teléfono:</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="telefono_artis" id="telefono_artis" placeholder="4491234567">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
