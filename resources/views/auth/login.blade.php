@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/login/main.css')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/NeriMusicicon.ico')}}" />
+
 </head>
 <body>
     <div id="main-container">

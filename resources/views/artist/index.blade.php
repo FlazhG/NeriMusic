@@ -8,7 +8,7 @@
 @endsection
 @section('contenido')
 <div class="content-wrapper">
-  <h1 align="center">Reporte de Usuarios</h1>
+  <h1 align="center">Reporte de Artista</h1>
   <a href="{{ url('/artists/create') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
@@ -18,10 +18,8 @@
       <th>Nombre</th>
       <th>Correo</th>
       <th>Fecha</th>
-      <th>Sexo</th>
       <th>telefono</th>
       <th>disquera</th>
-      <th>descripción</th>
       <th>Operaciones</th>
     </thead>
     <tbody>
@@ -29,13 +27,10 @@
       <tr>
         <td>{{ $c->id_artis }}</td>
         <td>{{ $c->nombre_artis }}</td>
-        <td>{{ $c->apellido_artis }}</td>
         <td>{{ $c->email_artis }}</td>
         <td>{{ $c->fecha_artis }}</td>
-        <td>{{ $c->sexo_artis }}</td>
         <td>{{ $c->telefono_artis }}</td>
         <td>{{ $c->disquera_artis }}</td>
-        <td>{{ $c->descripcion_artis }}</td>
         <td>
           
               @if($c->deleted_at)
