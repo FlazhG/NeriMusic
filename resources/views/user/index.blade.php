@@ -34,28 +34,9 @@
         <td>{{ $user->phone_usu }}</td>
         <td>{{ $user->email }}</td>
         <td>
-
-
-        <a href="{{ url('/user/'.$user->id.'/edit') }}">
-          <center>
-          <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-            </a>
-
-            <form action="{{ url('/user/'.$user->id ) }}" method="post" class="eliminar">
-              @csrf
-              {{ method_field('DELETE') }}
-              <a href="{{url('destroy', ['id'=>$user->id])}}">
-              <button type="submit" id="eliminar" value="Borrar" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i></button>
-              </a>
-            </form>
-             @if($user->deleted_at)
-              <a href="{{url('activar', ['id'=>$user->id])}}">
-                <button value="Desactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
-
             @if($user->deleted_at)
               <a href="{{url('activar', ['id'=>$user->id])}}">
                 <button id="activar" class="btn btn-success">Activar</button>
-
               </a>
               <form action="{{ url('/user/'.$user->id ) }}" method="post" class="eliminar">
                 @csrf
@@ -65,26 +46,16 @@
                 </a>
               </form>
               @else
-
-              <a href="{{url('desactivar', ['id'=>$user->id])}}">
-                <button value="Desactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
-
-              <a href="{{route('desactivar', ['id'=>$user->id])}}">
-                <button id="desactivar" class="btn btn-warning">Desactivar</button>
-
               <a href="{{ url('/user/'.$user->id.'/edit') }}">
                 <center>
                 <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
                   </a>
               <a href="{{url('desactivar', ['id'=>$user->id])}}">
                 <button id="desactivar" class="btn btn-warning">Desactivar</button>
-
               </a>
               @endif
           </center>
-
         </td>
-
       </tr>
       @endforeach
     </tbody>
