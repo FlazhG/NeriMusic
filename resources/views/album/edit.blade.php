@@ -30,7 +30,7 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_album" value="{{$album->descripcion_album}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_album" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80">{{$album->descripcion_album}}</textarea>
 				</div>
 			</div>
 
@@ -58,9 +58,9 @@
 		<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Pistas agregadas:</label>
 				<div class="formulario__grupo-input">
-					@foreach($consulta as $musica)
-					<label class="radio">{{$musica->nombre_music}}</label>
-					@endforeach
+
+					<label class="radio"></label>
+
 				</div>
 			</div>
 				 -->
@@ -68,8 +68,9 @@
 				<div class="formulario__grupo">
   				<label for="empresafor" class="formulario__label">Genero:</label>
           <div class="caja">
-  					<select>
+  					<select name="id_genero">
   						<option>Seleccione un genero</option>
+							<option selected="{{$consulta->id_genero}}">{{$consulta->nombre_genero}}</option>
 							@foreach($genero as $item)
   						<option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
 							@endforeach
@@ -80,10 +81,11 @@
 			  <div class="formulario__grupo">
 				<label for="empresafor" class="formulario__label">Artista:</label>
 		<div class="caja">
-					<select>
+					<select name="id_artis">
 						<option>Seleccione un Artista</option>
+						<option selected="{{$consultar->id_artis}}">{{$consultar->nombre_artis}}</option>
 						  @foreach($artists as $artist)
-						<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
+							<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
 						  @endforeach
 					</select>
 		</div>

@@ -26,4 +26,7 @@ class Artists extends Model
     'disquera_artis',
     'descripcion_artis'
 ];
+  public function album(){
+      return $this->hasMany('App\Album');
+  }
 }

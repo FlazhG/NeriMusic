@@ -15,4 +15,7 @@ class Genero extends Model
       'id_genero',
       'nombre_genero'
     ];
+    public function album(){
+        return $this->hasMany('App\Album');
+    }
 }

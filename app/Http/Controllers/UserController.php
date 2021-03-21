@@ -10,7 +10,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $datos['users']=User::all();
+        $datos['users'] = User::all();
         $consulta['users'] = User::withTrashed()->get();
        return view('user.index')->with($datos)->with($consulta);
 
@@ -54,22 +54,23 @@ class UserController extends Controller
         //
         $datosUser = request()->except(['_token', '_method']);
         User::where('id','=',$id)->update($datosUser);
-
         $user = User::findOrFail($id);
-        return view('user.create', compact('user') );
+        $datos['users'] = User::all();
+        $consulta['users'] = User::withTrashed()->get();
+        return view('user.index', compact('user'))->with($datos)->with($consulta);
     }
 
     public function desactivar($id)
    {
      $user = User::find($id);
      $user->delete();
-     return view('user.index');
+     return redirect('user');
    }
 
    public function activar($id)
    {
      $user = User::withTrashed()->where('id',$id)->restore();
-     return view('user.index');
+     return redirect('user');
    }
 
     public function destroy($id)

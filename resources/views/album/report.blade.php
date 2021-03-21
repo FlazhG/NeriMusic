@@ -20,7 +20,7 @@
       <th>Descripción</th>
       <th>Fecha de creación</th>
       <th>Duración</th>
-      <th>Cantidad de pistas</th>
+      <!-- <th>Cantidad de pistas</th> -->
       <th>Genero</th>
       <th>Artista</th>
       <th>Acciones</th>
@@ -34,14 +34,10 @@
         <td>{{$item->descripcion_album}}</td>
         <td>{{$item->fecha_album}}</td>
         <td>{{$item->duracion_album}}</td>
-        <td>{{$item->cantipistas_album}}</td>
-        <td>{{$item->id_genero}}</td>
-        <td>{{$item->id_artis}}</td>
+        <!-- <td>{{$item->cantipistas_album}}</td> -->
+        <td>{{$item->nombre_genero}}</td>
+        <td>{{$item->nombre_artis}}</td>
         <td>
-          <a href="{{url ('/albums/'.$item->id_album.'/edit')}}">
-            <center>
-            <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-          </a>
           @if($item->deleted_at)
           <a href="{{url ('activaralbum', ['id_album'=>$item->id_album])}}">
             <button id="activar" class="btn btn-success">Activar</button>
@@ -54,6 +50,10 @@
             </a>
           </form>
           @else
+          <a href="{{url ('/albums/'.$item->id_album.'/edit')}}">
+            <center>
+            <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+          </a>
           <a href="{{url ('desactivaralbum', ['id_album'=>$item->id_album])}}">
             <button id="desactivar" class="btn btn-warning">Desactivar</button>
           </a>

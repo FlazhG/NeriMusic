@@ -24,7 +24,7 @@ class GeneroFactory extends Factory
         return [
             'nombre_genero' => $this->faker->name(),
             'nombre_genero' => $this->faker->randomElement(['Rock', 'Pop','Banda','Electronica','Jazz','Dupstep','Clasica','t
-            hecno','Country','Pop','Hip-Hop','Raegueton','Cumbia','Banda','Blues','Salsa','Rap','Bachata']),
+            hecno','Country','Reggae','Hip-Hop','Reggaeton','Cumbia','Banda','Blues','Salsa','Rap','Bachata']),
         ];
     }
 }

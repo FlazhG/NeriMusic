@@ -49,7 +49,7 @@
               <form action="{{ url('/artists/'.$c->id_artis)}}" method="post" class="eliminar">
               @csrf
               {{ method_field('DELETE') }}
-              <a href="{{url ('destroyartist', ['id_artis'=>$c->id_arts]))}}">
+              <a href="{{url ('destroyartist', ['id_artis'=>$c->id_artis]))}}">
               <button id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
               </a>
               </form>

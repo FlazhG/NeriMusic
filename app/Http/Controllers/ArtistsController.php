@@ -12,7 +12,23 @@ class ArtistsController extends Controller
 
 	{
 		$datos['artists'] = Artists::all();
-		$consulta['artists'] = Artists::withTrashed()->get();
+		$consulta['artists'] = Artists::withTrashed()->
+		select(
+			'artists.id_artis',
+			'artists.nombre_artis',
+			'artists.apellido_artis',
+			'artists.email_artis',
+			'artists.email_verified',
+			'artists.fecha_artis',
+			'artists.sexo_artis',
+			'artists.password_artis',
+			'artists.img_artis',
+			'artists.telefono_artis',
+			'artists.terminos_artis',
+			'artists.disquera_artis',
+			'artists.descripcion_artis')->get();
+	
+		
 		return view('artist.index')->with($datos)->with($consulta);
 	}
     public function create()
