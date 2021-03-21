@@ -7,7 +7,8 @@ const expresiones = {
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	phone_usu: /^\d{7,14}$/, // 7 a 14 numeros.
-	date_usu: /^\d{7,14}$/ // 7 a 14 numeros.
+	date_usu:  /^[0-9\/\/]/, // Letras, numeros, guion y guion_bajo
+	
 }
 
 const campos = {
@@ -41,6 +42,9 @@ const validarFormulario = (e) => {
 		break;
 		case "phone_usu":
 			validarCampo(expresiones.phone_usu, e.target, 'phone_usu');
+		break;
+		case "date_usu":
+			validarCampo(expresiones.date_usu, e.target, 'date_usu');
 		break;
 	}
 }
@@ -89,22 +93,4 @@ inputs.forEach((input) => {
 	input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
-	if(campos.lastname_usu && campos.name && campos.password && campos.email && campos.phone_usu){
-		formulario.reset();
-
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
-
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
-});

@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
-  <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/NeriMusicicono.ico')}}" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/NeriMusicicon.ico')}}" />
   <!-- css de los formularios -->
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -195,13 +195,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('artists')}}" class="nav-link">
+                <a href="{{url('artists/create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('reporteartists')}}" class="nav-link">
+                <a href="{{url('artists')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reporte</p>
                 </a>

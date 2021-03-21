@@ -2,59 +2,55 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	name: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	lastname_usu:  /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	sexo_usu: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	date_usu: /^\/d{7,14}$/, // 7 a 14 numeros.
-	phone_usu: /^\d{7,14}$/, // 7 a 14 numeros.
-	terms_usu: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	nombre_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	apellido_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	fecha_artis:   /^[0-9\/\/]/, // Letras, numeros, guion y guion_bajo
+	telefono_artis: /^.{4,12}$/, // 4 a 12 digitos.
+	disquera_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	descripcion_artis: /^\/d{7,14}$/, // 7 a 14 numeros.
+	email_artis: /^\d{7,14}$/, // 7 a 14 numeros.
+	email_verified: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	password_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	password_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 }
 
 const campos = {
-	name: false,
-	lastname_usu: false,
-	sexo_usu: false,
-	date_usu:false,
-	password: false,
-	email: false,
-	phone_usu: false,
-	descripcion: false,
-	terms_usu: false
+	nombre_artis: false,
+	apellido_artis: false,
+	fecha_artis: false,
+	telefono_artis:false,
+	disquera_artis: false,
+	descripcion_artis: false,
+	email_artis: false,
+	email_verified: false,
+	password_artis: false,
+	
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "name":
-			validarCampo(expresiones.name, e.target, 'name');
+		case "nombre_artis":
+			validarCampo(expresiones.nombre_artis, e.target, 'nombre_artis');
 		break;
-		case "sexo_usu":
-			validarCampo(expresiones.sexo_usu, e.target, 'sexo_usu');
+		case "apellido_artis":
+			validarCampo(expresiones.apellido_artis, e.target, 'apellido_artis');
 		break;
-		case "lastname_usu":
-			validarCampo(expresiones.lastname_usu, e.target, 'lastname_usu');
+		case "fecha_artis":
+			validarCampo(expresiones.fecha_artis, e.target, 'fecha_artis');
 		break;
 		
-		case "password":
-			validarCampo(expresiones.password, e.target, 'password');
+		case "telefono_artis":
+			validarCampo(expresiones.telefono_artis, e.target, 'telefono_artis');
 			validarPassword2();
 		break;
 		case "password2":
 			validarPassword2();
 		break;
-		case "email":
-			validarCampo(expresiones.email, e.target, 'email');
+		case "disquera_artis":
+			validarCampo(expresiones.disquera_artis, e.target, 'disquera_artis');
 		break;
-		case "date_usu":
-			validarCampo(expresiones.date_usu, e.target, 'date_usu');
-		break;
-		case "phone_usu":
-			validarCampo(expresiones.phone_usu, e.target, 'phone_usu');
-		break;
-		
-		case "terms_usu":
-			validarCampo(expresiones.terms_usu, e.target, 'terms_usu');
+		case "descripcion_artis":
+			validarCampo(expresiones.descripcion_artis, e.target, 'descripcion_artis');
 		break;
 		
 	}
@@ -102,26 +98,6 @@ const validarPassword2 = () => {
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
-});
-
-formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.lastname_usu && campos.name && campos.password && campos.email && campos.phone_usu && terminos.checked ){
-		formulario.reset();
-
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
-
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
 });
 
 

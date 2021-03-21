@@ -54,9 +54,10 @@ class UserController extends Controller
         //
         $datosUser = request()->except(['_token', '_method']);
         User::where('id','=',$id)->update($datosUser);
-
         $user = User::findOrFail($id);
-        return view('user.create', compact('user') );
+        $datos['users'] = User::all();
+        $consulta['users'] = User::withTrashed()->get();
+        return view('user.index', compact('user'))->with($datos)->with($consulta);
     }
 
     public function desactivar($id)

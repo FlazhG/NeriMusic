@@ -44,14 +44,11 @@ Route::get('activarmusic/{id_music}',[MusicController::class, 'activar'])->name(
 Route::get('destroymusic/{id_music}',[MusicController::class, 'destroy'])->name('destroy');
 
 //Rutas de artists
-Route::get('artists',[ArtistsController::class, 'artists'])->name('artists');
-Route::post('guardarartists',[ArtistsController::class, 'guardarartists'])->name('guardarartists');
-Route::get('reporteartists',[ArtistsController::class, 'reporteartists'])->name('reporteartists');
-Route::get('desactivaartists/{id_artis}',[ArtistsController::class, 'desactivaartists'])->name('desactivaartists');
-Route::get('activarartists/{id_artis}',[ArtistsController::class, 'activarartists'])->name('activarartists');
-Route::get('borraartists/{id_artis}',[ArtistsController::class, 'borraartists'])->name('borraartists');
-Route::get('modificaartists/{id_artis}',[ArtistsController::class, 'modificaartists'])->name('modificaartists');
-Route::put('guardacambioartists/{id_artis}',[ArtistsController::class, 'guardacambioartists'])->name('guardacambioartists.guardacambioartists');
+Route::resource('artists',ArtistsController::class);
+Route::get('desactivarartist/{id_artis}',[ArtistsController::class, 'desactivar'])->name('desactivar');
+Route::get('activarartist/{id_artis}',[ArtistsController::class, 'activar'])->name('activar');
+Route::get('destroyartist/{id_artis}',[ArtistsController::class, 'destroy'])->name('destroy');
+
 
 // Rutas de albums
 Route::resource('albums',AlbumController::class);

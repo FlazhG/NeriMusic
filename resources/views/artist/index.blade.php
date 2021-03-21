@@ -8,8 +8,8 @@
 @endsection
 @section('contenido')
 <div class="content-wrapper">
-  <h1 align="center">Reporte de Usuarios</h1>
-  <a href="{{ url('/artists') }}">
+  <h1 align="center">Reporte de Artista</h1>
+  <a href="{{ url('/artists/create') }}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
@@ -18,38 +18,38 @@
       <th>Nombre</th>
       <th>Correo</th>
       <th>Fecha</th>
-      <th>Sexo</th>
       <th>telefono</th>
       <th>disquera</th>
-      <th>descripción</th>
       <th>Operaciones</th>
     </thead>
     <tbody>
-        @foreach ($consulta as $c )
+        @foreach ($artists as $c )
       <tr>
         <td>{{ $c->id_artis }}</td>
         <td>{{ $c->nombre_artis }}</td>
-        <td>{{ $c->apellido_artis }}</td>
         <td>{{ $c->email_artis }}</td>
         <td>{{ $c->fecha_artis }}</td>
-        <td>{{ $c->sexo_artis }}</td>
         <td>{{ $c->telefono_artis }}</td>
         <td>{{ $c->disquera_artis }}</td>
-        <td>{{ $c->descripcion_artis }}</td>
         <td>
-          <a href="{{route('modificaartists',['id_artis'=>$c->id_artis])}}">
-                <center>
-                <button value="Modificar" title="Modificar" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-              </a>
-              <a href="{{route('borraartists',['id_artis'=>$c->id_artis])}}">
-                <button value="Eliminar" id="eliminar" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-              </a>
+          
               @if($c->deleted_at)
-              <a href="{{route('activarartists',['id_artis'=>$c->id_artis])}}">
-                <button value="Dasactivar" id="activar" title="Desactivar" class="btn btn-success">Activar</button>
+              <a href="{{url ('activarartist',['id_artis'=>$c->id_artis])}}">
+                <button id="activar"  class="btn btn-success">Activar</button>
               </a>
+              <form action="{{ url('/artists/'.$c->id_artis)}}" method="post" class="eliminar">
+              @csrf
+              {{ method_field('DELETE') }}
+              <a href="{{url ('destroyartist', ['id_artis'=>$c->id_artis])}}">
+              <button id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              </a>
+              </form>
               @else
-              <a href="{{route('desactivaartists',['id_artis'=>$c->id_artis])}}">
+              <a href="{{url ('/artists/'.$c->id_artis.'/edit')}}">
+                <center>
+                <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+              </a>
+              <a href="{{url ('desactivarartist',['id_artis'=>$c->id_artis])}}">
                 <button value="Dasactivar" id="desactivar" title="Desactivar" class="btn btn-warning">Desactivar</button>
               </a>
               @endif
