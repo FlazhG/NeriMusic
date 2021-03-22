@@ -19,10 +19,13 @@
 		<!-- Grupo: Foto -->
 			<div class="">
         <label for="" class="formulario__label">Subir portada:</label>
+				@if(isset($item->img_album))
+				<img src="{{asset('storage').'/'.$item->img_album}}" width="100">
+				@endif
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
       </div>
 
@@ -71,7 +74,7 @@
   					<select name="id_genero">
   						<option>Seleccione un genero</option>
 							<option selected="{{$consulta->id_genero}}">{{$consulta->nombre_genero}}</option>
-							@foreach($genero as $item)
+							@foreach($generos as $item)
   						<option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
 							@endforeach
   					</select>
