@@ -6,9 +6,9 @@ const expresiones = {
 	apellido_artis: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	fecha_artis:   /^[0-9\/\/]/, // Letras, numeros, guion y guion_bajo
 	telefono_artis: /^.{4,12}$/, // 4 a 12 digitos.
-	disquera_artis: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	disquera_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	descripcion_artis: /^\/d{7,14}$/, // 7 a 14 numeros.
-	email_artis:  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	email_artis: /^\d{7,14}$/, // 7 a 14 numeros.
 	email_verified:  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	password_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	password_artis: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
