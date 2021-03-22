@@ -26,14 +26,18 @@
 			</div>
 
 			<!-- Grupo: Nombre -->
-			<div class="formulario__grupo" id="grupo__nombreart">
-				<label for="nombreart" class="formulario__label">Nombre del artistas:</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name=""  readonly="readonly" value="{{$music->id_artis}}" id="nombreart" placeholder="Nombre(s) completo" o>
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-				</div>
-				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-			</div>
+			<div class="formulario__grupo">
+			<label for="empresafor" class="formulario__label">Artista:</label>
+	<div class="caja">
+				<select name="id_artis">
+					<option>Seleccione un Artista</option>
+					<option selected="{{$consultar->id_artis}}">{{$consultar->nombre_artis}}</option>
+						@foreach($artists as $artist)
+						<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
+						@endforeach
+				</select>
+	</div>
+		</div>
 
 			<div class="formulario__grupo" id="grupo__discografia">
 				<label for="discografia" class="formulario__label">Duración de la musica:</label>
@@ -47,9 +51,10 @@
 			<div class="formulario__grupo">
   				<label for="empresafor" class="formulario__label">Genero:</label>
           <div class="caja">
-  					<select>
+  					<select name="id_genero">
   						<option>Seleccione un genero</option>
-							@foreach($genero as $gene)
+							<option selected="{{$consulta->id_genero}}">{{$consulta->nombre_genero}}</option>
+							@foreach($generos as $gene)
   						<option value="{{$gene->id_genero}}">{{$gene->nombre_genero}}</option>
 							@endforeach
   					</select>
@@ -68,8 +73,9 @@
 				<!-- Grupo: musica -->
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Formato de musica:</label>
-				 <label class="radio">
-                    <input type="radio" value="mp3" name="formato_music">
+										@if($music->formato_music=='Mp4')
+				 					<label class="radio">
+                    <input type="radio" value="Mp3" name="formato_music">
                     mp3
                     <span ></span>
                  </label>
@@ -83,12 +89,45 @@
                     M4a
                     <span></span>
                 </label>
+								@elseif($music->formato_music=='Mp3')
+								<label class="radio">
+									<input type="radio" value="Mp3" name="formato_music" checked="">
+									mp3
+									<span ></span>
+							 </label>
+							 <label class="radio">
+									 <input type="radio" value="Mp4" name="formato_music">
+									 Mp4
+									 <span></span>
+							 </label>
+							 <label class="radio">
+									<input type="radio" value="M4a" name="formato_music">
+									M4a
+									<span></span>
+							</label>
+							@else
+							<label class="radio">
+								<input type="radio" value="Mp3" name="formato_music">
+								mp3
+								<span ></span>
+						 </label>
+						 <label class="radio">
+								 <input type="radio" value="Mp4" name="formato_music">
+								 Mp4
+								 <span></span>
+						 </label>
+						 <label class="radio">
+								<input type="radio" value="M4a" name="formato_music" checked="">
+								M4a
+								<span></span>
+						</label>
+						@endif
 				</div>
 
                 <div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción:</label>
 				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="" value="{{$music->descripcion_music}}" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
+					<textarea class="formulario__input" name="descripcion_music" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80">{{$music->descripcion_music}}</textarea>
 				</div>
 			</div>
 
@@ -102,14 +141,18 @@
 			</div>
 
             <!-- Grupo: Nombre del album -->
-			<div class="formulario__grupo" id="grupo__nombrealbum">
-				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="" readonly="readonly" value="{{$music->id_album}}" id="nombrealbum" placeholder="Inserte el nombre">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-				</div>
-				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-			</div>
+						<div class="formulario__grupo">
+								<label for="empresafor" class="formulario__label">Album:</label>
+								<div class="caja">
+									<select name="id_album">
+										<option>Seleccione un álbum</option>
+										<option selected="{{$consulti->id_album}}">{{$consulti->nombre_album}}</option>
+										@foreach($albums as $albu)
+										<option value="{{$albu->id_album}}">{{$albu->nombre_album}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
@@ -25,9 +26,7 @@ class AlbumController extends Controller
       'artists.nombre_artis',
       'generos.nombre_genero',
       'albums.deleted_at')->get();
-     return view('album.report')
-     ->with($datos)
-     ->with($consulta);
+     return view('album.report')->with($datos)->with($consulta);
   }
 
   public function create()
@@ -35,13 +34,16 @@ class AlbumController extends Controller
     $generos = Genero::all();
     $artists = Artists::all();
       return view('album.up')
-      ->with('genero',$generos)
+      ->with('generos',$generos)
       ->with('artists',$artists);
   }
 
   public function store(Request $request)
   {
      $datosAlbum = request()->except('_token');
+     if ($request->hasFile('img_album')) {
+       $datosAlbum['img_album']=$request->file('img_album')->store('uploads','public');
+     }
      Album::insert($datosAlbum);
      return redirect('albums');
 
@@ -67,7 +69,7 @@ class AlbumController extends Controller
     ->where('id_album',$id_album)->get();
     $album = Album::findOrFail($id_album);
     return view('album.edit', compact('album'))
-    ->with('genero',$generos)
+    ->with('generos',$generos)
     ->with('artists',$artists)
     ->with('consultar',$consultar[0])
     ->with('consulta',$consulta[0])
@@ -76,9 +78,14 @@ class AlbumController extends Controller
 
   public function update(Request $request, $id_album)
   {
-    $album = Album::findOrFail($id_album);
       $datosAlbum = request()->except(['_token', '_method']);
+      if ($request->hasFile('img_album')) {
+        $album = Album::findOrFail($id_album);
+        Storage::delete('public/'.$album->img_album);
+        $datosAlbum['img_album']=$request->file('img_album')->store('uploads','public');
+      }
       Album::where('id_album','=',$id_album)->update($datosAlbum);
+      $album = Album::findOrFail($id_album);
       $datos['albums']=Album::all();
       $consulta['albums'] = Album::withTrashed()
       ->join('artists', 'albums.id_artis','=','artists.id_artis')
@@ -96,7 +103,10 @@ class AlbumController extends Controller
   }
 
   public function destroy($id_album){
-    Album::find($id_album)->forceDelete();
+    $album = Album::findOrFail($id_album);
+    if (Storage::delete('public/'.$album->img_album)) {
+      Album::find($id_album)->forceDelete();
+    }
     return redirect('albums');
   }
 

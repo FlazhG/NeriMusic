@@ -25,8 +25,7 @@
             <label for="file-upload" class="subir">
                 <i class="fas fa-cloud-upload-alt"></i> Subir portada
             </label>
-            <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg"
-                accept="image/png, .jpeg, .jpg, image/gif" />
+            <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
             <div id="info"></div>
         </div>
 
@@ -37,7 +36,7 @@
                 <textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}"
                     id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-				</div> 
+				</div>
             <p class="formulario__input-error">La descripcion es requerida.</p>
         </div>
 
@@ -77,7 +76,7 @@
             <div class="caja">
                 <select name="id_genero">
                     <option>Seleccione un genero</option>
-                    @foreach($genero as $item)
+                    @foreach($generos as $item)
                     <option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
                     @endforeach
                 </select>

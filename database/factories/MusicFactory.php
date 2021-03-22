@@ -29,7 +29,7 @@ class MusicFactory extends Factory
             'fecha_music' => $this->faker->date(),
             'caratula_music' => null,
             'duracion_music'  => '03:00',
-            'formato_music' => $this->faker->randomElement(['MP3', 'M4a','MP4']),
+            'formato_music' => $this->faker->randomElement(['Mp3', 'Mp4','M4a']),
             'discografica_music'  => 'Laboratorio Records',
             'descripcion_music'  => 'buena musica xd',
             'id_artis' => $this->faker->randomElement(['1', '2','3','4','5','6','7','8']),

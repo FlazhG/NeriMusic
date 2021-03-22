@@ -11,7 +11,7 @@
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
-                  <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  <input id="file-upload" onchange='cambiar()' type="file" name="" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
               </div>
 			<!-- Grupo: Nombre de la musica -->
@@ -28,7 +28,7 @@
 			<div class="formulario__grupo">
 			<label for="empresafor" class="formulario__label">Artista:</label>
 	<div class="caja">
-				<select>
+				<select name="id_artis">
 					<option>Seleccione un Artista</option>
 						@foreach($artists as $artist)
 					<option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
@@ -49,9 +49,9 @@
 			<div class="formulario__grupo">
   				<label for="empresafor" class="formulario__label">Genero:</label>
           <div class="caja">
-  					<select>
+  					<select name="id_genero">
   						<option>Seleccione un genero</option>
-							@foreach($genero as $gene)
+							@foreach($generos as $gene)
   						<option value="{{$gene->id_genero}}">{{$gene->nombre_genero}}</option>
 							@endforeach
   					</select>
@@ -71,7 +71,7 @@
 				<div class="formulario__grupo">
                     <label for="usuario" class="formulario__label">Formato de musica:</label>
 				 <label class="radio">
-                    <input type="radio" value="mp3" name="formato_music">
+                    <input type="radio" value="Mp3" name="formato_music">
                     mp3
                     <span ></span>
                  </label>
@@ -104,14 +104,17 @@
 			</div>
 
             <!-- Grupo: Nombre del album -->
-			<div class="formulario__grupo" id="grupo__nombrealbum">
-				<label for="nombrealbum" class="formulario__label">Nombre del album:</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="" value="" id="nombrealbum" placeholder="Inserte el nombre">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-				</div>
-				<p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-			</div>
+						<div class="formulario__grupo">
+			  				<label for="empresafor" class="formulario__label">Album:</label>
+			          <div class="caja">
+			  					<select name="id_album">
+			  						<option>Seleccione un álbum</option>
+										@foreach($albums as $albu)
+			  						<option value="{{$albu->id_album}}">{{$albu->nombre_album}}</option>
+										@endforeach
+			  					</select>
+			          </div>
+			  			</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
 				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
