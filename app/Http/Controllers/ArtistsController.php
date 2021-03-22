@@ -26,18 +26,19 @@ class ArtistsController extends Controller
 			'artists.telefono_artis',
 			'artists.terminos_artis',
 			'artists.disquera_artis',
+      'artists.deleted_at',
 			'artists.descripcion_artis')->get();
-	
-		
+
+
 		return view('artist.index')->with($datos)->with($consulta);
 	}
     public function create()
 	{
         return view('artist.create');
 	}
-    
+
 	public function store(Request $request)
-	
+
 	{
 
 		$datosArtists = request()->except('_token');
@@ -56,13 +57,12 @@ class ArtistsController extends Controller
 	{
 		return view('welcome');
 	}
-    
+
 	public function edit($id_artis)
 	{
-		
 		$artist = Artists::findOrFail($id_artis);
 		return view('artist.edit', compact('artist'))->with('artist',$artist);
-		
+
 	}
 
 	public function update(Request $request, $id_artis)
@@ -81,7 +81,7 @@ class ArtistsController extends Controller
         Artists::find($id_artis)->forceDelete();
 		return redirect('artist');
 	}
-      
+
 	public function desactivar($id_artis)
 	{
 		$artist = Artists::find($id_artis);
@@ -94,4 +94,4 @@ class ArtistsController extends Controller
 		$artist = Artists::withTrashed()->where('id_artis',$id_artis)->restore();
 		return redirect('artists');
 	}
-}	
+}
