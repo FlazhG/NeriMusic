@@ -5,7 +5,7 @@
 
 		<form action="{{url ('/artists./'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
 			@csrf  
-			{{ @method_field('PATCH') }}
+			{{ method_field('PATCH') }}
 
             <!-- Grupo: foto -->
             <div class="">
@@ -158,7 +158,7 @@
 
         @section('js')
         <!-- <script src="js/artists-validate.js"></script> -->
-	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
+	    <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 
 @stop

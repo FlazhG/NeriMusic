@@ -64,7 +64,6 @@
 @section('js')
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 @endsection
