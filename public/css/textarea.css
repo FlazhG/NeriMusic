@@ -1,35 +1,9 @@
 
-body {
-	font-family: 'Roboto', sans-serif;
-	background:#F0F0F0;
-	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
-}
-
-main {
-	max-width: 800px;
-	width: 90%;
-	margin-left: 369px;
-	padding: 30px;
-}
-
-.formulario {
-	display: grid;/* para trabajar con un display de tipo grid */
-	grid-template-columns: 1fr 1fr; /* Para dividir en dos columnas */
-	gap: 20px;	/* Espaciado para cada elemento del grid */
-}
-
-.formulario__label {
-	display: block; /* ocupe todo el espacio */
-	font-weight: 700; /*  Para que sea de fuentes negritas*/
-	padding: 10px;		/*  */
-	cursor: pointer;	/* sirve para cuando pase el curso se marque el input */
-}
-
-.formulario__grupo-input {
+.formulario__grupo-textarea {
 	position: relative; /* para posicionar el icono x dentro del input */
 }
 
-.formulario__input {
+.formulario__textarea {
 
 	width: 100%; /*  para que abarque todo el espacio*/
 	background: rgb(255, 255, 255);
@@ -42,19 +16,19 @@ main {
 	transition: .3s ease all; /*  para una trasicacion de 3 segundos*/
 }
 
-.formulario__input:focus {
+.formulario__textarea:focus {
 	border: 3px solid #0075FF;/*cuando se de clic cambie de color */
 	outline: none;/*  para eliminar el subrayado que pone el navegador*/
 	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
 
-.formulario__input-error {
+.formulario__textarea-error {
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;	/*  */
 }
 
-.formulario__input-error-activo { /* para cuando el error este activo que tenga un display de tipo bloque */
+.formulario__textarea-error-activo { /* para cuando el error este activo que tenga un display de tipo bloque */
 	display: block;
 }
 
@@ -184,7 +158,7 @@ main {
 	opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__input {
+.formulario__grupo-incorrecto .formulario__textarea {
 	border: 3px solid #bb2929;
 }
 
@@ -205,14 +179,14 @@ main {
 	}
 }
 
-input[type=range].rango{
+textarea[type=range].rango{
     display: block;
     width: 100%;
 }
-input[type=range].rango:focus {
+textarea[type=range].rango:focus {
   outline: none;
 }
-input[type=range].rango::-webkit-slider-runnable-track {
+textarea[type=range].rango::-webkit-slider-runnable-track {
   width: 100%;
   height: 14px;
   cursor: pointer;
@@ -222,7 +196,7 @@ input[type=range].rango::-webkit-slider-runnable-track {
   border-radius: 14px;
   border: 0px solid #000000;
 }
-input[type=range].rango::-webkit-slider-thumb {
+textarea[type=range].rango::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px #000000;
   border: 0px solid #000000;
   height: 20px;
@@ -233,10 +207,10 @@ input[type=range].rango::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -3px;
 }
-input[type=range].rango:focus::-webkit-slider-runnable-track {
+textarea[type=range].rango:focus::-webkit-slider-runnable-track {
   background: #004856;
 }
-input[type=range].rango::-moz-range-track {
+textarea[type=range].rango::-moz-range-track {
   width: 100%;
   height: 14px;
   cursor: pointer;
@@ -246,7 +220,7 @@ input[type=range].rango::-moz-range-track {
   border-radius: 14px;
   border: 0px solid #000000;
 }
-input[type=range].rango::-moz-range-thumb {
+textarea[type=range].rango::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000;
   border: 0px solid #000000;
   height: 20px;
@@ -255,7 +229,7 @@ input[type=range].rango::-moz-range-thumb {
   background: #529DE1;
   cursor: pointer;
 }
-input[type=range].rango::-ms-track {
+textarea[type=range].rango::-ms-track {
   width: 100%;
   height: 14px;
   cursor: pointer;
@@ -264,19 +238,19 @@ input[type=range].rango::-ms-track {
   border-color: transparent;
   color: transparent;
 }
-input[type=range].rango::-ms-fill-lower {
+textarea[type=range].rango::-ms-fill-lower {
   background: #004856;
   border: 0px solid #000000;
   border-radius: 28px;
   box-shadow: 1px 1px 1px #004856;
 }
-input[type=range].rango::-ms-fill-upper {
+textarea[type=range].rango::-ms-fill-upper {
   background: #004856;
   border: 0px solid #000000;
   border-radius: 28px;
   box-shadow: 1px 1px 1px #004856;
 }
-input[type=range].rango::-ms-thumb {
+textarea[type=range].rango::-ms-thumb {
   margin-top: 1px;
   box-shadow: 0px 0px 0px #000000;
   border: 0px solid #000000;
@@ -286,10 +260,10 @@ input[type=range].rango::-ms-thumb {
   background: #529DE1;
   cursor: pointer;
 }
-input[type=range].rango:focus::-ms-fill-lower {
+textarea[type=range].rango:focus::-ms-fill-lower {
   background: #004856;
 }
-input[type=range].rango:focus::-ms-fill-upper {
+textarea[type=range].rango:focus::-ms-fill-upper {
   background: #004856;
 }
 

@@ -19,7 +19,7 @@
 
 
 			<!-- Grupo: Usuario -->
-			<div class="formulario__grupo" id="grupo__usuario">
+			<div class="formulario__grupo" id="grupo__nombre_artis">
 				<label for="nombre_artis" class="formulario__label">Nombre:(s)</label>
 				<div class="formulario__grupo-input">
 					<input  type="text" class="formulario__input" value="{{$artist->nombre_artis}}" name="nombre_artis" id="nombre_artis" placeholder="Nombre para ingresar">
@@ -29,8 +29,8 @@
 			</div>
 
 			<!-- Grupo: Apellido -->
-			<div class="formulario__grupo" id="grupo__apellido">
-				<label for="apellido" class="formulario__label">Apellido:(s)</label>
+			<div class="formulario__grupo" id="grupo__apellido_artis">
+				<label for="apellido_artis" class="formulario__label">Apellido:(s)</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" value="{{$artist->apellido_artis}}" name="apellido_artis" id="apellido_artis" placeholder="apellido(s) completo">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -39,11 +39,13 @@
 			</div>
 
             <!-- Grupo: Fecha de nacimiento -->
-            <div class="formulario__grupo" id="grupo__datepicker">
-                <label for="datepicker" class="formulario__label">Fecha de nacimiento:</label>
+            <div class="formulario__grupo" id="grupo__fecha_artis">
+                <label for="fecha_artis" class="formulario__label">Fecha de nacimiento:</label>
                 <div class="formulario__grupo-input">
-                    <input type="date" class="formulario__input" id="fecha_artis"value="{{$artist->fecha_artis}}" name="fecha_artis" id="nacimiento" placeholder="Fecha de nacimiento">
-                </div>
+                    <input type="date" class="formulario__input" id="fecha_artis"value="{{$artist->fecha_artis}}" name="fecha_artis"  placeholder="Fecha de nacimiento">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+
+				</div>
                 <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros</p>
 
             </div>
@@ -76,8 +78,8 @@
         </div>
 
 			<!-- Grupo: Teléfono -->
-			<div class="formulario__grupo" id="grupo__telefono">
-				<label for="telefono" class="formulario__label">Teléfono:</label>
+			<div class="formulario__grupo" id="grupo__telefono_artis">
+				<label for="telefono_artis" class="formulario__label">Teléfono:</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" value="{{$artist->telefono_artis}}" name="telefono_artis" id="telefono_artis" placeholder="4491234567">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -86,8 +88,8 @@
 			</div>
 
             <!-- Grupo: Disuquera -->
-			<div class="formulario__grupo" id="grupo__disquera">
-				<label for="disquera" class="formulario__label">Disquera:</label>
+			<div class="formulario__grupo" id="grupo__disquera_artis">
+				<label for="disquera_artis" class="formulario__label">Disquera:</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" value="{{$artist->disquera_artis}}" name="disquera_artis" id="disquera_artis" placeholder="Nombre de la disquera">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -96,8 +98,8 @@
 			</div>
 
                <!-- Grupo: descripcion -->
-			<div class="formulario__grupo" id="grupo__descripcion">
-				<label for="descripcion" class="formulario__label">Descripción del artista:</label>
+			<div class="formulario__grupo" id="grupo__descripcion_artis">
+				<label for="descripcion_artis" class="formulario__label">Descripción del artista:</label>
                 <div class="formulario__grupo-input">
                 <textarea type="text" class="formulario__input" name="descripcion_artis" id="descripcion_artis" placeholder="Escribe tu descripción ">{{$artist->descripcion_artis}}</textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -109,8 +111,8 @@
 
 
 			<!-- Grupo: Correo -->
-			<div class="formulario__grupo" id="grupo__correo">
-				<label for="correo" class="formulario__label">Correo electronico:</label>
+			<div class="formulario__grupo" id="grupo__email_artis">
+				<label for="email_artis" class="formulario__label">Correo electronico:</label>
 				<div class="formulario__grupo-input">
 					<input type="email" class="formulario__input" value="{{$artist->email_artis}}" name="email_artis" id="email_artis" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -119,8 +121,8 @@
 			</div>
 
 			<!-- Grupo: Correo 2 -->
-			<div class="formulario__grupo" id="grupo__correo2">
-				<label for="correo2" class="formulario__label">Confirmar correo electronico:</label>
+			<div class="formulario__grupo" id="grupo__email_verified">
+				<label for="email_verified" class="formulario__label">Confirmar correo electronico:</label>
 				<div class="formulario__grupo-input">
 					<input type="email" class="formulario__input" value="{{$artist->email_artis}}" name="email_verified" id="emial_verified" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -130,8 +132,8 @@
 
 
 			<!-- Grupo: Contraseña -->
-			<div class="formulario__grupo" id="grupo__password">
-				<label for="password" class="formulario__label">Contraseña:</label>
+			<div class="formulario__grupo" id="grupo__password_artis">
+				<label for="password_artis" class="formulario__label">Contraseña:</label>
 				<div class="formulario__grupo-input">
 					<input type="password" class="formulario__input" value="{{$artist->password_artis}}" name="password_artis" id="password_artis" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -140,8 +142,8 @@
 			</div>
 
 			<!-- Grupo: Contraseña 2 -->
-			<div class="formulario__grupo" id="grupo__password2">
-				<label for="password2" class="formulario__label">Repetir Contraseña:</label>
+			<div class="formulario__grupo" id="grupo__password_artis">
+				<label for="password_artis" class="formulario__label">Repetir Contraseña:</label>
 				<div class="formulario__grupo-input">
 					<input type="password" class="formulario__input" value="{{$artist->password_artis}}" name="password_artis" id="password2" placeholder="tiene que ser de 4 a 12 dígitos">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -149,19 +151,16 @@
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
 			</div>
 
-			<div class="formulario__mensaje" id="formulario__mensaje">
-				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" id="modificar" class="formulario__btn">Enviar</button>
-				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+				<button type="submit" id="modificar" class="formulario__btn" disabled>Enviar</button>
 			</div>
 		</form>
 	</main>
 
         @section('js')
-        <!-- <script src="js/artists-validate.js"></script> -->
+		<script src="{{asset('js/artists/artists-editar.js')}}"></script>
+        <script src="{{asset('js/artists/artists-validate.js')}}"></script>
 	    <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 

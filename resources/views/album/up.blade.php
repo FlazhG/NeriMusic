@@ -25,19 +25,19 @@
             <label for="file-upload" class="subir">
                 <i class="fas fa-cloud-upload-alt"></i> Subir portada
             </label>
-            <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
+            <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
             <div id="info"></div>
         </div>
 
         <!-- Grupo: descripcion album -->
         <div class="formulario__grupo" id="grupo__descripcion_album">
             <label for="descripcion_album" class="formulario__label">Descripción</label>
-            <div class="formulario__grupo-input">
-                <textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}"
+            <div class="formulario__grupo-textarea">
+                <textarea class="formulario__textarea" name="descripcion_album" value="{{old('descripcion_album')}}"
                     id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-            <p class="formulario__input-error">La descripcion es requerida.</p>
+            <p class="formulario__textarea-error">La descripcion es requerida.</p>
         </div>
 
         <!-- Grupo: Fecha de nacimiento -->
@@ -50,7 +50,7 @@
             </div>
             <p class="formulario__input-error">La fecha del album es requerida.</p>
         </div>
-        <!-- Grupo: Teléfono -->
+        <!-- Grupo: Duración -->
         <div class="formulario__grupo" id="grupo__duracion">
             <label for="duracion" class="formulario__label">Duración:</label>
             <label id="valor-range" class="formulario__input"></label>
@@ -101,6 +101,7 @@
     </form>
 </main>
 @section('js')
+
 <script src="{{asset('../js/albums/albums-campos.js')}}"></script>
 <script src="{{asset('../js/albums/albums-validate.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
