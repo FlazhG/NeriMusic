@@ -25,7 +25,7 @@
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
       </div>
 

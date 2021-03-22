@@ -14,7 +14,7 @@
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
-      <th>portada</th>
+      <!-- <th>portada</th> -->
       <th>Id</th>
       <th>Nombre</th>
       <th>Descripción</th>
@@ -28,7 +28,7 @@
     <tbody>
       @foreach ($albums as $item)
       <tr>
-        <td><img src="{{asset('storage').'/'.$item->img_album}}" width="100"></td>
+        <!-- <td><img src="{{asset('storage').'/'.$item->img_album}}" width="100"></td> -->
         <td>{{$item->id_album}}</td>
         <td>{{$item->nombre_album}}</td>
         <td>{{$item->descripcion_album}}</td>
