@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
@@ -103,7 +103,6 @@ class AlbumController extends Controller
   }
 
   public function destroy($id_album){
-    $album = Album::findOrFail($id_album);
     Album::find($id_album)->forceDelete();
     return redirect('albums');
   }
