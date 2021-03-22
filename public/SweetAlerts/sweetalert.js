@@ -1,7 +1,7 @@
 $('#guardar').click(function() {
   Swal.fire({
     icon: 'success',
-    title: '¡Registro gurdado exitosamente!',
+    title: '¡Registro guardado exitosamente!',
     backdrop: 'rgba(0,0,123,0.4)',
     showConfirmButton: false,
     timer: 15000
