@@ -4,7 +4,7 @@
 	<center><h1 class="formulario__label">Alta Artista</h1></center>
 
 		<form action="{{url ('/artists./'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
-			@csrf  
+			@csrf
 			{{ method_field('PATCH') }}
 
             <!-- Grupo: foto -->
@@ -50,8 +50,9 @@
 
 			  <div class="formulario__grupo">
             <label for="usuario" class="formulario__label">Sexo:</label>
+						@if($artist->sexo_artis=='femenino')
         <label class="radio">
-            <input type="radio" value="femenino" name="sexo_artis">
+            <input type="radio" value="femenino" name="sexo_artis" checked="">
             mujer
             <span ></span>
         </label>
@@ -60,6 +61,18 @@
             hombre
             <span></span>
         </label>
+				@else
+				<label class="radio">
+            <input type="radio" value="femenino" name="sexo_artis">
+            mujer
+            <span ></span>
+        </label>
+        <label class="radio">
+            <input type="radio" value="masculino" name="sexo_artis" checked="">
+            hombre
+            <span></span>
+        </label>
+				@endif
         </div>
 
 			<!-- Grupo: Teléfono -->
@@ -86,7 +99,7 @@
 			<div class="formulario__grupo" id="grupo__descripcion">
 				<label for="descripcion" class="formulario__label">Descripción del artista:</label>
                 <div class="formulario__grupo-input">
-                <textarea type="text" class="formulario__input" value="{{$artist->descripcion_artis}}" name="descripcion_artis" id="descripcion_artis" placeholder="Escribe tu descripción "></textarea>
+                <textarea type="text" class="formulario__input" name="descripcion_artis" id="descripcion_artis" placeholder="Escribe tu descripción ">{{$artist->descripcion_artis}}</textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">La descripción solo tiene que ser de 25 a 255 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -134,15 +147,6 @@
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-			</div>
-
-
-			<!-- Grupo: Terminos y Condiciones -->
-			<div class="formulario__grupo" id="grupo__terminos">
-				<label class="formulario__label">
-					<input class="formulario__checkbox" type="checkbox" value="{{$artist->terminos_artis}}" name="terminos_artis" id="terminos_artis">
-					Acepto los terminos y condiciones
-				</label>
 			</div>
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
