@@ -7,7 +7,7 @@
 			@csrf
       {{ method_field('PATCH') }}
 			<!-- Grupo: Usuario -->
-			<div class="formulario__grupo" id="grupo__album">
+			<div class="formulario__grupo" id="grupo__nombre_album">
 				<label for="nombre_album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
 					<input  type="text" class="formulario__input" name="nombre_album" value="{{$album->nombre_album}}" id="album" placeholder="Nombre para el album">
@@ -30,15 +30,17 @@
       </div>
 
 			<!-- Grupo: Nombre -->
-			<div class="formulario__grupo" id="grupo__descripcion">
-				<label for="descripcion" class="formulario__label">Descripción</label>
-				<div class="formulario__grupo-input">
-					<textarea class="formulario__input" name="descripcion_album" id="descripcion" placeholder="Escribe un mensaje aquí" rows="8" cols="80">{{$album->descripcion_album}}</textarea>
+			<div class="formulario__grupo" id="grupo__descripcion_album">
+				<label for="descripcion_album" class="formulario__label">Descripción</label>
+				<div class="formulario__grupo-textarea">
+					<textarea class="formulario__textarea" name="descripcion_album" id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80">{{$album->descripcion_album}}</textarea>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
+				<p class="formulario__textarea-error">La descripcion es requerida.</p>
 			</div>
 
 			<!-- Grupo: Fecha de nacimiento -->
-			<div class="formulario__grupo" id="grupo__datepicker">
+			<div class="formulario__grupo" id="grupo__fecha_album">
 				<label for="fecha_album" class="formulario__label">Fecha de creación:</label>
 				<div class="formulario__grupo-input">
 					<input type="date" class="formulario__input" id="fecha_album" name="fecha_album" value="{{$album->fecha_album}}" placeholder="Fecha de creación">
@@ -47,8 +49,8 @@
         <p class="formulario__input-error">La fecha del album es requerida.</p>
 			</div>
 			<!-- Grupo: Teléfono -->
-			<div class="formulario__grupo" id="grupo__duracion">
-				<label for="duracion" class="formulario__label">Duración:</label>
+			<div class="formulario__grupo" id="grupo__duracion_album">
+				<label for="duracion_album" class="formulario__label">Duración:</label>
         <label id="valor-range" class="formulario__input"></label>
 				<div class="formulario__grupo-input">
 					<input type="range" min="1" step="0.01" class="rango" id="valoracion" name="duracion_album" value="{{$album->duracion_album}}"><br>
@@ -105,7 +107,8 @@
 		</form>
 	</main>
 	@section('js')
-	<!-- <script src="../js/albums-validate.js"></script> -->
+	<script src="{{asset('../js/albums/albums-campos.js')}}"></script>
+	<script src="{{asset('../js/albums/albums-validate.js')}}"></script>
 	<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 	@endsection
 @stop

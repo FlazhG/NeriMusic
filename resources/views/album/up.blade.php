@@ -50,7 +50,7 @@
             </div>
             <p class="formulario__input-error">La fecha del album es requerida.</p>
         </div>
-        <!-- Grupo: Teléfono -->
+        <!-- Grupo: Duración -->
         <div class="formulario__grupo" id="grupo__duracion">
             <label for="duracion" class="formulario__label">Duración:</label>
             <label id="valor-range" class="formulario__input"></label>
@@ -74,7 +74,7 @@
         <div class="formulario__grupo">
             <label for="empresafor" class="formulario__label">Genero:</label>
             <div class="caja">
-                <select name="id_genero" >
+                <select name="id_genero">
                     <option>Seleccione un genero</option>
                     @foreach($generos as $item)
                     <option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
@@ -86,7 +86,7 @@
         <div class="formulario__grupo">
             <label for="empresafor" class="formulario__label">Artista:</label>
             <div class="caja">
-                <select name="id_artis" >
+                <select name="id_artis">
                     <option>Seleccione un Artista</option>
                     @foreach($artists as $artist)
                     <option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
@@ -102,7 +102,6 @@
 </main>
 @section('js')
 
-<script src="{{asset('../js/albums/textarea.css')}}"></script>
 <script src="{{asset('../js/albums/albums-campos.js')}}"></script>
 <script src="{{asset('../js/albums/albums-validate.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
