@@ -19,8 +19,10 @@
       <th>Artista</th>
       <th>Dicografia</th>
       <th>Formato</th>
-      <th>Descripcion</th>
+      <th>Descripción</th>
+      <th>Duración</th>
       <th>Fecha salida</th>
+      <th>Genero</th>
       <th>Album</th>
       <th>Acciones</th>
     </thead>
@@ -29,18 +31,15 @@
       <tr>
         <td>{{$item->id_music}}</td>
         <td>{{$item->nombre_music}}</td>
-        <td>{{$item->id_artis}}</td>
+        <td>{{$item->nombre_artis}}</td>
         <td>{{$item->discografica_music}}</td>
         <td>{{$item->formato_music}}</td>
         <td>{{$item->descripcion_music}}</td>
         <td>{{$item->duracion_music}}</td>
         <td>{{$item->fecha_music}}</td>
-        <td>{{$item->id_album}}</td>
+        <td>{{$item->nombre_genero}}</td>
+        <td>{{$item->nombre_album}}</td>
         <td>
-        <a href="{{url ('/musics/'.$item->id_music.'/edit')}}">
-            <center>
-            <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
-          </a>
           @if($item->deleted_at)
           <a href="{{url('activarmusic', ['id_music'=>$item->id_music])}}">
             <button id="activar" class="btn btn-success">Activar</button>
@@ -53,6 +52,10 @@
             </a>
           </form>
           @else
+          <a href="{{url ('/musics/'.$item->id_music.'/edit')}}">
+              <center>
+              <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
+            </a>
           <a href="{{url('desactivarmusic', ['id_music'=>$item->id_music])}}">
             <button id="desactivar" class="btn btn-warning">Desactivar</button>
           </a>
@@ -67,7 +70,7 @@
 @section('js')
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="{{asset('DataTables/datatables.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('DataTables/jQuery-3.3.1/jquery.js')}}"></script>
 <script src="{{asset('DataTables/report.js')}}"></script>
+<script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>
 @endsection
 @stop

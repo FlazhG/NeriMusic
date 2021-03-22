@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\artists;
-use App\Models\Music;
 use App\Models\Genero;
+use App\Models\Music;
 use Illuminate\Support\Facades\Validator;
 
 class MusicController extends Controller
@@ -14,7 +14,22 @@ class MusicController extends Controller
     public function index()
   {
     $datos['musics']=Music::all();
-    $consulta['musics'] = Music::withTrashed()->get();
+    $consulta['musics'] = Music::withTrashed()
+    ->join('artists', 'musics.id_artis','=','artists.id_artis')
+    ->join('generos', 'musics.id_genero','=','generos.id_genero')
+    ->join('albums', 'musics.id_album','=','albums.id_album')
+    ->select(
+      'musics.id_music',
+      'musics.nombre_music',
+      'artists.nombre_artis',
+      'musics.discografica_music',
+      'musics.formato_music',
+      'musics.descripcion_music',
+      'musics.duracion_music',
+      'musics.fecha_music',
+      'generos.nombre_genero',
+      'albums.nombre_album',
+      'musics.deleted_at')->get();
      return view('music.report')->with($datos)->with($consulta);
   }
 
@@ -22,12 +37,11 @@ class MusicController extends Controller
   {
     $generos = Genero::all();
     $artists = Artists::all();
-    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
-    ->select('musics.nombre_music','artists.nombre_artis')->get();
+    $albums = Album::all();
       return view('music.up')
-      ->with('genero',$generos)
+      ->with('generos',$generos)
       ->with('artists',$artists)
-      ->with('consulta',$consulta);
+      ->with('albums',$albums);
   }
 
   public function store(Request $request)
@@ -51,12 +65,22 @@ class MusicController extends Controller
   public function edit($id_music)
   {
     $generos = Genero::all();
-    $consulta = artists::join('musics', 'artists.id_artis','=','musics.id_artis')
-    ->select('musics.formato_music')->get();
+    $artists = Artists::all();
+    $albums = Album::all();
+    $consulta = Music::join('generos', 'musics.id_genero','=','generos.id_genero')
+    ->where('id_music',$id_music)->get();
+    $consultar = Music::join('artists', 'musics.id_artis','=','artists.id_artis')
+    ->where('id_music',$id_music)->get();
+    $consulti = Music::join('albums', 'musics.id_album','=','albums.id_album')
+    ->where('id_music',$id_music)->get();
     $music = Music::findOrFail($id_music);
     return view('music.edit', compact('music'))
-    ->with('genero',$generos)
-    ->with('consulta',$consulta)
+    ->with('generos',$generos)
+    ->with('artists',$artists)
+    ->with('albums',$albums)
+    ->with('consulta',$consulta[0])
+    ->with('consultar',$consultar[0])
+    ->with('consulti',$consulti[0])
     ->with('music',$music);
   }
 
@@ -65,8 +89,24 @@ class MusicController extends Controller
       $datosMusic = request()->except(['_token', '_method']);
       Music::where('id_music','=',$id_music)->update($datosMusic);
       $music = Music::findOrFail($id_music);
-      $datos['musics']=Music::paginate(100);
-      return view('music.report', compact('music'),$datos);
+      $datos['musics']=Music::all();
+      $consulta['musics'] = Music::withTrashed()
+      ->join('artists', 'musics.id_artis','=','artists.id_artis')
+      ->join('generos', 'musics.id_genero','=','generos.id_genero')
+      ->join('albums', 'musics.id_album','=','albums.id_album')
+      ->select(
+        'musics.id_music',
+        'musics.nombre_music',
+        'artists.nombre_artis',
+        'musics.discografica_music',
+        'musics.formato_music',
+        'musics.descripcion_music',
+        'musics.duracion_music',
+        'musics.fecha_music',
+        'generos.nombre_genero',
+        'albums.nombre_album',
+        'musics.deleted_at')->get();
+      return view('music.report', compact('music'))->with($datos)->with($consulta);
   }
 
   public function destroy($id_music){
@@ -83,7 +123,7 @@ class MusicController extends Controller
 
    public function activar($id_music)
    {
-     $music = Music::withTrashed()->where('id_album',$id_music)->restore();
+     $music = Music::withTrashed()->where('id_music',$id_music)->restore();
      return redirect('musics');
    }
 }
