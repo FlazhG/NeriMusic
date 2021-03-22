@@ -6,6 +6,7 @@ function habilitar() {
     descripcion_album = document.getElementById("descripcion_album").value;
     val = 0;
 
+
     if (nombre_album == "") {
         val++;
     }

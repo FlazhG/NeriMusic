@@ -3,8 +3,8 @@ const inputs = document.querySelectorAll('#formulario input');
 const textareas = document.querySelectorAll('#formulario textarea')
 
 const expresiones = {
-	nombre_album: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	descripcion_album: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	nombre_album: /^[a-zA-ZÀ-ÿ\s]{5,40}$/, // Letras y espacios, pueden llevar acentos.
+	descripcion_album: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
 	fecha_album: /^[0-9\/\/]/, // Letras, numeros, guion y guion_bajo
 	
 

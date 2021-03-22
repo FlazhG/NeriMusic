@@ -10,7 +10,7 @@
 			<div class="formulario__grupo" id="grupo__nombre_album">
 				<label for="nombre_album" class="formulario__label">Nombre del album:</label>
 				<div class="formulario__grupo-input">
-					<input  type="text" class="formulario__input" name="nombre_album" value="{{$album->nombre_album}}" id="album" placeholder="Nombre para el album">
+					<input  type="text" class="formulario__input" name="nombre_album" value="{{$album->nombre_album}}" id="nombre_album" placeholder="Nombre para el album">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<p class="formulario__input-error">El nombre del album tiene que ser de 4 a 16 caracteres y solo puede contener numeros y letras.</p>
@@ -102,7 +102,7 @@
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" id="guardar" class="formulario__btn" value="Enviar">Enviar</button>
+				<button type="submit" id="guardar" class="formulario__btn" value="Enviar" disabled>Enviar</button>
 			</div>
 		</form>
 	</main>
