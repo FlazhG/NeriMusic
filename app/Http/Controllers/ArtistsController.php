@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Artists;
+use App\Models\artists;
 use Illuminate\Support\Facades\Validator;
 
 class ArtistsController extends Controller
@@ -78,7 +78,7 @@ class ArtistsController extends Controller
 	}
 
 	    public function destroy($id_artis){
-        Artists::find($id_artis)->forceDelete();
+        artists::find($id_artis)->forceDelete();
 		return redirect('artist');
 	}
 
