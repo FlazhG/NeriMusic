@@ -50,36 +50,7 @@
         <!-- Grupo: sexo -->
         <div class="formulario__grupo">
             <label for="usuario" class="formulario__label">Sexo:</label>
-<<<<<<< HEAD
-            
-            <label class="radio">
-                <input type="radio" value="femenino" name="sexo_usu" checked="">
-                mujer
-                <span></span>
-            </label>
-            <label class="radio">
-                <input type="radio" value="masculino" name="sexo_usu">
-                hombre
-                <span></span>
-            </label>
-            <label class="radio">
-                <input type="radio" value="otro" name="sexo_usu">
-                otro
-                <span></span>
-            </label>
-        </div>             
-       
-        <!-- Grupo: Teléfono -->
-        <div class="formulario__grupo" id="grupo__phone_usu">
-            <label for="phone_usu" class="formulario__label">Teléfono:</label>
-            <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="phone_usu" id="phone_usu"
-                    value="{{$user->phone_usu }}" placeholder="4491234567">
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-            </div>
-            <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
-=======
-						@if($user->sexo_usu=='femenino')
+			@if($user->sexo_usu=='femenino')
 		        <label class="radio">
 		            <input type="radio" value="femenino" name="sexo_usu" checked="">
 		            mujer
@@ -128,7 +99,17 @@
 						<span></span>
 				</label>
 				@endif
->>>>>>> 310815ab1183f6b23d1bbca93f1a1274d19518b5
+
+        </div>
+
+         <!-- Grupo: Teléfono -->
+         <div class="formulario__grupo" id="grupo__phone_usu">
+            <label for="phone_usu" class="formulario__label">Teléfono:</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="phone_usu" id="phone_usu" placeholder="4491234567" value="{{$user->phone_usu}}">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
         </div>
 
         <!-- Grupo: Correo -->

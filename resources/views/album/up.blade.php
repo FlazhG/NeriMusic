@@ -32,12 +32,12 @@
         <!-- Grupo: descripcion album -->
         <div class="formulario__grupo" id="grupo__descripcion_album">
             <label for="descripcion_album" class="formulario__label">Descripción</label>
-            <div class="formulario__grupo-input">
-                <textarea class="formulario__input" name="descripcion_album" value="{{old('descripcion_album')}}"
+            <div class="formulario__grupo-textarea">
+                <textarea class="formulario__textarea" name="descripcion_album" value="{{old('descripcion_album')}}"
                     id="descripcion_album" placeholder="Escribe un mensaje aquí" rows="8" cols="80"></textarea>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-            <p class="formulario__input-error">La descripcion es requerida.</p>
+            <p class="formulario__textarea-error">La descripcion es requerida.</p>
         </div>
 
         <!-- Grupo: Fecha de nacimiento -->
@@ -74,7 +74,7 @@
         <div class="formulario__grupo">
             <label for="empresafor" class="formulario__label">Genero:</label>
             <div class="caja">
-                <select name="id_genero">
+                <select name="id_genero" >
                     <option>Seleccione un genero</option>
                     @foreach($generos as $item)
                     <option value="{{$item->id_genero}}">{{$item->nombre_genero}}</option>
@@ -86,7 +86,7 @@
         <div class="formulario__grupo">
             <label for="empresafor" class="formulario__label">Artista:</label>
             <div class="caja">
-                <select name="id_artis">
+                <select name="id_artis" >
                     <option>Seleccione un Artista</option>
                     @foreach($artists as $artist)
                     <option value="{{$artist->id_artis}}">{{$artist->nombre_artis}}</option>
@@ -101,6 +101,8 @@
     </form>
 </main>
 @section('js')
+
+<script src="{{asset('../js/albums/textarea.css')}}"></script>
 <script src="{{asset('../js/albums/albums-campos.js')}}"></script>
 <script src="{{asset('../js/albums/albums-validate.js')}}"></script>
 <script src="{{asset('SweetAlerts/sweetalert.js')}}"></script>

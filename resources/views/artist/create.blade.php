@@ -43,7 +43,6 @@
                 <div class="formulario__grupo-input">
                     <input type="date" class="formulario__input" id="fecha_artis"name="fecha_artis" placeholder="Fecha de nacimiento">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
-
 				</div>
                 <p class="formulario__input-error">La fecha de nacimiento solo tienen que ser numeros y es requerida</p>
 
@@ -117,7 +116,6 @@
 				<p class="formulario__input-error">Ambos correos deben ser iguales.</p>
 			</div>
 
-
 			<!-- Grupo: Contraseña -->
 			<div class="formulario__grupo" id="grupo__password_artis">
 				<label for="password_artis" class="formulario__label">Contraseña:</label>
@@ -142,7 +140,7 @@
 			<!-- Grupo: Terminos y Condiciones -->
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
-					<input class="formulario__checkbox" type="checkbox" name="terminos_artis" id="terminos_artis">
+					<input class="formulario__checkbox" type="checkbox" name="terminos_artis" id="terminos_artis" required>
 					Acepto los terminos y condiciones
 				</label>
 			</div>

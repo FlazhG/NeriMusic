@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="{{asset('../css/buttonimg.css')}}">
   <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{asset('../css/textarea.css')}}">
+  
   <script type="text/javascript">
     $(document).ready(function(){ //Al cargar la página realiza una serie de acciones
       $('#valor-range').html($("#valoracion").val()); /* Al cargar la página se mostrará en el label "valor-range" el valor del input */
