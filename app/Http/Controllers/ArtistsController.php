@@ -79,7 +79,7 @@ class ArtistsController extends Controller
 
 	    public function destroy($id_artis){
         Artists::find($id_artis)->forceDelete();
-		return redirect('artist');
+		return redirect('artists');
 	}
 
 	public function desactivar($id_artis)

@@ -42,10 +42,13 @@
               <button id="eliminar" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </a>
           </form>
+
               @if($c->deleted_at)
               <a href="{{url ('activarartist',['id_artis'=>$c->id_artis])}}">
                 <button id="activar"  class="btn btn-success">Activar</button>
               </a>
+
+
               @else
               <a href="{{url ('/artists/'.$c->id_artis.'/edit')}}">
                 <button class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></button>
