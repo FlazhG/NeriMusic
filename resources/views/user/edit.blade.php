@@ -42,21 +42,55 @@
                         <!-- Grupo: sexo -->
         <div class="formulario__grupo">
             <label for="usuario" class="formulario__label">Sexo:</label>
-        <label class="radio">
-            <input type="radio" value="femenino" name="sexo_usu">
-            mujer
-            <span ></span>
-        </label>
-        <label class="radio">
-            <input type="radio" value="masculino" name="sexo_usu">
-            hombre
-            <span></span>
-        </label>
-        <label class="radio">
-            <input type="radio" value="otro" name="sexo_usu">
-            otro
-            <span></span>
-        </label>
+						@if($user->sexo_usu=='femenino')
+		        <label class="radio">
+		            <input type="radio" value="femenino" name="sexo_usu" checked="">
+		            mujer
+		            <span ></span>
+		        </label>
+		        <label class="radio">
+		            <input type="radio" value="masculino" name="sexo_usu">
+		            hombre
+		            <span></span>
+		        </label>
+		        <label class="radio">
+		            <input type="radio" value="otro" name="sexo_usu">
+		            otro
+		            <span></span>
+		        </label>
+				@elseif($user->sexo_usu=='masculino')
+				<label class="radio">
+						<input type="radio" value="femenino" name="sexo_usu">
+						mujer
+						<span ></span>
+				</label>
+				<label class="radio">
+						<input type="radio" value="masculino" name="sexo_usu" checked="">
+						hombre
+						<span></span>
+				</label>
+				<label class="radio">
+						<input type="radio" value="otro" name="sexo_usu">
+						otro
+						<span></span>
+				</label>
+				@else
+				<label class="radio">
+						<input type="radio" value="femenino" name="sexo_usu">
+						mujer
+						<span ></span>
+				</label>
+				<label class="radio">
+						<input type="radio" value="masculino" name="sexo_usu">
+						hombre
+						<span></span>
+				</label>
+				<label class="radio">
+						<input type="radio" value="otro" name="sexo_usu" checked="">
+						otro
+						<span></span>
+				</label>
+				@endif
         </div>
 
             <!-- Grupo: Teléfono -->
