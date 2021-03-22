@@ -3,7 +3,7 @@
 <main>
 	<center><h1 class="formulario__label">Alta Artista</h1></center>
 
-		<form action="{{url ('/artists./'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url ('/artists/'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
 			@csrf
 			{{ method_field('PATCH') }}
 
