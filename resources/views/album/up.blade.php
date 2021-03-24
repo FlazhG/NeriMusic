@@ -5,7 +5,7 @@
         <h1 class="formulario__label">Alta albums</h1>
     </center>
 
-    <form action="{{url('/albums')}}" method="post" class="formulario" id="formulario">
+    <form action="{{url('/albums')}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
         @csrf
         <!-- Grupo: Usuario -->
         <div class="formulario__grupo" id="grupo__nombre_album">
@@ -25,7 +25,7 @@
             <label for="file-upload" class="subir">
                 <i class="fas fa-cloud-upload-alt"></i> Subir portada
             </label>
-            <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
+            <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
             <div id="info"></div>
         </div>
 

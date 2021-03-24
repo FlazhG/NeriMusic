@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -27,7 +28,9 @@ class UserController extends Controller
     {
 
        $datosUser = request()->except('_token');
-
+       if ($request->hasFile('img_user')) {
+         $datosUser['img_user']=$request->file('img_user')->store('img/user','public');
+       }
        User::insert($datosUser);
 
        return redirect('user');
@@ -53,6 +56,11 @@ class UserController extends Controller
     {
         //
         $datosUser = request()->except(['_token', '_method']);
+        if ($request->hasFile('img_user')) {
+          $user = User::findOrFail($id);
+          Storage::delete('public/'.$user->img_user);
+          $datosUser['img_user']=$request->file('img_user')->store('img/user','public');
+        }
         User::where('id','=',$id)->update($datosUser);
         $user = User::findOrFail($id);
         $datos['users'] = User::all();
@@ -75,7 +83,10 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+      $user = User::findOrFail($id);
+      if (Storage::delete('public/'.$user->img_user)) {
         User::find($id)->forceDelete();
+      }
         return redirect('user');
 
     }

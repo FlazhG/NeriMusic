@@ -14,6 +14,7 @@
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
+      <th>Foto</th>
         <th>#</th>
         <th>Nombre</th>
         <th>Apellido</th>
@@ -26,6 +27,7 @@
     <tbody>
         @foreach ($users as $user)
       <tr>
+        <td><img src="{{asset('storage').'/'.$user->img_user}}" width="100"></td>
         <td>{{ $user->id }}</td>
         <td>{{ $user->name }}</td>
         <td>{{ $user->lastname_usu }}</td>

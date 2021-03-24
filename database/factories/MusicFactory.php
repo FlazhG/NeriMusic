@@ -27,7 +27,7 @@ class MusicFactory extends Factory
 
             'nombre_music' => $this->faker->name(),
             'fecha_music' => $this->faker->date(),
-            'caratula_music' => null,
+            'caratula_music' => 'Avatar.png',
             'duracion_music'  => '03:00',
             'formato_music' => $this->faker->randomElement(['Mp3', 'Mp4','M4a']),
             'discografica_music'  => 'Laboratorio Records',

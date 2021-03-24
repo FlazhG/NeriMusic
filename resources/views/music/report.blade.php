@@ -14,6 +14,7 @@
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
+      <th>Caratula</th>
       <th>Id</th>
       <th>Nombre</th>
       <th>Artista</th>
@@ -29,6 +30,7 @@
     <tbody>
       @foreach ($musics as $item)
       <tr>
+        <td><img src="{{asset('storage').'/'.$item->caratula_music}}" width="100"></td>
         <td>{{$item->id_music}}</td>
         <td>{{$item->nombre_music}}</td>
         <td>{{$item->nombre_artis}}</td>

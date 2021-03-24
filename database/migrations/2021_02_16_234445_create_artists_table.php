@@ -14,7 +14,7 @@ class CreateArtistsTable extends Migration
     public function up()
     {
         Schema::create('artists', function (Blueprint $table) {
-            $table->bigIncrements('id_artis', 5);  
+            $table->bigIncrements('id_artis', 5);
             $table->string('nombre_artis', 40);
             $table->string('apellido_artis',40);
             $table->string('email_artis',40)->unique();
@@ -22,7 +22,7 @@ class CreateArtistsTable extends Migration
             $table->date('fecha_artis');
             $table->enum('sexo_artis',['masculino','femenino']);
             $table->string('password_artis');
-            $table->binary('img_artis')->nullable();
+            $table->string('img_artis');
             $table->string('telefono_artis',25);
             $table->string('terminos_artis',4);
             $table->string('disquera_artis');

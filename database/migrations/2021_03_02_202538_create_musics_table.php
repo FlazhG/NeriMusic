@@ -18,7 +18,7 @@ class CreateMusicsTable extends Migration
             $table->string('nombre_music',30);
             $table->unsignedBigInteger('id_artis')->onDelete('cascade');
             $table->foreign('id_artis')->references('id_artis')->on('artists');
-            $table->string('caratula_music')->nullable();
+            $table->string('caratula_music');
             $table->time('duracion_music');
             $table->unsignedBigInteger('id_genero')->onDelete('cascade');
             $table->foreign('id_genero')->references('id_genero')->on('generos');

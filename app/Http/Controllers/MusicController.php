@@ -7,6 +7,7 @@ use App\Models\Album;
 use App\Models\artists;
 use App\Models\Genero;
 use App\Models\Music;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MusicController extends Controller
@@ -19,6 +20,7 @@ class MusicController extends Controller
     ->join('generos', 'musics.id_genero','=','generos.id_genero')
     ->join('albums', 'musics.id_album','=','albums.id_album')
     ->select(
+      'musics.caratula_music',
       'musics.id_music',
       'musics.nombre_music',
       'artists.nombre_artis',
@@ -47,6 +49,9 @@ class MusicController extends Controller
   public function store(Request $request)
   {
      $datosMusic = request()->except('_token');
+     if ($request->hasFile('caratula_music')) {
+       $datosMusic['caratula_music']=$request->file('caratula_music')->store('img/music','public');
+     }
      Music::insert($datosMusic);
      return redirect('musics');
 
@@ -87,6 +92,11 @@ class MusicController extends Controller
   public function update(Request $request, $id_music)
   {
       $datosMusic = request()->except(['_token', '_method']);
+      if ($request->hasFile('caratula_music')) {
+        $music = Music::findOrFail($id_music);
+        Storage::delete('public/'.$music->caratula_music);
+        $datosMusic['caratula_music']=$request->file('caratula_music')->store('img/music','public');
+      }
       Music::where('id_music','=',$id_music)->update($datosMusic);
       $music = Music::findOrFail($id_music);
       $datos['musics']=Music::all();
@@ -95,6 +105,7 @@ class MusicController extends Controller
       ->join('generos', 'musics.id_genero','=','generos.id_genero')
       ->join('albums', 'musics.id_album','=','albums.id_album')
       ->select(
+        'musics.caratula_music',
         'musics.id_music',
         'musics.nombre_music',
         'artists.nombre_artis',
@@ -110,7 +121,10 @@ class MusicController extends Controller
   }
 
   public function destroy($id_music){
-    Music::find($id_music)->forceDelete();
+    $music = Music::findOrFail($id_music);
+    if (Storage::delete('public/'.$music->caratula_music)) {
+      Music::find($id_music)->forceDelete();
+    }
     return redirect('musics');
   }
 

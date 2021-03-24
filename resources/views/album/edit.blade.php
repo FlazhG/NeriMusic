@@ -3,7 +3,7 @@
 <main>
 	<center><h1 class="formulario__label">Alta albums</h1></center>
 
-		<form action="{{url('/albums/'.$album->id_album)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/albums/'.$album->id_album)}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
 			@csrf
       {{ method_field('PATCH') }}
 			<!-- Grupo: Usuario -->
@@ -19,13 +19,13 @@
 		<!-- Grupo: Foto -->
 			<div class="">
         <label for="" class="formulario__label">Subir portada:</label>
-				@if(isset($item->img_album))
-				<img src="{{asset('storage').'/'.$item->img_album}}" width="100">
+				@if(isset($album->img_album))
+				<img src="{{asset('storage').'/'.$album->img_album}}" width="100">
 				@endif
         <label for="file-upload" class="subir">
           <i class="fas fa-cloud-upload-alt"></i> Subir portada
         </label>
-          <input id="file-upload" onchange='cambiar()' name="" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+          <input id="file-upload" onchange='cambiar()' name="img_album" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
           <div id="info"></div>
       </div>
 

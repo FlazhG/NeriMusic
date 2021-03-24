@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Genero;
 use App\Models\artists;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
@@ -18,6 +18,7 @@ class AlbumController extends Controller
     ->join('artists', 'albums.id_artis','=','artists.id_artis')
     ->join('generos', 'albums.id_genero','=','generos.id_genero')
     ->select(
+      'albums.img_album',
       'albums.id_album',
       'albums.nombre_album',
       'albums.descripcion_album',
@@ -41,9 +42,9 @@ class AlbumController extends Controller
   public function store(Request $request)
   {
      $datosAlbum = request()->except('_token');
-     // if ($request->hasFile('img_album')) {
-     //   $datosAlbum['img_album']=$request->file('img_album')->store('uploads','public');
-     // }
+     if ($request->hasFile('img_album')) {
+       $datosAlbum['img_album']=$request->file('img_album')->store('img/album','public');
+     }
      Album::insert($datosAlbum);
      return redirect('albums');
 
@@ -79,11 +80,11 @@ class AlbumController extends Controller
   public function update(Request $request, $id_album)
   {
       $datosAlbum = request()->except(['_token', '_method']);
-      // if ($request->hasFile('img_album')) {
-      //   $album = Album::findOrFail($id_album);
-      //   Storage::delete('public/'.$album->img_album);
-      //   $datosAlbum['img_album']=$request->file('img_album')->store('uploads','public');
-      // }
+      if ($request->hasFile('img_album')) {
+        $album = Album::findOrFail($id_album);
+        Storage::delete('public/'.$album->img_album);
+        $datosAlbum['img_album']=$request->file('img_album')->store('img/album','public');
+      }
       Album::where('id_album','=',$id_album)->update($datosAlbum);
       $album = Album::findOrFail($id_album);
       $datos['albums']=Album::all();
@@ -91,6 +92,7 @@ class AlbumController extends Controller
       ->join('artists', 'albums.id_artis','=','artists.id_artis')
       ->join('generos', 'albums.id_genero','=','generos.id_genero')
       ->select(
+        'albums.img_album',
         'albums.id_album',
         'albums.nombre_album',
         'albums.descripcion_album',
@@ -103,7 +105,10 @@ class AlbumController extends Controller
   }
 
   public function destroy($id_album){
-    Album::find($id_album)->forceDelete();
+    $album = Album::findOrFail($id_album);
+    if (Storage::delete('public/'.$album->img_album)) {
+      Album::find($id_album)->forceDelete();
+    }
     return redirect('albums');
   }
 

@@ -3,16 +3,19 @@
 <main>
 	<h1 class="formulario__label">Modificar musica</h1>
 
-		<form action="{{url('/musics/'.$music->id_music)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/musics/'.$music->id_music)}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
 		@csrf
     {{ method_field('PATCH') }}
         <!-- Grupo: foto -->
 		<div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
+								@if(isset($music->caratula_music))
+								<img src="{{asset('storage').'/'.$music->caratula_music}}" width="100">
+								@endif
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
-                  <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  <input id="file-upload" onchange='cambiar()' type="file" name="caratula_music"class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
               </div>
 			<!-- Grupo: Nombre de la musica -->
@@ -164,7 +167,7 @@
 								</div>
 							</div>
 
-		
+
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<button type="submit" id="guardar" class="formulario__btn" disabled>Enviar</button>

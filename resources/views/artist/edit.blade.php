@@ -3,17 +3,20 @@
 <main>
 	<center><h1 class="formulario__label">Alta Artista</h1></center>
 
-		<form action="{{url ('/artists/'.$artist->id_artis)}}" method="post" class="formulario" id="formulario">
+		<form action="{{url ('/artists/'.$artist->id_artis)}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
 			@csrf
 			{{ method_field('PATCH') }}
 
             <!-- Grupo: foto -->
             <div class="">
                 <label for="" class="formulario__label">Subir foto:</label>
+								@if(isset($artist->img_artis))
+								<img src="{{asset('storage').'/'.$artist->img_artis}}" width="100">
+								@endif
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
-                  <input id="file-upload" onchange='cambiar()' type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  <input id="file-upload" onchange='cambiar()' type="file" name="img_artis" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
               </div>
 

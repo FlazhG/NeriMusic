@@ -14,25 +14,29 @@
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
+      <th>Foto</th>
       <th>id</th>
       <th>Nombre</th>
+      <th>Apellidos</th>
       <th>Correo</th>
       <th>Fecha</th>
+      <th>Sexo</th>
       <th>telefono</th>
       <th>disquera</th>
       <th>Operaciones</th>
-      <th>Sexo</th>
     </thead>
     <tbody>
         @foreach ($artists as $c )
       <tr>
+        <td><img src="{{asset('storage').'/'.$c->img_artis}}" width="100"></td>
         <td>{{ $c->id_artis }}</td>
         <td>{{ $c->nombre_artis }}</td>
+        <td>{{ $c->apellido_artis }}</td>
         <td>{{ $c->email_artis }}</td>
         <td>{{ $c->fecha_artis }}</td>
+        <td>{{ $c->sexo_artis }} </td>
         <td>{{ $c->telefono_artis }}</td>
         <td>{{ $c->disquera_artis }}</td>
-        <td>{{ $c->sexo_artis }} </td>
         <td>
 
           <form action="{{ url('/artists/'.$c->id_artis)}}" method="post" class="eliminar">

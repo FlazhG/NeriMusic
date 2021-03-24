@@ -3,7 +3,7 @@
 <main>
 	<center><h1 class="formulario__label">Reporte musics</h1></center>
 
-		<form action="{{url('/musics')}}" method="post" class="formulario" id="formulario">
+		<form action="{{url('/musics')}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
 		@csrf
         <!-- Grupo: foto -->
 		<div class="">
@@ -11,7 +11,7 @@
                 <label for="file-upload" class="subir">
                   <i class="fas fa-cloud-upload-alt"></i> Subir fotografia
                 </label>
-                  <input id="file-upload" onchange='cambiar()' type="file" name="" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  <input id="file-upload" onchange='cambiar()' type="file" name="caratula_music" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif"/>
                   <div id="info"></div>
               </div>
 			<!-- Grupo: Nombre de la musica -->
@@ -86,7 +86,7 @@
                     <span></span>
                 </label>
 				</div>
-			
+
 
 					<!-- Grupo: descripcion album -->
 					<div class="formulario__grupo" id="grupo__descripcion_music">

@@ -27,6 +27,7 @@ class UserFactory extends Factory
             'lastname_usu' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
+            'img_user' => 'Avatar.png',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'date_usu' => $this->faker->date(),
             'sexo_usu' => $this->faker->randomElement(['masculino','femenino','otro']),

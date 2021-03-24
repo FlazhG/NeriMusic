@@ -5,9 +5,19 @@
         <h1 class="formulario__label">Registro Usuario</h1>
     </center>
 
-    <form action="{{url('/user')}}" method="post" class="formulario" id="formulario">
+    <form action="{{url('/user')}}" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
 
         @csrf
+
+        <!-- Grupo: Foto  -->
+        <div class="">
+            <label for="" class="formulario__label">Subir portada:</label>
+            <label for="file-upload" class="subir">
+                <i class="fas fa-cloud-upload-alt"></i> Subir portada
+            </label>
+            <input id="file-upload" onchange='cambiar()' name="img_user" type="file" class="buttonimg" accept="image/png, .jpeg, .jpg, image/gif" />
+            <div id="info"></div>
+        </div>
 
         <!-- Grupo: Usuario -->
         <div class="formulario__grupo" id="grupo__name">

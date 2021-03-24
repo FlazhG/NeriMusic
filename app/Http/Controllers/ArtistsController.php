@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\artists;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ArtistsController extends Controller
@@ -11,8 +12,8 @@ class ArtistsController extends Controller
     public function index()
 
 	{
-		$datos['artists'] = Artists::all();
-		$consulta['artists'] = Artists::withTrashed()->
+		$datos['artists'] = artists::all();
+		$consulta['artists'] = artists::withTrashed()->
 		select(
 			'artists.id_artis',
 			'artists.nombre_artis',
@@ -40,9 +41,11 @@ class ArtistsController extends Controller
 	public function store(Request $request)
 
 	{
-
 		$datosArtists = request()->except('_token');
-		Artists::insert($datosArtists);
+    if ($request->hasFile('img_artis')) {
+      $datosArtists['img_artis']=$request->file('img_artis')->store('img/artist','public');
+    }
+		artists::insert($datosArtists);
 
 		return redirect('artists');
 
@@ -60,7 +63,7 @@ class ArtistsController extends Controller
 
 	public function edit($id_artis)
 	{
-		$artist = Artists::findOrFail($id_artis);
+		$artist = artists::findOrFail($id_artis);
 		return view('artist.edit', compact('artist'))->with('artist',$artist);
 
 	}
@@ -68,31 +71,53 @@ class ArtistsController extends Controller
 	public function update(Request $request, $id_artis)
 
 	{
-		$artist = Artists::findOrFail($id_artis);
 		$datosArtists = request()->except(['_token', '_method']);
-		Artists::where('id_artis','=',$id_artis)->update($datosArtists);
-	    $datos['artists']=Artists::all();
-		$consulta['artist'] = Artists::withTrashed()->get();
+    if ($request->hasFile('img_artis')) {
+      $artist = artists::findOrFail($id_artis);
+      Storage::delete('public/'.$artist->img_artis);
+      $datosArtists['img_artis']=$request->file('img_artis')->store('img/artist','public');
+    }
+	    artists::where('id_artis','=',$id_artis)->update($datosArtists);
+      $artist = artists::findOrFail($id_artis);
+	    $datos['artists']=artists::all();
+      $consulta['artists'] = artists::withTrashed()->
+  		select(
+        'artists.img_artis',
+  			'artists.id_artis',
+  			'artists.nombre_artis',
+  			'artists.apellido_artis',
+  			'artists.email_artis',
+  			'artists.email_verified',
+  			'artists.fecha_artis',
+  			'artists.sexo_artis',
+  			'artists.password_artis',
+  			'artists.telefono_artis',
+  			'artists.terminos_artis',
+  			'artists.disquera_artis',
+        'artists.deleted_at',
+  			'artists.descripcion_artis')->get();
 		return view('artist.index', compact('artist'))->with($datos)->with($consulta);
 
 	}
 
 	    public function destroy($id_artis){
-
-        Artists::find($id_artis)->forceDelete();
+        $artist = artists::findOrFail($id_artis);
+        if (Storage::delete('public/'.$artist->img_artis)) {
+          artists::find($id_artis)->forceDelete();
+        }
 		return redirect('artists');
 
 		}
 	public function desactivar($id_artis)
 	{
-		$artist = Artists::find($id_artis);
+		$artist = artists::find($id_artis);
 		$artist->delete();
 	    return redirect('artists');
 	}
 
     public function activar($id_artis)
 	{
-		$artist = Artists::withTrashed()->where('id_artis',$id_artis)->restore();
+		$artist = artists::withTrashed()->where('id_artis',$id_artis)->restore();
 		return redirect('artists');
 	}
 }

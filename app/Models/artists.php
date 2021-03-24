@@ -24,6 +24,7 @@ class Artists extends Model
     'terminos_artis',
     'email_verified',
     'disquera_artis',
+    'img_artis',
     'descripcion_artis'
 ];
   public function album(){
