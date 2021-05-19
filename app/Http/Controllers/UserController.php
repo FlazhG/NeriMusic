@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
-
+use Dompdf\Adapter\PDFLib;
+Use PDF;
 class UserController extends Controller
 {
 
@@ -90,4 +91,9 @@ class UserController extends Controller
         return redirect('user');
 
     }
+    public function gePdfUser(){
+      $pdfuser = User::all();
+      $pdf = PDF::loadView('user.pdf', compact('pdfuser'));
+          return $pdf->download('pdf_user.pdf');
+  }
 }
