@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <center><h2 class="mb-4">Laravel 8 PDF | Alumnos</h2></center>
+            <center><h2 class="mb-4">Laravel 8 PDF | Datos de usuarios</h2></center>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
