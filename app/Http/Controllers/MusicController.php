@@ -150,7 +150,6 @@ class MusicController extends Controller
      ->join('generos', 'musics.id_genero','=','generos.id_genero')
      ->join('albums', 'musics.id_album','=','albums.id_album')
      ->select(
-       'musics.caratula_music',
        'musics.id_music',
        'musics.nombre_music',
        'artists.nombre_artis',
