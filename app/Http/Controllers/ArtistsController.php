@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\artists;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Dompdf\Adapter\PDFLib;
+Use PDF;
 
 class ArtistsController extends Controller
 {
@@ -120,4 +122,10 @@ class ArtistsController extends Controller
 		$artist = artists::withTrashed()->where('id_artis',$id_artis)->restore();
 		return redirect('artists');
 	}
+
+  public function gePdfartis(){
+    $pdfartis = artists::all();
+    $pdf = PDF::loadView('artis.pdf', compact('pdfartis'));
+        return $pdf->download('pdf_artis.pdf');
+}
 }

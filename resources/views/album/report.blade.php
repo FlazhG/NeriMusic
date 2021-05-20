@@ -11,6 +11,9 @@
   <h1 align="center">Reporte de album</h1>
   <a href="{{url('albums/create')}}">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+  </a>
+  <a href="{{ url('pdfalbum') }}">
+    <button value="PDF" title="PDF" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
   </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>

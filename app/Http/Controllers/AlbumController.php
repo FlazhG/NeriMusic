@@ -8,6 +8,8 @@ use App\Models\Genero;
 use App\Models\artists;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Dompdf\Adapter\PDFLib;
+Use PDF;
 
 class AlbumController extends Controller
 {
@@ -124,4 +126,10 @@ class AlbumController extends Controller
      $album = Album::withTrashed()->where('id_album',$id_album)->restore();
      return redirect('albums');
    }
+
+   public function gePdfalbum(){
+     $pdfalbum = Album::all();
+     $pdf = PDF::loadView('album.pdf', compact('pdfalbum'));
+         return $pdf->download('pdf_album.pdf');
+ }
 }

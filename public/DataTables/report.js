@@ -1,9 +1,6 @@
 $(document).ready(function() {
     $('#reportTable').DataTable( {
         "responsive": true,
-        buttons: [
-        'copy', 'excel', 'pdf'
-        ],
         "language": {
           "processing": "Procesando...",
           "lengthMenu": "Mostrar _MENU_ registros",

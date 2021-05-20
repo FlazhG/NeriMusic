@@ -9,6 +9,8 @@ use App\Models\Genero;
 use App\Models\Music;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Dompdf\Adapter\PDFLib;
+Use PDF;
 
 class MusicController extends Controller
 {
@@ -140,4 +142,10 @@ class MusicController extends Controller
      $music = Music::withTrashed()->where('id_music',$id_music)->restore();
      return redirect('musics');
    }
+
+   public function gePdfmusic(){
+     $pdfmusic = Music::all();
+     $pdf = PDF::loadView('music.pdf', compact('pdfmusic'));
+         return $pdf->download('pdf_music.pdf');
+ }
 }
