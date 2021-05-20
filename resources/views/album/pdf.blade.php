@@ -11,13 +11,15 @@
         <center><h2 class="mb-4">PDF | Album</h2></center>
         <table class="table table-striped table-hover">
           <thead>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Fecha de creación</th>
-            <th>Duración</th>
-            <th>Genero</th>
-            <th>Artista</th>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Fecha de creación</th>
+              <th scope="col">Duración</th>
+              <th scope="col">Genero</th>
+              <th scope="col">Artista</th>
+            </tr>
           </thead>
           <tbody>
             @foreach ($pdfalbum as $album)
