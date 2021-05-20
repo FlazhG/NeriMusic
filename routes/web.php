@@ -38,6 +38,9 @@ Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
 Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
 //Ruta de pdf
 Route::name('pdfuser')->get('pdfuser',[UserController::class,'gePdfUser']);
+Route::name('pdfalbum')->get('pdfalbum',[AlbumController::class,'gePdfalbum']);
+Route::name('pdfmusic')->get('pdfmusic',[MusicController::class,'gePdfmusic']);
+Route::name('pdfartis')->get('pdfartis',[ArtistsController::class,'gePdfartis']);
 //Rutas de music
 Route::resource('musics',MusicController::class);
 Route::get('desactivarmusic/{id_music}',[MusicController::class, 'desactivar'])->name('desactivar');
