@@ -129,6 +129,17 @@ class AlbumController extends Controller
 
    public function gePdfalbum(){
      $pdfalbum = Album::all();
+     $pdfalbum = Album::withTrashed()
+     ->join('artists', 'albums.id_artis','=','artists.id_artis')
+     ->join('generos', 'albums.id_genero','=','generos.id_genero')
+     ->select(
+       'albums.id_album',
+       'albums.nombre_album',
+       'albums.descripcion_album',
+       'albums.fecha_album',
+       'albums.duracion_album',
+       'artists.nombre_artis',
+       'generos.nombre_genero')->get();
      $pdf = PDF::loadView('album.pdf', compact('pdfalbum'));
          return $pdf->download('pdf_album.pdf');
  }

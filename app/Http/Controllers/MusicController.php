@@ -145,6 +145,22 @@ class MusicController extends Controller
 
    public function gePdfmusic(){
      $pdfmusic = Music::all();
+     $pdfmusic = Music::withTrashed()
+     ->join('artists', 'musics.id_artis','=','artists.id_artis')
+     ->join('generos', 'musics.id_genero','=','generos.id_genero')
+     ->join('albums', 'musics.id_album','=','albums.id_album')
+     ->select(
+       'musics.caratula_music',
+       'musics.id_music',
+       'musics.nombre_music',
+       'artists.nombre_artis',
+       'musics.discografica_music',
+       'musics.formato_music',
+       'musics.descripcion_music',
+       'musics.duracion_music',
+       'musics.fecha_music',
+       'generos.nombre_genero',
+       'albums.nombre_album')->get();
      $pdf = PDF::loadView('music.pdf', compact('pdfmusic'));
          return $pdf->download('pdf_music.pdf');
  }

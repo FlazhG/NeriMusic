@@ -13,24 +13,23 @@
                 <thead>
                     <tr>
                     <th scope="col">No.</th>
-                    <th scope="col">Nombre</th>                 
-                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
                     <th scope="col">Fecha de nacimiento</th>
                     <th scope="col">Sexo</th>
-                    <th scope="col">Telefono</th>                          
+                    <th scope="col">Telefono</th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach ($pdfartis as $artis)
                         <tr>
-                            <td>{{ $artis->id }}</td>
+                            <td>{{ $artis->id_artis }}</td>
                             <td>{{ $artis->apellido_artis . ', ' . $artis->nombre_artis }}</td>
                             <td>{{ $artis->email_artis }}</td>
                             <td>{{ $artis->fecha_artis }}</td>
                             <td>{{ $artis->sexo_artis }}</td>
                             <td>{{ $artis->telefono_artis }}</td>
-                            
+
                         </tr>
                     @endforeach
                 </tbody>

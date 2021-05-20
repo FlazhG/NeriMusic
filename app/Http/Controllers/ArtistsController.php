@@ -125,7 +125,7 @@ class ArtistsController extends Controller
 
   public function gePdfartis(){
     $pdfartis = artists::all();
-    $pdf = PDF::loadView('artis.pdf', compact('pdfartis'));
+    $pdf = PDF::loadView('artist.pdf', compact('pdfartis'));
         return $pdf->download('pdf_artis.pdf');
 }
 }
