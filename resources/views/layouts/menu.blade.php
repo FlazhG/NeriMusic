@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="{{asset('../css/bootstrap/bootstrap.min.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="{{asset('../css/textarea.css')}}">
-  
+
   <script type="text/javascript">
     $(document).ready(function(){ //Al cargar la página realiza una serie de acciones
       $('#valor-range').html($("#valoracion").val()); /* Al cargar la página se mostrará en el label "valor-range" el valor del input */
@@ -108,7 +108,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
-      <img src="{{asset('img/NeriMusic.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('img/NeriMusic.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">NeriMusic</span>
     </a>
 
