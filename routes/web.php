@@ -36,6 +36,11 @@ Route::resource('user', UserController::class);
 Route::get('desactivar/{id}',[UserController::class, 'desactivar'])->name('desactivar');
 Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
 Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
+
+//Ruta de pdf de user
+Route::name('export')->get('user.export',[UserController::class,'export']);
+Route::name('import')->post('import',[UserController::class,'import']);
+
 //Ruta de pdf
 Route::name('pdfuser')->get('pdfuser',[UserController::class,'gePdfUser']);
 Route::name('pdfalbum')->get('pdfalbum',[AlbumController::class,'gePdfalbum']);

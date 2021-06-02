@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use  App\Exports\UsersExports;
+use  App\Imports\UsersImports;
+use Maatwebsite\Excel\Excel;
+use Yajra\DataTables\DataTables;
 use Dompdf\Adapter\PDFLib;
-Use PDF;
+use PDF;
+
 class UserController extends Controller
 {
+
+  private $excel;
+  public function __construct(Excel $excel){
+      $this->excel = $excel;
+  }
 
     public function index()
     {
@@ -95,5 +106,14 @@ class UserController extends Controller
       $pdfuser = User::all();
       $pdf = PDF::loadView('user.pdf', compact('pdfuser'));
           return $pdf->download('pdf_user.pdf');
+  }
+
+  public function export(){
+    return $this->excel->download(new UsersExports, 'alumnos.xlsx');
+ }
+
+ public function import(){
+      $this->excel->import(new UsersExports, request()->file('file'));
+     return back();
   }
 }

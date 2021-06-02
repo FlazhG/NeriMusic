@@ -13,6 +13,15 @@
   <a href="">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar <i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a>
+  <a href="{{ url('export') }}"  class="btn btn-outline-info">Excel alumnos</a><br><br><br>
+  <div class="form-group">
+    <h3>Excel | formulario de importación</h3>
+    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data" name="excelimport">
+      @csrf
+      <input type="file" name="file" class="form-control"required><br>
+      <button class="btn btn-success">Importar Archivo Excel</button>
+    </form>
+  </div>
   <a href="{{ url('pdfuser') }}">
     <button value="PDF" title="PDF" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
   </a><br><br>
