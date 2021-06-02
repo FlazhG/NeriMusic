@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use  App\Exports\UsersExports;
-use  App\Imports\UsersImports;
+use  App\Imports\UsersImport;
 use Maatwebsite\Excel\Excel;
 use Yajra\DataTables\DataTables;
 use Dompdf\Adapter\PDFLib;
@@ -110,10 +110,11 @@ class UserController extends Controller
 
   public function export(){
     return $this->excel->download(new UsersExports, 'alumnos.xlsx');
- }
+    
+  }
 
  public function import(){
-      $this->excel->import(new UsersExports, request()->file('file'));
+      $this->excel->import(new UsersImport, request()->file('file'));
      return back();
   }
 }

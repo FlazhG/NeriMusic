@@ -38,7 +38,7 @@ Route::get('activar/{id}',[UserController::class, 'activar'])->name('activar');
 Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('destroy');
 
 //Ruta de pdf de user
-Route::name('export')->get('user.export',[UserController::class,'export']);
+Route::name('export')->get('export',[UserController::class,'export']);
 Route::name('import')->post('import',[UserController::class,'import']);
 
 //Ruta de pdf
