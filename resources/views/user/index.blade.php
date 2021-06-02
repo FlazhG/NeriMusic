@@ -9,8 +9,9 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de Usuarios</h1>
-  <a href="{{ url('user/create') }}">
-    <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+  <!-- <a href="{{ url('user/create') }}"> -->
+  <a href="">
+    <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar <i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a>
   <a href="{{ url('pdfuser') }}">
     <button value="PDF" title="PDF" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
