@@ -9,8 +9,18 @@
 @section('contenido')
 <div class="content-wrapper">
   <h1 align="center">Reporte de Usuarios</h1>
+  <div class="card border-primary">
+    <div class="card-header">Importar Excel</div>
+    <div class="card-body">
+      <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data" name="excelimport">
+        @csrf
+        <input type="file" name="file" class="form-control"required>
+        <button class="btn btn-success butt">Importar Excel</button>
+      </form>
+    </div>
+  </div><br><br><br><br><br><br><br><br>
   <!-- <a href="{{ url('user/create') }}"> -->
-  <a href="">
+  <a href="javascript:void(0)">
     <button value="Alta" title="Alta usuario" class="btn btn-success">Registrar <i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
   </a>
   <a href="{{ url('pdfuser') }}">
@@ -18,17 +28,7 @@
   </a>
   <a href="{{ url('export') }}">
     <button title="Excel" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-  </a>
-  <div class="card border-secondary mb-3" style="max-width: 20rem;">
-    <div class="card-header">Importar Excel</div>
-    <div class="card-body">
-      <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data" name="excelimport">
-        @csrf
-        <input type="file" name="file" class="form-control"required>
-        <button class="btn btn-success">Importar Excel</button>
-      </form>
-    </div>
-  </div>
+  </a><br><br>
   <table id="reportTable" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <th>Foto</th>
@@ -76,7 +76,11 @@
       </tr>
       @endforeach
     </tbody>
-  </table><br>
+  </table>
+  <!-- Registrar -->
+  <div class="" id="register">
+
+  </div>
 </div>
 @section('js')
 <!-- DataTables -->
